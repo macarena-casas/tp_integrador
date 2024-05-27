@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyMaster.Master.cs" Inherits="tp_integrador.Site1" %>
 
+
 <!DOCTYPE html>
 
 <html>
