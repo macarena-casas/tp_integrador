@@ -6,9 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace Dominio
 {
-    class Usuario
+   public class Usuario
     {
         [DisplayName("Nombre")]
         public string nombre_u { get; set; }
