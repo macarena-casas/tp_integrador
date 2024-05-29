@@ -11,9 +11,6 @@ namespace Negocio
     public class NegocioUsuario
     {
 
-
-
-
         public void Eliminar(int Id)
         {
             Acceso_Datos datos = new Acceso_Datos();
@@ -34,9 +31,6 @@ namespace Negocio
 
 
         }
-
-
-
 
 
 
