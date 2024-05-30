@@ -5,7 +5,7 @@
 
 <html>
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -22,12 +22,19 @@
                 <a href="Default.aspx" class="nav-link">
                     <asp:Button runat="server" Text="Home" ID="Btnhome" class="btn btn-outline-light" UseSubmitBehavior="false"></asp:Button>
                 </a>
+                <div>
+                    <a href="Favoritos.aspx" class="nav-link" style="align-items: flex-end;">
+                        <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-star "></i></p>
+                        <asp:Label Text="" ID="Label1" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                        <span class="visually-hidden">Inmuebles en Favoritos</span>
+                    </a>
+                </div>
             </nav>
 
             <nav class="navbar" style="background-color: deepskyblue" data-bs-theme="dark">
 
                 <div class="mx-auto d-flex">
-                    <asp:Button ID="btnBuscar" Text="Buscar" onclick="btnBuscar_Click" runat="server" Style="visibility: hidden" />
+                    <asp:Button ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click" runat="server" Style="visibility: hidden" />
                     <asp:TextBox runat="server" ID="tbBuscar" class="p-3 text-ligth bg-primary-subtle border border-primary-subtle rounded-3" placeholder="..." aria-label="search" Style="width: 700px;"></asp:TextBox>
                     <asp:Button runat="server" Text="Buscar" ID="Buscar1" class="btn btn-outline-light" UseSubmitBehavior="false"></asp:Button>
 
@@ -35,12 +42,16 @@
             </nav>
 
             <ul class="navbar-nav">
-                <li class="nav-item position-relative" style="background-color: darkturquoise;">
+
+                <li class=" nav-item position-relative" style="background-color: darkturquoise; align-items: flex-end;">
                     <a href="Login.aspx" class="nav-link">
                         <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-person "></i></p>
                         <asp:Label Text="" ID="Login1" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
                         <span class="visually-hidden">Ingreso</span>
                     </a>
+
+
+
                 </li>
 
             </ul>

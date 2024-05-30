@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
+    <Compile Include="Elementoauxiliar.cs" />
+    <Compile Include="Favorioto.cs" />
     <Compile Include="Imagen.cs" />
     <Compile Include="Inmueble.cs" />
     <Compile Include="Usuario.cs" />

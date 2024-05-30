@@ -12,10 +12,22 @@ namespace tp_integrador
     public partial class Site1 : System.Web.UI.MasterPage
     {
         public List<Inmueble> listafiltrada { get; set; }
-
+        public Favorito lista { get; set; }
+        public string TotalProductosCarro { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack && Session["inmueble"] == null)
+            {
+                lista = new Favorito();
 
+                Session.Add("inmueble", lista);
+            }
+            else
+            {
+                lista = (Favorito)Session["inmueble"];
+
+            }
+            Label1.Text = lista.TotalProductos.ToString();
         }
 
         protected void Buscar(string text)
@@ -33,7 +45,6 @@ namespace tp_integrador
 
         }
 
-       
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {

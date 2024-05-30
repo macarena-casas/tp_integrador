@@ -70,6 +70,8 @@
     <Content Include="Alta_Modificacion.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Detalles.aspx" />
+    <Content Include="Favoritos.aspx" />
+    <Content Include="FavoritosVacio.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
@@ -95,6 +97,20 @@
     </Compile>
     <Compile Include="Detalles.aspx.designer.cs">
       <DependentUpon>Detalles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Favoritos.aspx.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favoritos.aspx.designer.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FavoritosVacio.aspx.cs">
+      <DependentUpon>FavoritosVacio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FavoritosVacio.aspx.designer.cs">
+      <DependentUpon>FavoritosVacio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
