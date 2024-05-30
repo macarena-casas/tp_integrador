@@ -85,5 +85,33 @@ namespace Negocio
             }
               
         }
+
+        public bool Loguear(Usuario usuario)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+
+            try
+            {
+                datos.setearconsulta("select Id, Nombre, Contraseña, IDTipo from Usuario where Nombre = @Nombre and Contraseña= @Contraseña");
+                datos.setearparametro("@Nombre", usuario.nombre_u);
+                datos.setearparametro("@Contraseña", usuario.contra_u);
+
+                datos.ejecutarlectura();
+
+                while (datos.lector.Read())
+                {
+                    usuario.id_u = (int)datos.lector["Id"];
+                    usuario.idtipo_u = (int)datos.lector["IdTipo"];
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+
+            }
+            return false;
+        }
     }
 }

@@ -9,15 +9,36 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-   public class Usuario
+    public enum Tipousuario
+    {
+        NORMAL = 0,
+        ADMIN = 1
+    }
+
+    public class Usuario
     {
         [DisplayName("Nombre")]
         public string nombre_u { get; set; }
         [DisplayName("Contraseña")]
-        public string contra_u { get;set; }
+        public string contra_u { get; set; }
         [DisplayName("Id")]
-        public string id_u { get; set; }
+        public int id_u { get; set; }
         [DisplayName("IdTipo")]
-        public string idtipo_u { get; set; }
+        public int idtipo_u { get; set; }
+        [DisplayName("TipoUsuario")]
+        public Tipousuario Tipousuario { get; set; }
+
+        public Usuario()
+        {
+
+        }
+
+        public Usuario(string user, string pass, bool admin)
+        {
+            nombre_u = user;
+            contra_u = pass;
+            Tipousuario = admin ? Tipousuario.ADMIN : Tipousuario.NORMAL;
+        }
+
     }
 }
