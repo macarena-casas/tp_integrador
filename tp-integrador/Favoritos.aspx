@@ -22,8 +22,12 @@
                     <th scope="col" style="color: mediumseagreen; width: 50%; font: 100;"><strong>Precio</strong></th>
                     <th scope="col" style="color: mediumseagreen; width: 30%;"></th>
                 </tr>
+                
             </thead>
+            
             <tbody>
+                
+               
                 <asp:Repeater ID="repetirinmuebles" runat="server">
                     <ItemTemplate>
 

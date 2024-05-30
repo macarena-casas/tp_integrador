@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <div id="Banner" style="background-image: url('https://www.buscandocasa.com.mx/blog/wp-content/uploads/2020/06/la-guia-completa-para-conseguir-el-hogar-de-tus-suenos.jpg'); background-color: black; background-size: unset; background-repeat: no-repeat; background-position: center; height: 450px;">
+    <div id="Banner" style="background-image : url('https://www.buscandocasa.com.mx/blog/wp-content/uploads/2020/06/la-guia-completa-para-conseguir-el-hogar-de-tus-suenos.jpg') ; background-color: black; background-repeat: no-repeat; background-position: center; height: 450px;background-size:initial;background-attachment:fixed;background-position-y:initial;padding-top:100px">
     </div>
     <form id="form1" runat="server">
         <div>
