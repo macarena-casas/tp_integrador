@@ -13,5 +13,10 @@ namespace tp_integrador
         {
 
         }
+
+        protected void btIngresar_Click()
+        {
+
+        }
     }
 }
