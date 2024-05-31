@@ -61,6 +61,8 @@ namespace tp_integrador
                 {
                     if (todo == true)
                     {
+                        favoritoactual.TotalProductos = favoritoactual.TotalProductos -1;
+
                         favoritoactual.listainmueble.RemoveAt(i);
                         Session["inmueble"] = favoritoactual;
                         repetirinmuebles.DataSource = favoritoactual.listainmueble;

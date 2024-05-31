@@ -9,6 +9,6 @@
            alt="Alternate Text" style="width: 60%;">
    </div>
    <div class="btn-container" style="display: flex; justify-content: center; padding-bottom: 40px;">
-       <a href="<%: ResolveUrl("~/Default.aspx")%>" class="btn btn-outline-light btn-lg" style="font-weight: bold; border-color: dimgray; color: black; background-color: seagreen;"><strong>Volver al Inicio </strong></a>
+       <a href="<%: ResolveUrl("~/Default.aspx")%>" class="btn btn-outline-light btn-lg" style="font-weight: bold; border-color: dimgray; color: black; background-color: aqua;"><strong> Volver al Inicio </strong><i class="bi bi-buildings-fill "></i></a>
    </div>
     </asp:Content>

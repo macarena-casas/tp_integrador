@@ -70,7 +70,7 @@
     <Content Include="Alta_Modificacion.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Detalles.aspx" />
-    <Content Include="error.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Favoritos.aspx" />
     <Content Include="FavoritosVacio.aspx" />
     <Content Include="Login.aspx" />

@@ -92,7 +92,7 @@
                         <p class="card-text" style="font-size: 20px; color: black;"><%:inmueble.categoria_I.nombre_categoria%></p>
                         <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-primary" style="font-weight: bold; border-color: Highlight;" title="Detalles">+</a>
                         <a href="Default.aspx?id=<%:inmueble.Id_I %>" class="btn btn-outline-light" usesubmitbehavior="false" commandargument='<%=inmueble.Id_I%>'
-                            style="background-color: seagreen; color: white; font-weight: bold; border-color: dimgray">Agregar a Favoritos </a>
+                            style="background-color: aqua; color: black; font-weight: bold; border-color: dimgray">Agregar a Favoritos <i class="bi bi-star-fill "></i></a>
                     </div>
                 </center>
 
