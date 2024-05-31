@@ -14,8 +14,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <div id="Banner" style="background-image : url('https://www.buscandocasa.com.mx/blog/wp-content/uploads/2020/06/la-guia-completa-para-conseguir-el-hogar-de-tus-suenos.jpg') ; background-color: black; background-repeat: no-repeat; background-position: center; height: 450px;background-size:initial;background-attachment:fixed;background-position-y:initial;padding-top:100px">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="https://www.buscandocasa.com.mx/blog/wp-content/uploads/2020/06/la-guia-completa-para-conseguir-el-hogar-de-tus-suenos.jpg" class="d-block w-100" alt="...">
     </div>
+    <div class="carousel-item  " style="height:410px"   >
+      <img  src= "https://img.freepik.com/foto-gratis/concepto-inmobiliario-joven-pelo-rojo-camiseta-que-muestra-recorte-casa-papel-sonriendo-ha_1258-161646.jpg?t=st=1717176811~exp=1717180411~hmac=2e10b462a62fea38067b005c0368421c56dcd18bccaa1a95e68c3ac361211ff7&w=740"  class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item " style="height:410px"  >
+      <img src="https://img.freepik.com/fotos-premium/familia-europea-sonadora-sentada-casa-tirada_116547-111412.jpg?w=900" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+
     <form id="form1" runat="server">
         <div>
             <nav class="navbar " style="background-color: navy" data-bs-theme="info">
