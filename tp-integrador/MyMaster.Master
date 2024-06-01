@@ -5,7 +5,7 @@
 
 <html>
 <head runat="server">
-       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -14,28 +14,28 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
 
-    <div class="carousel-item active">
-      <img src="https://www.buscandocasa.com.mx/blog/wp-content/uploads/2020/06/la-guia-completa-para-conseguir-el-hogar-de-tus-suenos.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-item active">
+                <img src="https://www.buscandocasa.com.mx/blog/wp-content/uploads/2020/06/la-guia-completa-para-conseguir-el-hogar-de-tus-suenos.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item  " style="height: 410px">
+                <img src="https://img.freepik.com/foto-gratis/concepto-inmobiliario-joven-pelo-rojo-camiseta-que-muestra-recorte-casa-papel-sonriendo-ha_1258-161646.jpg?t=st=1717176811~exp=1717180411~hmac=2e10b462a62fea38067b005c0368421c56dcd18bccaa1a95e68c3ac361211ff7&w=740" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item " style="height: 410px">
+                <img src="https://img.freepik.com/fotos-premium/familia-europea-sonadora-sentada-casa-tirada_116547-111412.jpg?w=900" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div class="carousel-item  " style="height:410px"   >
-      <img  src= "https://img.freepik.com/foto-gratis/concepto-inmobiliario-joven-pelo-rojo-camiseta-que-muestra-recorte-casa-papel-sonriendo-ha_1258-161646.jpg?t=st=1717176811~exp=1717180411~hmac=2e10b462a62fea38067b005c0368421c56dcd18bccaa1a95e68c3ac361211ff7&w=740"  class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item " style="height:410px"  >
-      <img src="https://img.freepik.com/fotos-premium/familia-europea-sonadora-sentada-casa-tirada_116547-111412.jpg?w=900" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
 
 
@@ -43,12 +43,13 @@
 
     <form id="form1" runat="server">
         <div>
+
             <nav class="navbar " style="background-color: navy" data-bs-theme="info">
-                   <a href="Default.aspx" class="nav-link">
-                        <p style="text-align: left; font-size: 160%; color: white; margin-left:20px ; margin-right:5px ;"><i class="bi bi-house-door-fill "></i></p>
-                        <asp:Label Text="" ID="Label2" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
-                        <span class="visually-hidden">Página Principal</span>
-                    </a>
+                <a href="Default.aspx" class="nav-link">
+                    <p style="text-align: left; font-size: 160%; color: white; margin-left: 20px; margin-right: 5px;"><i class="bi bi-house-door-fill "></i></p>
+                    <asp:Label Text="" ID="Label2" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <span class="visually-hidden">Página Principal</span>
+                </a>
                 <div>
                     <a href="Favoritos.aspx" class="nav-link" style="align-items: flex-end;">
                         <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-star "></i></p>
@@ -57,34 +58,38 @@
                     </a>
                 </div>
             </nav>
-
-            <nav class="navbar" style="background-color: deepskyblue" data-bs-theme="dark">
-
-                <div class="mx-auto d-flex">
-                    <asp:Button ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click" runat="server" Style="visibility: hidden" />
-                    <asp:TextBox runat="server" ID="tbBuscar" class="p-3 text-ligth bg-primary-subtle border border-primary-subtle rounded-3" placeholder="..." aria-label="search" Style="width: 700px;"></asp:TextBox>
-                    <asp:Button runat="server" Text="Buscar" ID="Buscar1" class="btn btn-outline-light" UseSubmitBehavior="false"></asp:Button>
-
-                </div>
-            </nav>
-
-            <ul class="navbar-nav">
-
-                <li class=" nav-item position-relative" style="background-color: darkturquoise; align-items: flex-end;">
-                    <a href="Login.aspx" class="nav-link">
-                        <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-person-plus-fill "></i></p>
-                        <asp:Label Text="" ID="Login1" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
-                        <span class="visually-hidden">Ingreso</span>
-                    </a>
-
-
-
-                </li>
-
-            </ul>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
         </div>
+
+        <nav class="navbar" style="background-color: deepskyblue" data-bs-theme="dark">
+
+            <div class="mx-auto d-flex">
+                <asp:Button ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click" runat="server" Style="visibility: hidden" />
+                <asp:TextBox runat="server" ID="tbBuscar" class="p-3 text-ligth bg-primary-subtle border border-primary-subtle rounded-3" placeholder="..." aria-label="search" Style="width: 700px;"></asp:TextBox>
+                <asp:Button runat="server" Text="Buscar" ID="Buscar1" class="btn btn-outline-light" UseSubmitBehavior="false"></asp:Button>
+
+            </div>
+        </nav>
+
+
+             <nav class="navbar " style="background-color: navy" data-bs-theme="info">
+
+                <a href="Login.aspx" class="nav-link">
+                    <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-person-plus-fill "></i></p>
+                    <asp:Label Text="" ID="Login1" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <span class="visually-hidden">Ingreso</span>
+                </a>
+                <div>
+                        <a href="Alta_Modificacion.aspx" class="nav-link" style="align-items: flex-end;">
+                            <p style="text-align: left; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-house-add-fill"></i></p>
+                            <asp:Label Text="" ID="Label3" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                            <span class="visually-hidden">Alta_Modificacion</span>
+                        </a>
+                </div>
+             </nav>
+
+
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
     </form>
 </body>
 </html>
