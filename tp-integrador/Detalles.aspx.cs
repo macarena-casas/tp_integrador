@@ -13,6 +13,7 @@ namespace tp_integrador
     {
         public List<Inmueble> listainmueble { get; set; }
         public Inmueble inmueble { get; set; }
+     
         protected void Page_Load(object sender, EventArgs e)
         {
             listainmueble = (List<Inmueble>)Session["listainmueble"];
@@ -33,11 +34,35 @@ namespace tp_integrador
                 {
                     Response.Redirect("~/Default.aspx");
                 }
+               
+
 
             }
             catch (Exception ex)
             {
                 Response.Redirect("~/Default.aspx");
+                throw ex;
+            }
+        }
+        
+        protected void btnagregarfavorito_Click(object sender, EventArgs e)
+        {
+            
+            Favorito favoritoactual;
+            favoritoactual = (Favorito)Session["inmueble"];
+            NegocioFavorito fNegocio = new NegocioFavorito();
+
+            try
+            {
+
+                favoritoactual = fNegocio.AguegarAFavorito(inmueble, favoritoactual,1);
+                Session["inmueble"] = favoritoactual;
+                Response.Redirect("~/Detalles.aspx?id=" + inmueble.Id_I);
+
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }

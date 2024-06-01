@@ -84,7 +84,7 @@
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="gasnatural">
                         <label class="form-check-label" for="gridCheck">
-                            <strong>Gas natural</strong> 
+                            <strong>Gas natural</strong>
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
     </div>
     <div>
         <div class="col-12" style="margin-left: 25px;">

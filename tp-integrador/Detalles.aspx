@@ -82,30 +82,74 @@
                 <div class="card border-primary" style="border-color: blue; height: 500px; width: 350px">
                     <center>
                         <div id="Datosdelinmueble">
-                            <div class="card-header text-center" style="font-size: 30px; text-align:center; color: midnightblue; border-block-color: blue;">
-                                <p><strong id="lblprecio" runat="server" ></strong></p>
+                            <div class="card-header text-center" style="font-size: 30px; text-align: center; color: midnightblue; border-block-color: blue;">
+                                <p><strong id="lblprecio" runat="server"></strong></p>
                             </div>
                             <div class="card-body text-center" style="margin-bottom: 20px;">
                                 <div class="card-title">
                                     <h2><strong id="lblnombre" runat="server" style="font-size: 25px; color: midnightblue; border-block-color: blue;"></strong></h2>
                                 </div>
-                                <p><strong id="lblcategoria" runat="server" style="font-size: 20px; color:darkblue ;"></strong></p>
+                                <p><strong id="lblcategoria" runat="server" style="font-size: 20px; color: darkblue;"></strong></p>
                                 <p id="lblDescripcion" runat="server"></p>
-                                <div class="card-text"></div>
 
+                                <div class="form-check" style="text-align: center;">
+                                    <label for="inputState" class="form-label"><strong>Servicio:</strong></label>
 
+                                    <div class="mx-auto d-flex">
+                                      <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="chekagua">
+                                            <label class="form-check-label" for="gridCheck"><strong>Agua Corriente</strong></label>
+                                       </div>
+                                       <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="checkgas">
+                                            <label class="form-check-label" for="gridCheck"><strong>Gas natural</strong> </label>
+                                       </div>
+                                        </div>
+                                    <br />  
+                                        <div class="row g-3">
+                                             <div class="mx-auto d-flex">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="checkluz">
+                                                <label class="form-check-label" for="gridCheck"><strong>Luz</strong></label>
+                                            </div>
 
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="checkcochera">
+                                                <label class="form-check-label" for="gridCheck"><strong>Cochera</strong></label>
+                                            </div>
 
-
-                                <div class="card-footer text-center" style="font-size: 30px; color: darkblue; border-block-color: blue; margin-top: 160px; margin-bottom: 5px;">
-                                    <a class="btn btn-primary text-light text-decoration-none" href="Default.aspx" style="margin-bottom: 2px;"><strong>Atrás</strong></a>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox " id="checkpatio">
+                                                <label class="form-check-label" for="gridCheck"><strong>Patio</strong> </label>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                             </div>
                         </div>
-                    </center>
                 </div>
 
+
+                <div class="card-text"></div>
+
+
+
+
+                <div class="card-footer text-center" style="font-size: 30px; color: darkblue; border-block-color: blue; margin-top: 160px; margin-bottom: 5px;">
+                    <asp:Button ID="btnagregarfavorito" runat="server" Text="Agregar a Favorito" OnClick="btnagregarfavorito_Click" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey;" />
+
+
+                    <a class="btn btn-primary text-light text-decoration-none" href="Default.aspx" style="margin-bottom: 2px;"><strong>Atrás</strong></a>
+                </div>
             </div>
+    </div>
+    </center>
+    </div>
+
+    </div>
 
         </center>
     </div>
