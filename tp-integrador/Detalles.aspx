@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <center>
-            <div class="row" style="margin-top: 10%; margin-bottom: 10%">
+             <div class="row" style="margin-top: 10%; margin-bottom: 10%">
                 <div class="col-md-8">
 
 
@@ -76,10 +76,15 @@
                             <span class="visually-hidden">next</span>
                         </button>
                     </div>
+                    <br />
+                    <center>
+                        <asp:Button ID="btnagregarfavorito" runat="server" Text="Agregar a Favorito" OnClick="btnagregarfavorito_Click" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
+                        <a class="btn btn-primary text-light text-decoration-none" href="Default.aspx" style="margin-bottom: 2px; width: 30%"><strong>Atrás</strong></a>
+                    </center>
                 </div>
 
 
-                <div class="card border-primary" style="border-color: blue; height: 500px; width: 350px">
+                <div class="card border-primary" style="border-color: blue; height: 600px; width: 350px">
                     <center>
                         <div id="Datosdelinmueble">
                             <div class="card-header text-center" style="font-size: 30px; text-align: center; color: midnightblue; border-block-color: blue;">
@@ -90,68 +95,67 @@
                                     <h2><strong id="lblnombre" runat="server" style="font-size: 25px; color: midnightblue; border-block-color: blue;"></strong></h2>
                                 </div>
                                 <p><strong id="lblcategoria" runat="server" style="font-size: 20px; color: darkblue;"></strong></p>
-                                <p id="lblDescripcion" runat="server"></p>
-
+                                <p><strong id="lblDescripcion" runat="server" style="font-size: 16px; color: navy;"></strong></p>
+                                   <div class="row g-12">      
+                                <div class="input-group mb-3" style=" width: 50%; border-color: aqua; margin-left: 10px; font-weight: bold;">
+                                <asp:Label Text="Ambientes: " runat="server" Style="font-size: 20px; color: darkblue; " />
+                                    <asp:Label Text="" runat="server" ID="lblambientes" Style="font-size: 20px; color: darkblue;" />
+                               </div>
+                                <div class="input-group mb-3" style=" width: 40%; border-color: aqua; font-weight: bold;">
+                                <asp:Label Text="Baños: " runat="server" Style="font-size: 20px; color: darkblue; " />
+                                <asp:Label Text="" runat="server" ID="lblbaños" Style="font-size: 20px; color: darkblue;" />
+                                 </div>
+                                 </div>
+                                     <br />
                                 <div class="form-check" style="text-align: center;">
-                                    <label for="inputState" class="form-label"><strong>Servicio:</strong></label>
+                                    <label for="inputState" class="form-label" style="color: navy;"><strong>Servicio:</strong></label>
 
-                                    <div class="mx-auto d-flex">
-                                      <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="chekagua">
-                                            <label class="form-check-label" for="gridCheck"><strong>Agua Corriente</strong></label>
-                                       </div>
-                                       <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="checkgas">
-                                            <label class="form-check-label" for="gridCheck"><strong>Gas natural</strong> </label>
-                                       </div>
+                                    <div class="mx-auto d-flex" style="justify-content: center;">
+                                        <div class="form-check form-check-inline">
+                                            <asp:CheckBox Text="Agua Corriente" runat="server" ID="checkagua" disabilited="true" BorderColor="Turquoise" Style="font-weight: bold;" />
                                         </div>
-                                    <br />  
-                                        <div class="row g-3">
-                                             <div class="mx-auto d-flex">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="checkluz">
-                                                <label class="form-check-label" for="gridCheck"><strong>Luz</strong></label>
-                                            </div>
+                                        <div class="form-check form-check-inline">
+                                            <asp:CheckBox Text="Gas Natural" runat="server" ID="checkgas" BorderColor="Turquoise" Style="font-weight: bold;" />
+                                        </div>
 
+                                        <div class="form-check form-check-inline">
+                                            <asp:CheckBox Text="Luz" runat="server" ID="Checkluz" Style="font-weight: bold; border-color: aqua;" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row g-3">
+                                        <div class="mx-auto d-flex" style="justify-content: center;">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="checkcochera">
-                                                <label class="form-check-label" for="gridCheck"><strong>Cochera</strong></label>
+                                                <asp:CheckBox Text="Cochera" runat="server" ID="Checkcochera" BorderColor="Turquoise" Style="font-weight: bold;" />
                                             </div>
-
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox " id="checkpatio">
-                                                <label class="form-check-label" for="gridCheck"><strong>Patio</strong> </label>
+                                                <asp:CheckBox Text="Patio" runat="server" ID="Checkpatio" BorderColor="Turquoise" Style="font-weight: bold;" />
                                             </div>
+                                            <div class="form-check form-check-inline">
+                                                <asp:CheckBox Text="Cloaca" runat="server" ID="Checkcloaca" BorderColor="Turquoise" Style="font-weight: bold;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row g-3">
+                                        <div class="mx-auto d-flex" style="justify-content: center;">
+                                            <div class="form-check form-check-inline">
+                                                <asp:CheckBox Text="Pavimento" runat="server" ID="Checkpavimento" BorderColor="Turquoise" Style="font-weight: bold;" />
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <asp:CheckBox Text="Calefacción" runat="server" ID="Checkcalefaccion" BorderColor="Turquoise" Style="font-weight: bold;" />
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <asp:CheckBox Text="Aire" runat="server" ID="Checkaire" BorderColor="Turquoise" Style="font-weight: bold;" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
-                </div>
-
-
-                <div class="card-text"></div>
-
-
-
-
-                <div class="card-footer text-center" style="font-size: 30px; color: darkblue; border-block-color: blue; margin-top: 160px; margin-bottom: 5px;">
-                    <asp:Button ID="btnagregarfavorito" runat="server" Text="Agregar a Favorito" OnClick="btnagregarfavorito_Click" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey;" />
-
-
-                    <a class="btn btn-primary text-light text-decoration-none" href="Default.aspx" style="margin-bottom: 2px;"><strong>Atrás</strong></a>
+                    </center>
                 </div>
             </div>
-    </div>
-    </center>
-    </div>
-
-    </div>
-
         </center>
     </div>
-
 </asp:Content>

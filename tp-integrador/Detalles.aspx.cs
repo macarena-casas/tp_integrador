@@ -28,13 +28,27 @@ namespace tp_integrador
                     lblDescripcion.InnerText = inmueble.descripcion_I;
                     lblprecio.InnerText = "$" + inmueble.precio_I.ToString();
                     lblcategoria.InnerText = inmueble.categoria_I.nombre_categoria;
+                    lblambientes.Text = inmueble.ambientes.ToString();
+                    lblbaños.Text = inmueble.baños.ToString();
+
+                    if (inmueble.aguacorriente == true) { checkagua.Checked = true; }
+                    if (inmueble.luz == true) { Checkluz.Checked = true; }
+                    if (inmueble.gasnatural == true) { checkgas.Checked = true; }
+                    if (inmueble.cochera == true) { Checkcochera.Checked = true; }
+                    if (inmueble.aireacondicionado == true) { Checkaire.Checked = true; }
+                    if (inmueble.patio == true) { Checkpatio.Checked = true; }
+                    if (inmueble.pavimento == true) { Checkpavimento.Checked = true; }
+                    if (inmueble.cloacas == true) { Checkcloaca.Checked = true; }
+                    if (inmueble.calefaccion == true) { Checkcalefaccion.Checked = true; }
+
+
                 }
 
                 if (inmueble == null)
                 {
                     Response.Redirect("~/Default.aspx");
                 }
-               
+
 
 
             }
@@ -44,7 +58,6 @@ namespace tp_integrador
                 throw ex;
             }
         }
-        
         protected void btnagregarfavorito_Click(object sender, EventArgs e)
         {
             
