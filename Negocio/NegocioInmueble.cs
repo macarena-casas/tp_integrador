@@ -41,6 +41,18 @@ namespace Negocio
 
                     inmueble.precio_I = (decimal)inmunegocio.lector["Precio"];
                     inmueble.precio_I = Math.Round(inmueble.precio_I, 2);
+                    inmueble.ambientes = (int)inmunegocio.lector["Ambientes"];
+                    inmueble.baños = (int)inmunegocio.lector["Baños"];
+                    inmueble.gasnatural = (bool)inmunegocio.lector["Gas_Natural"];
+                    inmueble.aguacorriente = (bool)inmunegocio.lector["Agua_Corriente"];
+                    inmueble.cloacas = (bool)inmunegocio.lector["Cloacas"];
+                    inmueble.luz = (bool)inmunegocio.lector["Luz"];
+                    inmueble.cochera = (bool)inmunegocio.lector["Cochera"];
+                    inmueble.patio = (bool)inmunegocio.lector["Patio"];
+                    inmueble.aireacondicionado = (bool)inmunegocio.lector["Aire_Acondicionado"];
+                    inmueble.calefaccion = (bool)inmunegocio.lector["Calefacción"];
+                    inmueble.pavimento = (bool)inmunegocio.lector["Pavimento"];
+
                     inmueble.Imagenes = inegocio.ListarItems(inmueble.Id_I);
                     if (inmueble.Imagenes.Count() == 0)
                     {
@@ -59,7 +71,7 @@ namespace Negocio
         }
         public List<Inmueble> Listacompleta()
         {
-            return uploadInmuebleList("select I.Id As Id, I.Nombre As Nombre ,I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio FROM  Inmueble I left join Categoria C on C.Id= I.Id_categoria");
+            return uploadInmuebleList("select I.Id As Id, I.Nombre As Nombre ,I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio,I.Ambientes,  I.Baños, I.Gas_Natural,I.Agua_Corriente,I.Cloacas,I.Luz,I.Cochera,I.Patio, I.Aire_Acondicionado,I.Calefacción, I.Pavimento FROM  Inmueble I left join Categoria C on C.Id= I.Id_categoria");
 
         }
 

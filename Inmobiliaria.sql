@@ -24,6 +24,17 @@ Descripcion varchar (500) null,
 Id_categoria smallint not null foreign key references Categoria,
 Codigo_Postal int not null foreign key references Localidad (CP),
 Precio money null,
+Ambientes int not null,
+Baños int not null,
+Gas_Natural bit,
+Agua_Corriente bit,
+Cloacas bit,
+Luz bit,
+Cochera bit,
+Patio bit,
+Aire_Acondicionado bit,
+Calefacción bit,
+Pavimento bit
 primary key (Id)
 )
 go
@@ -67,10 +78,11 @@ go
 insert into Usuario values ('admin', 'admin',1),
 ('normal','normal',0)
 go
-insert into Inmueble values ('casa azul','amplia y luminosa',1,1617,50000),
- ('casa madera','rustica y acogedora',3,1618,20000),
- ('casa moderna','amplia y hogareña',4,1611,80000),
- ('duplex a estrenar','excelente oportunidad negocio',5,1645,200000)
+insert into Inmueble values ('casa azul','amplia y luminosa',1,1617,50000,3,2,1,1,0,1,0,1,1,1,0),
+ ('casa madera','rustica y acogedora',3,1618,20000,2,1,1,1,1,1,0,0,0,1,0),
+ ('casa moderna','amplia y hogareña',4,1611,80000,3,3,1,0,1,0,1,0,0,1,1),
+ ('duplex a estrenar','excelente oportunidad negocio',5,1645,200000,2,1,1,1,1,0,0,0,1,1,1)
+
 
 
 
