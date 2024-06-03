@@ -18,5 +18,10 @@ namespace tp_integrador
         {
 
         }
+
+        protected void cerrarbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 }

@@ -78,15 +78,6 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.Button Buscar1;
 
         /// <summary>
-        /// Control Login1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Login1;
-
-        /// <summary>
         /// Control Label3.
         /// </summary>
         /// <remarks>
@@ -94,6 +85,15 @@ namespace tp_integrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
+
+        /// <summary>
+        /// Control Login1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Login1;
 
         /// <summary>
         /// Control ContentPlaceHolder1.
