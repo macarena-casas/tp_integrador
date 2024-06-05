@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Negocio;
 namespace tp_integrador
 {
     public partial class WebForm2 : System.Web.UI.Page
@@ -14,7 +15,16 @@ namespace tp_integrador
         public Favorito favoritoactual { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {Usuario usuario = new Usuario();
+            NegocioUsuario usario=new NegocioUsuario();
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "debes loguaerte para entrar");
+                Response.Redirect("Login.aspx");
+            }
+            {
+
+            }
             favoritoactual = (Favorito)Session["inmueble"];
             if (favoritoactual.TotalProductos == 0)
             {
@@ -30,6 +40,13 @@ namespace tp_integrador
 
         private void AgregarAFavorito(int id)
         {
+
+
+            
+
+            
+
+
             try
             {
                 for (int i = 0; i < favoritoactual.listainmueble.Count(); i++)
@@ -53,6 +70,7 @@ namespace tp_integrador
                 throw ex;
             }
         }
+        
         private void EliminardeFavorito(int id, bool todo)
         {
             for (int i = 0; i < favoritoactual.listainmueble.Count(); i++)
@@ -107,5 +125,6 @@ namespace tp_integrador
             repetirinmuebles.DataSource = favoritoactual.listainmueble;
             repetirinmuebles.DataBind();
         }
+        
     }
 }

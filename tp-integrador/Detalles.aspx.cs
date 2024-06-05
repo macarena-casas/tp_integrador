@@ -16,6 +16,15 @@ namespace tp_integrador
      
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = new Usuario();
+            NegocioUsuario usario = new NegocioUsuario();
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "debes loguaerte para entrar");
+                Response.Redirect("Login.aspx");
+            }
+
+
             listainmueble = (List<Inmueble>)Session["listainmueble"];
             int Id_I = Request.QueryString["Id"] != null && int.TryParse(Request.QueryString["Id"], out int id) ? id : -1;
             inmueble = listainmueble.FirstOrDefault(i => i.Id_I == Id_I);
