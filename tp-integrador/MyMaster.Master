@@ -68,7 +68,7 @@
             <div class="mx-auto d-flex">
                 <asp:Button ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click" runat="server" Style="visibility: hidden" />
                 <asp:TextBox runat="server" ID="tbBuscar" class="p-3 text-ligth bg-primary-subtle border border-primary-subtle rounded-3" placeholder="..." aria-label="search" Style="width: 700px;"></asp:TextBox>
-                <asp:Button runat="server" Text="Buscar" ID="Buscar1" class="btn btn-outline-light" UseSubmitBehavior="false"></asp:Button>
+                <asp:Button runat="server" Text="Buscar" onclick="btnBuscar_Click" ID="Buscar1" class="btn btn-outline-light" UseSubmitBehavior="false"></asp:Button>
 
             </div>
         </nav>

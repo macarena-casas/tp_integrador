@@ -38,21 +38,30 @@ namespace tp_integrador
         }
         private void addInmueble()
         {
-            try
+           
+            if (Session["usuario"] != null)
             {
-                NegocioFavorito fnegocio = new NegocioFavorito();
-                listainmueble = (List<Inmueble>)Session["listainmueble"];
-                Inmueble inmueble;
-                int Id_I = int.Parse(Request.QueryString["id"]);
+                try
+                {
+                    NegocioFavorito fnegocio = new NegocioFavorito();
+                    listainmueble = (List<Inmueble>)Session["listainmueble"];
+                    Inmueble inmueble;
+                    int Id_I = int.Parse(Request.QueryString["id"]);
 
-                inmueble = fnegocio.encontrarInmueble(Id_I, listainmueble);
-                Session["inmueble"] = fnegocio.AguegarAFavorito(inmueble, favoritoactual, 1);
+                    inmueble = fnegocio.encontrarInmueble(Id_I, listainmueble);
+                    Session["inmueble"] = fnegocio.AguegarAFavorito(inmueble, favoritoactual, 1);
 
+                }
+                catch (Exception ex)
+                {
+                    Response.Redirect("~/Error.aspx");
+                    throw ex;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Response.Redirect("~/Error.aspx");
-                throw ex;
+                Session.Add("error", "Debes Iniciar Sesión");
+                Response.Redirect("Login.aspx");
             }
         }
 

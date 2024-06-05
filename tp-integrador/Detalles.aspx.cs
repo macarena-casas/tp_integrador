@@ -18,11 +18,7 @@ namespace tp_integrador
         {
             Usuario usuario = new Usuario();
             NegocioUsuario usario = new NegocioUsuario();
-            if (Session["usuario"] == null)
-            {
-                Session.Add("error", "debes loguaerte para entrar");
-                Response.Redirect("Login.aspx");
-            }
+          
 
 
             listainmueble = (List<Inmueble>)Session["listainmueble"];
@@ -39,6 +35,16 @@ namespace tp_integrador
                     lblcategoria.InnerText = inmueble.categoria_I.nombre_categoria;
                     lblambientes.Text = inmueble.ambientes.ToString();
                     lblbaños.Text = inmueble.baños.ToString();
+
+                    checkagua.Enabled = false;
+                    Checkluz.Enabled = false;
+                    checkgas.Enabled = false;
+                    Checkcochera.Enabled = false;
+                    Checkaire.Enabled = false;
+                    Checkpatio.Enabled = false;
+                    Checkpavimento.Enabled = false;
+                    Checkcalefaccion.Enabled = false;
+                    Checkcloaca.Enabled = false;
 
                     if (inmueble.aguacorriente == true) { checkagua.Checked = true; }
                     if (inmueble.luz == true) { Checkluz.Checked = true; }
@@ -69,23 +75,31 @@ namespace tp_integrador
         }
         protected void btnagregarfavorito_Click(object sender, EventArgs e)
         {
-            
-            Favorito favoritoactual;
-            favoritoactual = (Favorito)Session["inmueble"];
-            NegocioFavorito fNegocio = new NegocioFavorito();
-
-            try
+            if (Session["usuario"] != null)
             {
 
-                favoritoactual = fNegocio.AguegarAFavorito(inmueble, favoritoactual,1);
-                Session["inmueble"] = favoritoactual;
-                Response.Redirect("~/Detalles.aspx?id=" + inmueble.Id_I);
+                Favorito favoritoactual;
+                favoritoactual = (Favorito)Session["inmueble"];
+                NegocioFavorito fNegocio = new NegocioFavorito();
 
+                try
+                {
+
+                    favoritoactual = fNegocio.AguegarAFavorito(inmueble, favoritoactual, 1);
+                    Session["inmueble"] = favoritoactual;
+                    Response.Redirect("~/Detalles.aspx?id=" + inmueble.Id_I);
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
             }
-            catch (Exception ex)
+            else
             {
-
-                throw ex;
+                Session.Add("error", "Debes Iniciar Sesión.");
+                Response.Redirect("Login.aspx");
             }
         }
     }
