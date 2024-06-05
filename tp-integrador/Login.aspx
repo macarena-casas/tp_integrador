@@ -13,12 +13,14 @@
                 <h1 style="text-align: center; padding: 10px 0 10px 0; border-bottom: 2px double grey;">Inicio de sesion</h1>
                 <div method="post" style="padding: 0 45px; box-sizing: border-box; left: 20px;">
                     <div class="username" style="top: 50%; color: black; left: 5px; color: black; font-size: 20px;">
-                        <input style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" type="text" name="name" value="" />
+                       
+                        <asp:TextBox  style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" cssclass="form-control1" ID="txtEmail" />
                         <label>Usuario</label>
                     </div>
 
                     <div class="contraseña" style="margin-top: 5%; left: 5px; color: black; font-size: 20px;">
-                        <input style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" type="text" name="contra" value="" />
+                        
+                        <asp:TextBox style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" cssclass="form-control1" ID="txtPass" />
                         <label>Contraseña</label>
                     </div>
                     <div class="requisitos">
@@ -27,11 +29,9 @@
                         <p style="font-size: 15px;">*Minimo 1 Número</p>
                     </div>
 
-                    <input type="submit" name="Iniciar" value="Iniciar" style="width: 100%; height: 50px; margin-top: 10px; border: 2px solid; background-color: midnightblue; border-radius: 25px; font-size: 18px; color: white; cursor: pointer; outline: none;" />
-
-
+                    <input type="submit" name="Iniciar" value="Iniciar"  style="width: 100%; height: 50px; margin-top: 10px; border: 2px solid; background-color: midnightblue; border-radius: 25px; font-size: 18px; color: white; cursor: pointer; outline: none; " />                  
                     <div class="registrarse" style="margin: 30px 0; text-align: center; font-size: 16px; color: black;">
-                        ¿No tienes una cuenta? <a href="#">Registrarse</a>
+                        ¿No tienes una cuenta? <a href="Registro.aspx">Registrarse</a>
                     </div>
                     <br />
                 </div>

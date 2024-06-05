@@ -21,21 +21,26 @@ namespace tp_integrador
 
         protected void btIngresar_Click()
         {
-            Usuario usuario;
+            Usuario usuario=new Usuario();
             NegocioUsuario negocioUsuario = new NegocioUsuario();
             try
-            {
-                usuario=new Usuario(/*---------- conectar a aspx------------*/);
-                if (negocioUsuario.Loguear(usuario))
-                {
-                    Session.Add("usuario", usuario);
-                    Response.Redirect("Default.aspx");
-                }
-                else
-                {
-                    Session.Add("error", "user o pass incorrecta");
-                    Response.Redirect("Error.aspx");
-                }
+            {                                            
+                    usuario.nombre_u = txtEmail.Text;
+                    usuario.contra_u = txtPass.Text;
+
+                    if (negocioUsuario.Loguear(usuario)) 
+                    { 
+                    Session.Add("activo", usuario);
+                    Response.Redirect("Favoritos.aspx",false);
+                    }
+                    else 
+                    {
+                        Session.Add("Error", "usuario o contraseña incorrectos...");
+                        Response.Redirect("Error.aspx");
+                         
+                    }
+                
+              
                 
             }
             catch (Exception ex)
@@ -49,5 +54,7 @@ namespace tp_integrador
         {
             Response.Redirect("~/Default.aspx");
         }
+
+       
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -41,7 +43,7 @@ namespace Negocio
             {
                 datos.setearconsulta("insert into Usuario \r\nvalues ('" + nuevo.nombre_u + "','" + nuevo.contra_u + "','" + nuevo.idtipo_u + "')");
                 datos.ejecutaraccion();
-
+                
 
             }
             catch (Exception ex)
@@ -98,20 +100,30 @@ namespace Negocio
 
                 datos.ejecutarlectura();
 
-                while (datos.lector.Read())
+                if(datos.lector.Read())
                 {
                     usuario.id_u = (int)datos.lector["Id"];
-                    usuario.idtipo_u = (int)datos.lector["IdTipo"];
+                    
+
 
                     return true;
                 }
+                else 
+                {
+                return false; 
+                }
+                
             }
             catch (Exception ex)
             {
-                return false;
+                throw ex;
+               
 
             }
-            return false;
+            finally
+            {
+                datos.cerrarconexion();
+            }
         }
     }
 }
