@@ -16,7 +16,7 @@
             { %>
 
         <div class="col-12 col-md-6 col-lg-4 mb-2">
-            <div class="card border-primary" style="border-color: blue; height: 500px; width: 350px">
+            <div class="card border-primary" style="border-color: blue; height: 550px; width: 350px">
                 <div id="carouselExampleDark" class="carousel carousel-dark slide">
                     <div class="carousel-indicators">
 
@@ -85,12 +85,16 @@
                     </button>
 
                 </div>
-                <center>
+                 <center>
                     <div class="card-header text-center" style="font-size: 30px; color: darkblue; border-block-color: blue;"><strong><%: inmueble.nombre_I  %></strong></div>
                     <div class="card-body text-center" style="margin-bottom: 20px;">
                         <h5 class="card-title" style="font-size: 20px; color: black;">$<%: inmueble.precio_I  %></h5>
                         <p class="card-text" style="font-size: 20px; color: black;"><%:inmueble.categoria_I.nombre_categoria%></p>
-                        <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-primary" style="font-weight: bold; border-color: Highlight;" title="Detalles">+</a>
+                        <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: Highlight;" title="Detalles">+</a>
+                        <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: Highlight;" title="modif">modificar</a>
+                        <br />  
+                        <br />  
+
                         <a href="Default.aspx?id=<%:inmueble.Id_I %>" class="btn btn-outline-light" usesubmitbehavior="false" commandargument='<%=inmueble.Id_I%>'
                             style="background-color: aqua; color: black; font-weight: bold; border-color: dimgray">Agregar a Favoritos <i class="bi bi-star-fill "></i></a>
                     </div>

@@ -46,6 +46,7 @@
     <Compile Include="Favorioto.cs" />
     <Compile Include="Imagen.cs" />
     <Compile Include="Inmueble.cs" />
+    <Compile Include="Ubicacion.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

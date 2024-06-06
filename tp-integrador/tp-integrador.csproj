@@ -108,7 +108,7 @@
     <Content Include="Favoritos.aspx" />
     <Content Include="FavoritosVacio.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Mis_Publicaciones.aspx" />
+    <Content Include="MisPublicaciones.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
@@ -156,12 +156,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Mis_Publicaciones.aspx.cs">
-      <DependentUpon>Mis_Publicaciones.aspx</DependentUpon>
+    <Compile Include="MisPublicaciones.aspx.cs">
+      <DependentUpon>MisPublicaciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Mis_Publicaciones.aspx.designer.cs">
-      <DependentUpon>Mis_Publicaciones.aspx</DependentUpon>
+    <Compile Include="MisPublicaciones.aspx.designer.cs">
+      <DependentUpon>MisPublicaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyMaster.Master.cs">

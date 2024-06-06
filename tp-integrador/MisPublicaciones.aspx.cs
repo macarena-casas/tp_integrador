@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace tp_integrador
 {
-    public partial class Mis_Publicaciones : System.Web.UI.Page
+    public partial class MisPublicaciones : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
