@@ -98,6 +98,7 @@
         </div>
     </div>
     <div>
+        <br />
         <div class="col-12" style="margin-left: 25px;">
             <button type="submit" class="btn btn-primary">Agregar</button>
         </div>
