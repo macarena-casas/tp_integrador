@@ -23,6 +23,7 @@ namespace Negocio
                 while (inmunegocio.lector.Read())
                 {
                     Inmueble inmueble = new Inmueble();
+                    Ubicacion auxi = new Ubicacion();
                     Imagen aux = new Imagen();
 
                     inmueble.Imagenes = new List<Imagen>();
@@ -38,7 +39,8 @@ namespace Negocio
                         inmueble.categoria_I.nombre_categoria = (string)inmunegocio.lector["Categoria"];
                         // inmueble.categoria_I.codigo_categoria =(int)inmunegocio.lector["IdCategoria"];
                     }
-
+                    //auxi.Direccion = (string)inmunegocio.lector["Direccion"]; solicitar en base
+                   // auxi.Localidad = (string)inmunegocio.lector["Localidad"];
                     inmueble.precio_I = (decimal)inmunegocio.lector["Precio"];
                     inmueble.precio_I = Math.Round(inmueble.precio_I, 2);
                     inmueble.ambientes = (int)inmunegocio.lector["Ambientes"];
@@ -125,8 +127,24 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("insert into Inmueble values ('" + nuevo.nombre_I + "','" + nuevo.descripcion_I + "', @categoria , " + nuevo.precio_I + ")");
+                datos.setearconsulta("insert into Inmueble values (@Nombre,@Descripcion, @categoria , @Precio)");
+               
+                datos.setearparametro("@Nombre", nuevo.nombre_I);
+                datos.setearparametro("@Descripcion", nuevo.descripcion_I);
+                datos.setearparametro("@Precio", nuevo.precio_I);
                 datos.setearparametro("@categoria", nuevo.categoria_I.codigo_categoria);
+                datos.setearparametro("@Ambientes", nuevo.ambientes);
+                datos.setearparametro("@Baños", nuevo.baños);
+                datos.setearparametro("@GasNatural", nuevo.gasnatural);
+                datos.setearparametro("@AguaCorriente", nuevo.aguacorriente);
+                datos.setearparametro("@Cloacas", nuevo.cloacas);
+                datos.setearparametro("@Luz", nuevo.luz);
+                datos.setearparametro("@Cochera", nuevo.cochera);
+                datos.setearparametro("@Patio", nuevo.patio);
+                datos.setearparametro("@AireAcondicionado", nuevo.aireacondicionado);
+                datos.setearparametro("@Calefaccion", nuevo.calefaccion);
+                datos.setearparametro("@Pavimento", nuevo.pavimento);
+
                 datos.ejecutaraccion();
 
                 datos.setearconsulta("select top 1 * from Inmueble order by Id desc");
@@ -281,7 +299,24 @@ namespace Negocio
                 datos.setearparametro("@IdCategoria", articulo.categoria_I.codigo_categoria);
                 datos.setearparametro("@Precio", articulo.precio_I);
                 datos.setearparametro("@Id", articulo.Id_I);
-                datos.ejecutaraccion();
+                datos.setearparametro("@Ambientes", articulo.ambientes);
+                datos.setearparametro("@Baños", articulo.baños );
+                datos.setearparametro("@GasNatural", articulo.gasnatural);
+                datos.setearparametro("@AguaCorriente", articulo.aguacorriente);
+                datos.setearparametro("@Cloaca", articulo.cloacas );
+                datos.setearparametro("@Luz", articulo.luz);
+                datos.setearparametro("@Cochera", articulo.cochera);
+                datos.setearparametro("@Patio", articulo.patio);
+                datos.setearparametro("@AireAcondicionado", articulo.aireacondicionado);
+                datos.setearparametro("@Calefaccion", articulo.calefaccion);
+                datos.setearparametro("@Pavimento", articulo.pavimento);
+
+            
+
+
+
+
+        datos.ejecutaraccion();
 
             }
             catch (Exception ex)
@@ -296,8 +331,9 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("delete from Inmueble where Id = @Id ");
+                datos.setearconsulta("update Inmueble set Estado=@Estado from  where Id = @Id ");
                 datos.setearparametro("@Id", Id);
+                datos.setearparametro("@Estado", 0); 
                 datos.ejecutaraccion();
 
 

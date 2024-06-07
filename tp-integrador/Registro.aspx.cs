@@ -21,8 +21,8 @@ namespace tp_integrador
             {    
                 NegocioUsuario negocio = new NegocioUsuario();
                 Usuario usuario = new Usuario();
-                usuario.nombre_u = txtEmail.Text;
-                usuario.contra_u = TxtPass.Text;
+                usuario.nombre_u = txtemail.Text;
+                usuario.contra_u = txtpass.Text;
                 negocio.agregar(usuario);
             }
             catch (Exception ex)
@@ -30,6 +30,11 @@ namespace tp_integrador
 
                 Session.Add("error", ex.ToString());
             }
+        }
+
+        protected void cerrarbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

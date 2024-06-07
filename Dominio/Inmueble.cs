@@ -25,6 +25,8 @@ namespace Dominio
         public string urlimagen { get; set; }
         public int ID() { return Id_I; }
         public List<Imagen> Imagenes { get; set; }
+        public Ubicacion ubicacion { get; set; }
+
         public int ambientes { get; set; }
         public int baños { get; set; }
         public bool gasnatural { get; set; }
@@ -45,6 +47,7 @@ namespace Dominio
             descripcion_I = "nada";
             categoria_I = new Categoria();
             Imagenes = new List<Imagen>();
+            ubicacion = new Ubicacion();
             ambientes = 0;
             baños = 0;
             gasnatural = false;
@@ -57,13 +60,14 @@ namespace Dominio
             pavimento = false;
 
         }
-        public Inmueble(string nom, string desc, Categoria cat, decimal pre, int am, int ba, bool g, bool ag, bool cl, bool l, bool pa, bool ai, bool cale, bool pavi)
+        public Inmueble(string nom, string desc, Ubicacion ubi, Categoria cat, decimal pre, int am, int ba, bool g, bool ag, bool cl, bool l, bool pa, bool ai, bool cale, bool pavi)
         {
-
+            ubicacion = new Ubicacion();
             categoria_I = new Categoria();
             nombre_I = nom;
             descripcion_I = desc;
             categoria_I = cat;
+            ubicacion = ubi;
             precio_I = pre;
             Imagenes = new List<Imagen>();
             ambientes = am;

@@ -52,12 +52,12 @@ namespace tp_integrador
                 //INegocio.modificar(inmueble);
 
             }
-            /*
+           /*
             if (inmueble == null)
             {
                 Response.Redirect("~/Default.aspx");
             }
-            */
+           */
         }
         catch (Exception ex)
         {

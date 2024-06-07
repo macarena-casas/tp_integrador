@@ -19,12 +19,10 @@ namespace tp_integrador
             NegocioUsuario usario=new NegocioUsuario();
             if (Session["usuario"] == null)
             {
-                Session.Add("error", "debes loguaerte para entrar");
+                Session.Add("error", "Debes Iniciar Sesión para Ingresar");
                 Response.Redirect("Login.aspx");
             }
-            {
-
-            }
+           
             favoritoactual = (Favorito)Session["inmueble"];
             if (favoritoactual.TotalProductos == 0)
             {
