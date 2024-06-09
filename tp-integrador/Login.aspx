@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-       <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
+   <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
         <div class="reg ">
 
             <div class="registro" style="background: lightblue; border-radius: 3%;">
@@ -29,7 +29,8 @@
                         <p style="font-size: 15px;">*Minimo 1 Número</p>
                     </div>
 
-                    <input type="submit" name="Iniciar" value="Iniciar"  style="width: 100%; height: 50px; margin-top: 10px; border: 2px solid; background-color: midnightblue; border-radius: 25px; font-size: 18px; color: white; cursor: pointer; outline: none; " />                  
+                    <asp:Button Text="Iniciar" id="btnIniciar" runat="server" onclick="btnIniciar_Click" style="width: 100%; height: 50px; margin-top: 10px; border: 2px solid; background-color: midnightblue; border-radius: 25px; font-size: 18px; color: white; cursor: pointer; outline: none;"/>
+                                
                     <div class="registrarse" style="margin: 30px 0; text-align: center; font-size: 16px; color: black;">
                         ¿No tienes una cuenta? <a href="Registro.aspx">Registrarse</a>
                     </div>
