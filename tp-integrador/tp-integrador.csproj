@@ -104,6 +104,7 @@
     <Content Include="Alta_Modificacion.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Detalles.aspx" />
+    <Content Include="EliminarPausar.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Favoritos.aspx" />
     <Content Include="FavoritosVacio.aspx" />
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="Detalles.aspx.designer.cs">
       <DependentUpon>Detalles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarPausar.aspx.cs">
+      <DependentUpon>EliminarPausar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarPausar.aspx.designer.cs">
+      <DependentUpon>EliminarPausar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Favoritos.aspx.cs">
       <DependentUpon>Favoritos.aspx</DependentUpon>

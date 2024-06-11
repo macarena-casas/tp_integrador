@@ -3,7 +3,10 @@ go
 create database Inmobiliaria
 go
 use Inmobiliaria
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> 798bee7b9b21b00992005d26f44c3475e7d19bcc
 go
 create table Localidad(
 CP int not null,
@@ -18,8 +21,22 @@ Nombre varchar (50) not null unique,
 primary key (Id)
 )
 go
+<<<<<<< HEAD
 create table Inmueble(
 Id int identity (1,1) not null,
+=======
+create table Usuario(
+Id int identity (1,1) not null,
+Nombre varchar (50) not null unique,
+Contraseña varchar (15) not null,
+IDTipo bit not null,
+primary key (Id)
+)
+go
+create table Inmueble(
+Id int identity (1,1) not null,
+Nombreusuario varchar (50) not null foreign key references Usuario (Nombre),
+>>>>>>> 798bee7b9b21b00992005d26f44c3475e7d19bcc
 Nombre varchar (50) not null,
 Descripcion varchar (500) null,
 Id_categoria smallint not null foreign key references Categoria,
@@ -35,7 +52,13 @@ Cochera bit,
 Patio bit,
 Aire_Acondicionado bit,
 Calefacción bit,
+<<<<<<< HEAD
 Pavimento bit
+=======
+Pavimento bit,
+Pausa bit,
+Estado bit,
+>>>>>>> 798bee7b9b21b00992005d26f44c3475e7d19bcc
 primary key (Id)
 )
 go
@@ -45,11 +68,21 @@ ImagenUrl varchar (1000) not null,
 Id_Inmueble int not null
 )
 go
+<<<<<<< HEAD
 create table Usuario(
 Id int identity (1,1) not null,
 Nombre varchar (50) not null,
 Contraseña varchar (15) not null,
 IDTipo bit not null
+=======
+create table DatosUsuario(
+Id_suario int not null foreign key references Usuario,
+Nombres varchar (50) not null,
+Apellidos varchar (15) not null,
+Dni varchar(10) not null,
+Celular varchar(15) not null,
+Domicilio varchar (50) not null,
+>>>>>>> 798bee7b9b21b00992005d26f44c3475e7d19bcc
 )
 go
 insert into Localidad values (1618,'El Talar','Tigre'),
@@ -79,10 +112,19 @@ go
 insert into Usuario values ('admin', 'admin',1),
 ('normal','normal',0)
 go
+<<<<<<< HEAD
 insert into Inmueble values ('casa azul','amplia y luminosa',1,1617,50000,3,2,1,1,0,1,0,1,1,1,0),
  ('casa madera','rustica y acogedora',3,1618,20000,2,1,1,1,1,1,0,0,0,1,0),
  ('casa moderna','amplia y hogareña',4,1611,80000,3,3,1,0,1,0,1,0,0,1,1),
  ('duplex a estrenar','excelente oportunidad negocio',5,1645,200000,2,1,1,1,1,0,0,0,1,1,1)
+=======
+
+
+insert into Inmueble values ('admin','casa azul','amplia y luminosa',1,1617,50000,3,2,1,1,0,1,0,1,1,1,0,1,1),
+ ('normal','casa madera','rustica y acogedora',3,1618,20000,2,1,1,1,1,1,0,0,0,1,0,1,1),
+ ('normal','casa moderna','amplia y hogareña',4,1611,80000,3,3,1,0,1,0,1,0,0,1,1,1,1),
+ ('normal','duplex a estrenar','excelente oportunidad negocio',5,1645,200000,2,1,1,1,1,0,0,0,1,1,1,1,1)
+>>>>>>> 798bee7b9b21b00992005d26f44c3475e7d19bcc
 
 
 
@@ -92,6 +134,7 @@ insert into Imagen values ('https://definicion.de/wp-content/uploads/2011/01/cas
 ('https://hips.hearstapps.com/hmg-prod/images/casa-de-madera-de-diseno-moderno21-645b7b443ba61.jpg?resize=980:*',3),
 ('https://definicion.de/wp-content/uploads/2011/01/ambiente.jpg',1)
 
+<<<<<<< HEAD
 */
 select * from Usuario
 
@@ -99,3 +142,6 @@ select Id, Nombre, Contraseña, IDTipo from Usuario where Nombre = 'taruka' and C
 drop table Usuario
  drop table Imagen
 drop table Inmueble
+=======
+
+>>>>>>> 798bee7b9b21b00992005d26f44c3475e7d19bcc

@@ -57,7 +57,7 @@
             <div style="position:relative;" class="input-box">
 
                 <input style="  width: 100%; height: 40px;padding: 0 10px;outline:none ;background:lightblue; border:3px double;border-color:black;letter-spacing: 1px;transition:.3s;color:black;" type="text" placeholder="Asunto">
-                <i style="position:absolute;top:50%;transform: translateY(-50%);right: 10px;color:rgba(255 255 255 / .3);transition: .3s;" class="fa-solid fa-pen-to-square"></i>
+                <i style="position:absolute;top:50%;transform: translateY(-50%);right: 10px;color:blue;transition: .3s;" class="fa-solid fa-pen-to-square"></i>
 
             </div>
 

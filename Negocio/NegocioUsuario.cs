@@ -41,9 +41,11 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("insert into Usuario \r\nvalues ('" + nuevo.nombre_u + "','" + nuevo.contra_u + "','" + nuevo.idtipo_u + "')");
+                datos.setearconsulta("insert into Usuario  values(@Nombre, @Contraseña, 0)");
+                datos.setearparametro("@Nombre", nuevo.nombre_u);
+                datos.setearparametro("@Contraseña", nuevo.contra_u);
                 datos.ejecutaraccion();
-                
+
 
             }
             catch (Exception ex)
@@ -58,9 +60,10 @@ namespace Negocio
         }
 
 
-        public List<Usuario> listar() { 
-        List<Usuario> lista = new List<Usuario>();
-        Acceso_Datos datos = new Acceso_Datos();
+        public List<Usuario> listar()
+        {
+            List<Usuario> lista = new List<Usuario>();
+            Acceso_Datos datos = new Acceso_Datos();
 
             try
             {
@@ -68,24 +71,25 @@ namespace Negocio
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
                 {
-                    Usuario aux= new Usuario();
+                    Usuario aux = new Usuario();
                     aux.nombre_u = (string)datos.lector["Nombre"];
                     aux.contra_u = (string)datos.lector["Contraseña"];
                     lista.Add(aux);
                 }
                 return lista;
-               }
-           
+            }
+
             catch (Exception ex)
             {
 
                 throw ex;
-                
+
             }
-            finally {
+            finally
+            {
                 datos.cerrarconexion();
             }
-              
+
         }
 
         public bool Loguear(Usuario usuario)
@@ -100,24 +104,24 @@ namespace Negocio
 
                 datos.ejecutarlectura();
 
-                if(datos.lector.Read())
+                if (datos.lector.Read())
                 {
                     usuario.id_u = (int)datos.lector["Id"];
-                    
+
 
 
                     return true;
                 }
-                else 
+                else
                 {
-                return false; 
+                    return false;
                 }
-                
+
             }
             catch (Exception ex)
             {
                 throw ex;
-               
+
 
             }
             finally

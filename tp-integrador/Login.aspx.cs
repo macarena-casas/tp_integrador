@@ -17,37 +17,8 @@ namespace tp_integrador
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
 
-        protected void btIngresar_Click()
-        {
-            Usuario usuario=new Usuario();
-            NegocioUsuario negocioUsuario = new NegocioUsuario();
-            try
-            {                                            
-                    usuario.nombre_u = txtEmail.Text;
-                    usuario.contra_u = txtPass.Text;
 
-                    if (negocioUsuario.Loguear(usuario)) 
-                    { 
-                    Session.Add("activo", usuario);
-                    Response.Redirect("Favoritos.aspx",false);
-                    }
-                    else 
-                    {
-                        Session.Add("Error", "usuario o contraseña incorrectos...");
-                        Response.Redirect("Error.aspx");
-                         
-                    }
-                
-              
-                
-            }
-            catch (Exception ex)
-            {
-
-                Session.Add("error", ex.ToString());
-            }
         }
 
         protected void cerrarbtn_Click(object sender, EventArgs e)
@@ -55,6 +26,37 @@ namespace tp_integrador
             Response.Redirect("~/Default.aspx");
         }
 
-       
+        protected void btnIniciar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            NegocioUsuario negocioUsuario = new NegocioUsuario();
+            try
+            {
+                usuario.nombre_u = txtEmail.Text;
+                usuario.contra_u = txtPass.Text;
+
+                if (negocioUsuario.Loguear(usuario))
+                {
+                    Session["usuario"] = usuario;
+
+                    Response.Redirect("Default.aspx");
+                }
+                else
+                {
+
+                    Session.Add("error", "usuario o contraseña incorrectos...");
+
+                    Response.Redirect("Error.aspx");
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
+        }
     }
 }

@@ -26,6 +26,8 @@ namespace Dominio
         public int ID() { return Id_I; }
         public List<Imagen> Imagenes { get; set; }
         public Ubicacion ubicacion { get; set; }
+        public bool Pausa { get; set; }
+        public bool Estado { get; set; }
 
         public int ambientes { get; set; }
         public int baños { get; set; }
@@ -58,9 +60,11 @@ namespace Dominio
             aireacondicionado = false;
             calefaccion = false;
             pavimento = false;
+            Pausa = false;
+            Estado = false;
 
         }
-        public Inmueble(string nom, string desc, Ubicacion ubi, Categoria cat, decimal pre, int am, int ba, bool g, bool ag, bool cl, bool l, bool pa, bool ai, bool cale, bool pavi)
+        public Inmueble(string nom, string desc, Ubicacion ubi, Categoria cat, decimal pre, int am, int ba, bool g, bool ag, bool cl, bool l, bool pa, bool ai, bool cale, bool pavi, bool est, bool pau)
         {
             ubicacion = new Ubicacion();
             categoria_I = new Categoria();
@@ -80,6 +84,8 @@ namespace Dominio
             aireacondicionado = ai;
             calefaccion = cale;
             pavimento = pavi;
+            Pausa = pau;
+            Estado = est;
         }
 
     }
