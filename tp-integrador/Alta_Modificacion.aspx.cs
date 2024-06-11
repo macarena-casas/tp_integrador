@@ -74,11 +74,12 @@ namespace tp_integrador
         NegocioInmueble INegocio = new NegocioInmueble();
 
         inmueble.nombre_I = txtnombre.Text;
-        inmueble.categoria_I.nombre_categoria = txtdireccion.Text;
-        inmueble.precio_I = decimal.Parse(txtprecio.Text);
+        
+        inmueble.categoria_I.nombre_categoria = selpropiedad.SelectedValue;
+        inmueble.precio_I = int.Parse(txtprecio.Text);
         inmueble.baños = int.Parse(baños.SelectedValue);
         inmueble.ambientes = int.Parse(ambientes.SelectedValue);
-       //inmueble.urlimagen = txturlimagen.Text;
+        //inmueble.urlimagen = txturlimagen.Text;
 
         if (checkagua.Checked == true) { inmueble.aguacorriente = true; }
         if (Checkluz.Checked == true) { inmueble.luz = true; }
@@ -90,7 +91,6 @@ namespace tp_integrador
         if (Checkcloaca.Checked == true) { inmueble.cloacas = true; }
         if (Checkcalefaccion.Checked == true) { inmueble.calefaccion = true; }
         //  inmueble.tipooperacion = tipoope.SelectedValue ;
-        inmueble.categoria_I.nombre_categoria = selpropiedad.SelectedValue;
         inmueble.descripcion_I = txtdescripcion.Text;
 
         //txtdireccion

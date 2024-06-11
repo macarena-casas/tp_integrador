@@ -12,21 +12,36 @@ namespace tp_integrador
 {
     public partial class MisPublicaciones : System.Web.UI.Page
     {
-        public List<Inmueble> listaPropia { get; set; }
+        public List<Inmueble>  listaPropia { get; set; }
+        public List<Usuario> usuario { get; set; }
+
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["listainmueble"] != null)
+
+            if (Session["usuario"] == null)
             {
-                NegocioInmueble iManager = new NegocioInmueble();
-                listaPropia = iManager.Listapropia("Normal");// cuando el login funcione recibiria el nombre de usuario y listaria las publicacione del usuario
-                listaPropia = validarurl(listaPropia);
-                Session["listaPropia"] = listaPropia;
+                Usuario usuario = new Usuario();
+                NegocioUsuario usario = new NegocioUsuario();
+                Session.Add("error", "Debes Iniciar Sesión para Ingresar");
+                Response.Redirect("Login.aspx");
             }
             else
             {
+                if (Session["listainmueble"] != null)
+                {
+                    Usuario usuario = (Usuario)Session["usuario"];
+                    NegocioInmueble iManager = new NegocioInmueble();
+                    listaPropia = iManager.Listapropia(usuario.nombre_u);// cuando el login funcione recibiria el nombre de usuario y listaria las publicacione del usuario
+                    listaPropia = validarurl(listaPropia);
+                    Session["listaPropia"] = listaPropia;
+                }
+                else
+                {
 
-                listaPropia = (List<Inmueble>)Session["listaPropia"];
+                    listaPropia = (List<Inmueble>)Session["listaPropia"];
+                }
             }
         }
         public List<Inmueble> validarurl(List<Inmueble> aux)
