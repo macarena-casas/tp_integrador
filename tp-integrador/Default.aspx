@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <% if ((List<Dominio.Inmueble>)Session["inmueblesfiltrados"] != null)
+   <% if ((List<Dominio.Inmueble>)Session["inmueblesfiltrados"] != null)
         {
             listainmueble = (List<Dominio.Inmueble>)Session["inmueblesfiltrados"];
             Session.Remove("inmueblesfiltrados");
@@ -90,13 +90,16 @@
                     <div class="card-body text-center" style="margin-bottom: 20px;">
                         <h5 class="card-title" style="font-size: 20px; color: black;">$<%: inmueble.precio_I  %></h5>
                         <p class="card-text" style="font-size: 20px; color: black;"><%:inmueble.categoria_I.nombre_categoria%></p>
-                        <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: Highlight;" title="Detalles">+</a>
-                        <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: Highlight;" title="modif">modificar</a>
+                        <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color:darkturquoise;" title="Detalles">+</a>
+                        <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color:darkturquoise;" title="modif">Modificar</a>
+                        <a href="<%: ResolveUrl("~/Contacto.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color:darkturquoise;font-weight: bold;"><i class="bi bi-phone-vibrate "></i></a>
+
+                       
                         <br />  
                         <br />  
 
-                        <a href="Default.aspx?id=<%:inmueble.Id_I %>" class="btn btn-outline-light" usesubmitbehavior="false" commandargument='<%=inmueble.Id_I%>'
-                            style="background-color: aqua; color: black; font-weight: bold; border-color: dimgray">Agregar a Favoritos <i class="bi bi-star-fill "></i></a>
+                        <a href="Default.aspx?id=<%:inmueble.Id_I %>" class="btn btn-outline-info" usesubmitbehavior="false" commandargument='<%=inmueble.Id_I%>'
+                            style="font-weight: bold; border-color:darkturquoise; ">Agregar a Favoritos <i class="bi bi-star-fill "></i></a>
                     </div>
                 </center>
 

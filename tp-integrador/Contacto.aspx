@@ -66,7 +66,7 @@
             <div style="position:relative;" class="input-box">
                 <textarea style="width: 100%;height: 130px;padding: 10px;background: lightblue;border:3px double ;letter-spacing: 1px;border-color:black; outline: none;transition:.3s;color:black;letter-spacing: 1.5px;" placeholder="Escribe tu mensaje..."></textarea>
             </div>
-            <button  style="width: 100%;padding: 10px;outline: none;background:blue;color:#fff;border:none;transition: .1s;cursor: pointer;font-size: 1rem; " type="submit">Enviar mensaje</button>
+            <asp:Button  style="width: 100%;padding: 10px;outline: none;background:blue;color:#fff;border:none;transition: .1s;cursor: pointer;font-size: 1rem; " Text="text" runat="server" /> 
          <div>
               <h1> 
                   ---------------------------------------------------------------------

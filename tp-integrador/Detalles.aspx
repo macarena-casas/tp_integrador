@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+   <div class="container">
         <center>
              <div class="row" style="margin-top: 10%; margin-bottom: 10%">
                 <div class="col-md-8">
