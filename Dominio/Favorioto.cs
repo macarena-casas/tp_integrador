@@ -17,7 +17,7 @@ namespace Dominio
             listainmueble = new List<ElementoAuxiliar>();
 
             TotalProductos = 0;
-            ;
+            
         }
         public void agregararticulocarrito(Inmueble inm)
         {

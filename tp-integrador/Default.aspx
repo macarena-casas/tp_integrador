@@ -3,7 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <% if ((List<Dominio.Inmueble>)Session["inmueblesfiltrados"] != null)
+    
+    <% if ((List<Dominio.Inmueble>)Session["inmueblesfiltrados"] != null)
         {
             listainmueble = (List<Dominio.Inmueble>)Session["inmueblesfiltrados"];
             Session.Remove("inmueblesfiltrados");
@@ -85,21 +86,20 @@
                     </button>
 
                 </div>
-                 <center>
+                <center>
                     <div class="card-header text-center" style="font-size: 30px; color: darkblue; border-block-color: blue;"><strong><%: inmueble.nombre_I  %></strong></div>
                     <div class="card-body text-center" style="margin-bottom: 20px;">
                         <h5 class="card-title" style="font-size: 20px; color: black;">$<%: inmueble.precio_I  %></h5>
                         <p class="card-text" style="font-size: 20px; color: black;"><%:inmueble.categoria_I.nombre_categoria%></p>
-                        <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color:darkturquoise;" title="Detalles">+</a>
-                        <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color:darkturquoise;" title="modif">Modificar</a>
-                        <a href="<%: ResolveUrl("~/Contacto.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color:darkturquoise;font-weight: bold;"><i class="bi bi-phone-vibrate "></i></a>
+                        <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="Detalles">+</a>
+                        <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="modif">Modificar</a>
+                        <a href="<%: ResolveUrl("~/Contacto.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise; font-weight: bold;"><i class="bi bi-phone-vibrate "></i></a>
 
-                       
-                        <br />  
-                        <br />  
+                        <br />
+                        <br />
 
                         <a href="Default.aspx?id=<%:inmueble.Id_I %>" class="btn btn-outline-info" usesubmitbehavior="false" commandargument='<%=inmueble.Id_I%>'
-                            style="font-weight: bold; border-color:darkturquoise; ">Agregar a Favoritos <i class="bi bi-star-fill "></i></a>
+                            style="font-weight: bold; border-color: darkturquoise;">Agregar a Favoritos <i class="bi bi-star-fill "></i></a>
                     </div>
                 </center>
 

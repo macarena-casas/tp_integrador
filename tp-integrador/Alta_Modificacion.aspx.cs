@@ -78,6 +78,8 @@ namespace tp_integrador
         inmueble.precio_I = decimal.Parse(txtprecio.Text);
         inmueble.baños = int.Parse(baños.SelectedValue);
         inmueble.ambientes = int.Parse(ambientes.SelectedValue);
+       //inmueble.urlimagen = txturlimagen.Text;
+
         if (checkagua.Checked == true) { inmueble.aguacorriente = true; }
         if (Checkluz.Checked == true) { inmueble.luz = true; }
         if (checkgas.Checked == true) { inmueble.gasnatural = true; }

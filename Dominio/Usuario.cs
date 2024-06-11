@@ -12,7 +12,7 @@ namespace Dominio
     public enum Tipousuario
     {
         NORMAL = 0,
-        ADMIN = 1
+        ADMIN = 1,
     }
 
     public class Usuario
@@ -29,13 +29,13 @@ namespace Dominio
         public Tipousuario Tipousuario { get; set; }
 
 
-      /*  public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Telefono { get; set; }
-        public string DNI { get; set; }*/
-   
+        /*  public string Nombre { get; set; }
+          public string Apellido { get; set; }
+          public string Telefono { get; set; }
+          public string DNI { get; set; }*/
 
-    public Usuario()
+
+        public Usuario()
         {
 
         }

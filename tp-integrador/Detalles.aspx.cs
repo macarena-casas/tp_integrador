@@ -13,12 +13,12 @@ namespace tp_integrador
     {
         public List<Inmueble> listainmueble { get; set; }
         public Inmueble inmueble { get; set; }
-     
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
             NegocioUsuario usario = new NegocioUsuario();
-          
+
 
 
             listainmueble = (List<Inmueble>)Session["listainmueble"];
@@ -88,6 +88,33 @@ namespace tp_integrador
                     favoritoactual = fNegocio.AguegarAFavorito(inmueble, favoritoactual, 1);
                     Session["inmueble"] = favoritoactual;
                     Response.Redirect("~/Detalles.aspx?id=" + inmueble.Id_I);
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+            else
+            {
+                Session.Add("error", "Debes Iniciar Sesión.");
+                Response.Redirect("Login.aspx");
+            }
+        }
+
+        protected void btnContacto_Click(object sender, EventArgs e)
+        {
+            if (Session["usuario"] != null)
+            {
+
+
+
+                try
+                {
+
+
+                    Response.Redirect("~/Contacto.aspx?id=" + inmueble.Id_I);
 
                 }
                 catch (Exception ex)

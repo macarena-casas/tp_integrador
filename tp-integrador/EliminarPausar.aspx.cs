@@ -11,7 +11,6 @@ namespace tp_integrador
 {
     public partial class EliminarPausar : System.Web.UI.Page
     {
-
         public List<Inmueble> listaPropia { get; set; }
         public Inmueble inmueble { get; set; }
 
@@ -19,8 +18,6 @@ namespace tp_integrador
         {
             Usuario usuario = new Usuario();
             NegocioUsuario usario = new NegocioUsuario();
-
-
 
             listaPropia = (List<Inmueble>)Session["listaPropia"];
             int Id_I = Request.QueryString["Id"] != null && int.TryParse(Request.QueryString["Id"], out int id) ? id : -1;
@@ -56,18 +53,11 @@ namespace tp_integrador
                     if (inmueble.pavimento == true) { Checkpavimento.Checked = true; }
                     if (inmueble.cloacas == true) { Checkcloaca.Checked = true; }
                     if (inmueble.calefaccion == true) { Checkcalefaccion.Checked = true; }
-
-
                 }
-               
-
                 if (inmueble == null)
                 {
                     Response.Redirect("~/Default.aspx");
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -85,11 +75,7 @@ namespace tp_integrador
             nego.Pausar(id, !inmueble.Pausa);
             Response.Redirect("~/MisPublicaciones.aspx");
 
-
-
-
         }
-
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
 

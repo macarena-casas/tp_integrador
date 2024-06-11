@@ -15,7 +15,8 @@ namespace tp_integrador
         public Favorito favoritoactual { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
-        {Usuario usuario = new Usuario();
+        {
+            Usuario usuario = new Usuario();
             NegocioUsuario usario=new NegocioUsuario();
             if (Session["usuario"] == null)
             {
@@ -38,12 +39,6 @@ namespace tp_integrador
 
         private void AgregarAFavorito(int id)
         {
-
-
-            
-
-            
-
 
             try
             {

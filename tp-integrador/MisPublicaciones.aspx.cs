@@ -16,7 +16,7 @@ namespace tp_integrador
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["listainmueble"] == null)
+            if (Session["listainmueble"] != null)
             {
                 NegocioInmueble iManager = new NegocioInmueble();
                 listaPropia = iManager.Listapropia("Normal");// cuando el login funcione recibiria el nombre de usuario y listaria las publicacione del usuario

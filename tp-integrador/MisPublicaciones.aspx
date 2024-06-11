@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="MisPublicaciones.aspx.cs" Inherits="tp_integrador.MisPublicaciones" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -76,7 +77,7 @@
                     </button>
 
                 </div>
-                
+
                 <center>
                     <div class="card-header text-center" style="font-size: 30px; color: darkblue; border-block-color: blue;"><strong><%: inmueble.nombre_I  %></strong></div>
                     <div class="card-body text-center" style="margin-bottom: 20px;">
@@ -85,8 +86,8 @@
                         <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="Detalles">+</a>
                         <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="modif">Modificar</a>
 
-                        <div class="card-footer" style=" border-block-color: blue;  margin-top:20px;">
-                            <a href="<%: ResolveUrl("~/EliminarPausar.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-danger" style="font-weight: bold; border-color: red; margin-top:15px;" title="modif">Eliminar/Pausar</a>
+                        <div class="card-footer" style="border-block-color: blue; margin-top: 20px;">
+                            <a href="<%: ResolveUrl("~/EliminarPausar.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-danger" style="font-weight: bold; border-color: red; margin-top: 15px;" title="modif">Eliminar/Pausar</a>
                         </div>
                     </div>
                 </center>

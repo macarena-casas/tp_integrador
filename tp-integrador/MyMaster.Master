@@ -53,6 +53,11 @@
                     <asp:Label Text="" ID="Login1" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Ingreso</span>
                 </a>
+                 <a href="MisPublicaciones.aspx" class="nav-link" style="align-items: flex-end;">
+                    <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-house-fill "></i></p>
+                    <asp:Label Text="" ID="Label4" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <span class="visually-hidden">Mis Publicaciones</span>
+                </a>
                 <a href="Favoritos.aspx" class="nav-link" style="align-items: flex-end;">
                     <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-star bi- "></i></p>
                     <asp:Label Text="" ID="Label1" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />

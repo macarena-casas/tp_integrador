@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="EliminarPausar.aspx.cs" Inherits="tp_integrador.EliminarPausar" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <h1 style="font-weight: bold; color: darkblue; text-align: center; margin-top: 30px; font-size: 60px;"><u>Propiedad</u> <u>Seleccionada:</u></h1>
+    <h1 style="font-weight: bold; color: darkblue; text-align: center; margin-top: 30px; font-size: 60px;"><u>Propiedad</u> <u>Seleccionada:</u></h1>
     <div class="container">
         <center>
-             <div class="row" style="margin-top: 10%; margin-bottom: 10%">
+            <div class="row" style="margin-top: 10%; margin-bottom: 10%">
                 <div class="col-md-8">
 
 
@@ -78,19 +79,19 @@
                     </div>
                     <br />
 
-                    <asp:LinkButton ID="btnEliminar" runat="server" Onclick="btnEliminar_Click" CommandArgument='<%# Eval("inmueble.Id_I") %>' UseSubmitBehavior="false" OnClientClick ="return confirm ('Esta seguro que desea eliminar la Publicación?');" BorderStyle="Dotted"  style="border-radius:20px; border-color:red;">
+                    <asp:LinkButton ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("inmueble.Id_I") %>' UseSubmitBehavior="false" OnClientClick="return confirm ('Esta seguro que desea eliminar la Publicación?');" BorderStyle="Dotted" Style="border-radius: 20px; border-color: red;">
                             <i class="bi bi-trash-fill text-danger" style="font-size:50px;"></i>
-                                </asp:LinkButton> 
+                    </asp:LinkButton>
                     <%if (inmueble.Pausa == true)
                         { %>
-                    <asp:LinkButton ID="btnActivar" runat="server" OnClick="btnPausar_Click" CommandArgument='<%# Eval("inmueble.Id_I") %>' UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea pausar la Publicación?');" BorderStyle="Dotted" BorderColor="green"  style="border-radius:20px;  margin-left:40px;">
+                    <asp:LinkButton ID="btnActivar" runat="server" OnClick="btnPausar_Click" CommandArgument='<%# Eval("inmueble.Id_I") %>' UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea pausar la Publicación?');" BorderStyle="Dotted" BorderColor="green" Style="border-radius: 20px; margin-left: 40px;">
                             <i class="bi bi-play-fill text-success" style="font-size:50px;"></i></asp:LinkButton>
                     <%}
                         else
                         {%>
-                <asp:LinkButton ID="btnPausar" runat="server" OnClick="btnPausar_Click" CommandArgument='<%# Eval("inmueble.Id_I") %>' UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea pausar la Publicación?');" BorderStyle="Dotted" BorderColor="turquoise" style=" border-radius:20px; margin-left:40px;">
+                    <asp:LinkButton ID="btnPausar" runat="server" OnClick="btnPausar_Click" CommandArgument='<%# Eval("inmueble.Id_I") %>' UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea pausar la Publicación?');" BorderStyle="Dotted" BorderColor="turquoise" Style="border-radius: 20px; margin-left: 40px;">
                             <i class="bi bi-pause-fill text-info" style="font-size:50px;"></i></asp:LinkButton>
-            <%} %>
+                    <%} %>
                 </div>
 
 
@@ -106,23 +107,23 @@
                                 </div>
                                 <p><strong id="lblcategoria" runat="server" style="font-size: 20px; color: darkblue;"></strong></p>
                                 <p><strong id="lblDescripcion" runat="server" style="font-size: 16px; color: navy;"></strong></p>
-                                   <div class="row g-12">      
-                                <div class="input-group mb-3" style=" width: 50%; border-color: aqua; margin-left: 10px; font-weight: bold;">
-                                <asp:Label Text="Ambientes: " runat="server" Style="font-size: 20px; color: darkblue; " />
-                                    <asp:Label Text="" runat="server" ID="lblambientes" Style="font-size: 20px; color: darkblue;" />
-                               </div>
-                                <div class="input-group mb-3" style=" width: 40%; border-color: aqua; font-weight: bold;">
-                                <asp:Label Text="Baños: " runat="server" Style="font-size: 20px; color: darkblue; " />
-                                <asp:Label Text="" runat="server" ID="lblbaños" Style="font-size: 20px; color: darkblue;" />
-                                 </div>
-                                 </div>
-                                     <br />
+                                <div class="row g-12">
+                                    <div class="input-group mb-3" style="width: 50%; border-color: aqua; margin-left: 10px; font-weight: bold;">
+                                        <asp:Label Text="Ambientes: " runat="server" Style="font-size: 20px; color: darkblue;" />
+                                        <asp:Label Text="" runat="server" ID="lblambientes" Style="font-size: 20px; color: darkblue;" />
+                                    </div>
+                                    <div class="input-group mb-3" style="width: 40%; border-color: aqua; font-weight: bold;">
+                                        <asp:Label Text="Baños: " runat="server" Style="font-size: 20px; color: darkblue;" />
+                                        <asp:Label Text="" runat="server" ID="lblbaños" Style="font-size: 20px; color: darkblue;" />
+                                    </div>
+                                </div>
+                                <br />
                                 <div class="form-check" style="text-align: center;">
                                     <label for="inputState" class="form-label" style="color: navy;"><strong>Servicio:</strong></label>
 
                                     <div class="mx-auto d-flex" style="justify-content: center;">
                                         <div class="form-check form-check-inline">
-                                              <asp:CheckBox Text="Agua Corriente" runat="server" ID="checkagua" Style="font-weight: bold; color: black;" />
+                                            <asp:CheckBox Text="Agua Corriente" runat="server" ID="checkagua" Style="font-weight: bold; color: black;" />
                                         </div>
                                         <div class="form-check form-check-inline ">
                                             <asp:CheckBox Text="Gas Natural" runat="server" ID="checkgas" Style="font-weight: bold; color: black;" />

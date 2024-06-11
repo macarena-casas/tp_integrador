@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <div class="container">
+    <div class="container">
         <center>
              <div class="row" style="margin-top: 10%; margin-bottom: 10%">
                 <div class="col-md-8">
@@ -79,6 +79,7 @@
                     <br />
                     <center>
                         <asp:Button ID="btnagregarfavorito" runat="server" Text="Agregar a Favorito" OnClick="btnagregarfavorito_Click" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
+                        <asp:Button ID="btnContacto" runat="server" Text="Contactame" OnClick="btnContacto_Click" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
                         <a class="btn btn-primary text-light text-decoration-none" href="Default.aspx" style="margin-bottom: 2px; width: 30%"><strong>Atrás</strong></a>
                     </center>
                 </div>
