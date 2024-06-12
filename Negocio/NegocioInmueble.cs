@@ -359,10 +359,10 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("update Inmueble set  Nombre= @Nombre, Descripcion =@Descripcion, Id_categoria= @IdCategoria, Precio= @Precio where Id=@Id ");
+                datos.setearconsulta("update Inmueble set Nombre= @Nombre, Descripcion = @Descripcion, Id_categoria = @IdCategoria, Precio= @Precio where Id=@Id ");
                 datos.setearparametro("@Nombre", articulo.nombre_I);
                 datos.setearparametro("@Descripcion", articulo.descripcion_I);
-                datos.setearparametro("@IdCategoria", articulo.categoria_I.codigo_categoria);
+                datos.setearparametro("@IdCategoria", 6);
                 datos.setearparametro("@Precio", articulo.precio_I);
                 datos.setearparametro("@Id", articulo.Id_I);
                 datos.setearparametro("@Ambientes", articulo.ambientes);
@@ -376,7 +376,7 @@ namespace Negocio
                 datos.setearparametro("@AireAcondicionado", articulo.aireacondicionado);
                 datos.setearparametro("@Calefaccion", articulo.calefaccion);
                 datos.setearparametro("@Pavimento", articulo.pavimento);
-
+                datos.setearparametro("@Imagen", articulo.Imagenes[0].Nombre_imagen);
                 datos.ejecutaraccion();
 
             }
@@ -386,6 +386,7 @@ namespace Negocio
                 throw ex;
             }
         }
+
         public void Pausar(int id, bool pausa = false)
         {
             Acceso_Datos datos = new Acceso_Datos();
