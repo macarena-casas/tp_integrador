@@ -4,26 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Dominio;
-using Negocio;
 
 namespace tp_integrador
 {
-    public partial class Contacto : System.Web.UI.Page
+    public partial class SinPublicaciones : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void Unnamed_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnaceptar_Click(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }

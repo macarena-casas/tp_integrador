@@ -111,6 +111,7 @@
     <Content Include="Login.aspx" />
     <Content Include="MisPublicaciones.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="SinPublicaciones.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -199,6 +200,13 @@
     </Compile>
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SinPublicaciones.aspx.cs">
+      <DependentUpon>SinPublicaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SinPublicaciones.aspx.designer.cs">
+      <DependentUpon>SinPublicaciones.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
