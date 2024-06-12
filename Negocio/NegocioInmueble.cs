@@ -76,6 +76,34 @@ namespace Negocio
             return uploadInmuebleList("select I.Id As Id, I.Nombre As Nombre ,I.Pausa, I.Estado, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio,I.Ambientes,  I.Baños, I.Gas_Natural,I.Agua_Corriente,I.Cloacas,I.Luz,I.Cochera,I.Patio, I.Aire_Acondicionado,I.Calefacción, I.Pavimento FROM  Inmueble I left join Categoria C on C.Id= I.Id_categoria");
 
         }
+        public bool verificarusuario(string usuari, int id)
+        {
+
+            Acceso_Datos inmunegocio = new Acceso_Datos();
+
+            try
+            {
+                inmunegocio.setearconsulta("select I.Id As Id, I.Pausa, I.Estado, I.Nombreusuario FROM  Inmueble I  where I.Nombreusuario = @Nombre and I.Id = @Id");
+                inmunegocio.setearparametro("@Nombre", usuari);
+                inmunegocio.setearparametro("@Id", id);
+                inmunegocio.ejecutarlectura();
+
+                if (inmunegocio.lector.Read() != false)
+                {
+                    return true;
+                }
+
+                return false;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public List<Inmueble> Listapropia(string usuari)
         {
 

@@ -27,7 +27,7 @@ namespace tp_integrador
                 lista = (Favorito)Session["inmueble"];
 
             }
-            Label1.Text = lista.TotalProductos.ToString();
+            favoritos.Text = lista.TotalProductos.ToString();
         }
 
         protected void Buscar(string text)
@@ -53,5 +53,15 @@ namespace tp_integrador
                 Buscar(tbBuscar.Text);
             }
         }
+
+        protected void cerrar_Click(object sender, EventArgs e)
+        {
+
+            Session["usuario"] = null;
+            Response.Redirect($"Default.aspx");
+
+        }
+
+
     }
 }

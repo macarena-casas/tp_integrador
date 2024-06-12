@@ -13,6 +13,8 @@ namespace tp_integrador
     public partial class WebForm1 : System.Web.UI.Page
     {
         public List<Inmueble> listainmueble { get; set; }
+
+        public List<Usuario> usuario { get; set; }
         public Favorito favoritoactual { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -63,6 +65,39 @@ namespace tp_integrador
                 Session.Add("error", "Debes Iniciar Sesión");
                 Response.Redirect("Login.aspx");
             }
+        }
+        public bool verificarusuario(int id)
+        {
+            if (Session["usuario"] != null)
+            {
+                try
+                {
+
+                    Usuario usuario = (Usuario)Session["usuario"];
+                    NegocioInmueble fnegocio = new NegocioInmueble();
+
+                    if (fnegocio.verificarusuario(usuario.nombre_u, id) == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Response.Redirect("~/Error.aspx");
+                    throw ex;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+
         }
 
 

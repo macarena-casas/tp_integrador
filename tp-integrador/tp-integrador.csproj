@@ -143,6 +143,13 @@
     <Compile Include="EliminarPausar.aspx.designer.cs">
       <DependentUpon>EliminarPausar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Favoritos.aspx.cs">
       <DependentUpon>Favoritos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

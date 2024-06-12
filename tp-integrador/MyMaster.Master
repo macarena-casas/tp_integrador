@@ -40,29 +40,39 @@
             <nav class="navbar " style="background-color: navy" data-bs-theme="info">
                 <a href="Default.aspx" class="nav-link">
                     <p style="text-align: left; font-size: 160%; color: white; margin-left: 20px; margin-right: 5px;"><i class="bi bi-house-door-fill "></i></p>
-                    <asp:Label Text="" ID="Label2" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Página Principal</span>
                 </a>
                 <a href="Alta_Modificacion.aspx" class="nav-link" style="align-items: flex-start;">
                     <p style="text-align: left; font-size: 160%; color: white; margin-left: 20px;"><i class="bi bi-house-add-fill"></i></p>
-                    <asp:Label Text="" ID="Label3" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <asp:Label Text="" ID="altaymodificar" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Alta_Modificacion</span>
                 </a>
+                <%if (Session["usuario"] == null)
+                    { %>
                 <a href="Login.aspx" class="nav-link" style="align-items: flex-end;">
                     <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-person-plus-fill "></i></p>
-                    <asp:Label Text="" ID="Login1" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Ingreso</span>
                 </a>
-                 <a href="MisPublicaciones.aspx" class="nav-link" style="align-items: flex-end;">
+                <%}
+                    else
+                    {%>
+                <a href="MisPublicaciones.aspx" class="nav-link" style="align-items: flex-end;">
                     <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-house-fill "></i></p>
-                    <asp:Label Text="" ID="Label4" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <asp:Label Text="" ID="publicaciones" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Mis Publicaciones</span>
                 </a>
                 <a href="Favoritos.aspx" class="nav-link" style="align-items: flex-end;">
                     <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-star bi- "></i></p>
-                    <asp:Label Text="" ID="Label1" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <asp:Label Text="" ID="favoritos" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute  translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Inmuebles en Favoritos</span>
                 </a>
+                <a href="Default.aspx" class="nav-link" style="align-items: flex-end;">
+                    <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-person-dash-fill "></i></p>
+                    <asp:Button Text="" ID="cerrar" OnClick="cerrar_Click" runat="server" CssClass="position-absolute translate-middle" Style="width: 60px; height: 40px; top: 25px; margin-left: 0px; background-color: transparent; border-color: transparent;" />
+                    <span class="visually-hidden">Cerrar Sesion</span>
+                </a>
+
+                <%} %>
             </nav>
         </div>
         <nav class="navbar" style="background-color: deepskyblue" data-bs-theme="dark">
@@ -80,15 +90,15 @@
         <div class="text-center">
             <div class="Redes_sociales">
                 <h5><strong>¡Seguinos en Nuestras Redes!</strong></h5>
-               
-                    <div class="mx-auto d-flex" >
-                      
-                        <p style="font-size: 160%; color: white;margin-left: 43%; margin-right: 5px;"><i class="bi bi-instagram" style="color: whitesmoke"></i></p>
-                        <p style=" font-size: 160%; color: white; margin-left: 20px; margin-right: 5px;"><i class="bi bi-facebook" style="color: whitesmoke"></i></p>
-                        <p style=" font-size: 160%; color: white; margin-left: 20px; margin-right: 5px;"><i class="bi bi-twitter" style="color: whitesmoke"></i></p>
-                        <p style=" font-size: 160%; color: white; margin-left: 20px; margin-right: 5px;"><i class="bi bi-youtube" style="color: whitesmoke"></i></p>
-                    
-</div>
+
+                <div class="mx-auto d-flex">
+
+                    <p style="font-size: 160%; color: white; margin-left: 43%; margin-right: 5px;"><i class="bi bi-instagram" style="color: whitesmoke"></i></p>
+                    <p style="font-size: 160%; color: white; margin-left: 20px; margin-right: 5px;"><i class="bi bi-facebook" style="color: whitesmoke"></i></p>
+                    <p style="font-size: 160%; color: white; margin-left: 20px; margin-right: 5px;"><i class="bi bi-twitter" style="color: whitesmoke"></i></p>
+                    <p style="font-size: 160%; color: white; margin-left: 20px; margin-right: 5px;"><i class="bi bi-youtube" style="color: whitesmoke"></i></p>
+
+                </div>
 
             </div>
         </div>
