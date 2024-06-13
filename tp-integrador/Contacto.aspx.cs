@@ -13,7 +13,7 @@ namespace tp_integrador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["ReturnUrl"] = Request.Url.ToString();
         }
 
         protected void Unnamed_Click(object sender, EventArgs e)

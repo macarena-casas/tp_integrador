@@ -107,3 +107,4 @@ insert into Imagen values ('https://definicion.de/wp-content/uploads/2011/01/cas
 ('https://definicion.de/wp-content/uploads/2011/01/ambiente.jpg',1)
 
 
+select * from Inmueble

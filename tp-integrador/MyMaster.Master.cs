@@ -58,7 +58,17 @@ namespace tp_integrador
         {
 
             Session["usuario"] = null;
-            Response.Redirect($"Default.aspx");
+            string previousUrl = Session["ReturnUrl"] as string;
+            if (previousUrl != null)
+            {
+                Response.Redirect(previousUrl);
+
+            }
+
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
 
         }
 

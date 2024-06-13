@@ -19,6 +19,11 @@ namespace tp_integrador
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["ReturnUrl"] = Request.Url.ToString();
+
+
+
+
             if (Session["listainmueble"] == null)
             {
                 NegocioInmueble iManager = new NegocioInmueble();

@@ -19,7 +19,7 @@ namespace tp_integrador
             Usuario usuario = new Usuario();
             NegocioUsuario usario = new NegocioUsuario();
 
-
+            Session["ReturnUrl"] = Request.Url.ToString();
 
             listainmueble = (List<Inmueble>)Session["listainmueble"];
             int Id_I = Request.QueryString["Id"] != null && int.TryParse(Request.QueryString["Id"], out int id) ? id : -1;

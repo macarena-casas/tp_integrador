@@ -23,9 +23,10 @@ namespace tp_integrador
 
         protected void cerrarbtn_Click(object sender, EventArgs e)
         {
+           
+
             Response.Redirect("~/Default.aspx");
         }
-
         protected void btnIniciar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
@@ -37,16 +38,30 @@ namespace tp_integrador
 
                 if (negocioUsuario.Loguear(usuario))
                 {
+
                     Session["usuario"] = usuario;
 
-                    Response.Redirect("Default.aspx");
+                    string previousUrl = Session["ReturnUrl"] as string;
+                    if (previousUrl != null)
+                    {
+                        Response.Redirect(previousUrl);
+
+
+                    }
+
+                    else
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+
                 }
                 else
                 {
 
                     Session.Add("error", "usuario o contraseña incorrectos...");
 
-                    Response.Redirect("Error.aspx");
+
+                    Response.Redirect("Login.aspx");
 
                 }
 

@@ -12,10 +12,10 @@ namespace tp_integrador
 {
     public partial class MisPublicaciones : System.Web.UI.Page
     {
-        public List<Inmueble>  listaPropia { get; set; }
+        public List<Inmueble> listaPropia { get; set; }
         public List<Usuario> usuario { get; set; }
 
-       
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,9 +33,13 @@ namespace tp_integrador
                 {
                     Usuario usuario = (Usuario)Session["usuario"];
                     NegocioInmueble iManager = new NegocioInmueble();
-                    listaPropia = iManager.Listapropia(usuario.nombre_u);// cuando el login funcione recibiria el nombre de usuario y listaria las publicacione del usuario
+                    listaPropia = iManager.Listapropia(usuario.nombre_u);
                     listaPropia = validarurl(listaPropia);
                     Session["listaPropia"] = listaPropia;
+                    if (listaPropia.Count() == 0)
+                    {
+                        Response.Redirect("SinPublicaciones.aspx");
+                    }
                 }
                 else
                 {
