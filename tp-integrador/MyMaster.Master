@@ -66,6 +66,11 @@
                     <asp:Label Text="" ID="favoritos" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute  translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Inmuebles en Favoritos</span>
                 </a>
+                  <a href="Mensajeria.aspx" class="nav-link" style="align-items: flex-end;">
+                    <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-envelope  "></i></p>
+                    <asp:Label Text="" ID="mensajeria" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute  translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <span class="visually-hidden">Mis mensajes</span>
+                </a>
                 <a href="Default.aspx" class="nav-link" style="align-items: flex-end;">
                     <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-person-dash-fill "></i></p>
                     <asp:Button Text="" ID="cerrar" OnClick="cerrar_Click" runat="server" CssClass="position-absolute translate-middle" Style="width: 60px; height: 40px; top: 25px; margin-left: 0px; background-color: transparent; border-color: transparent;" />

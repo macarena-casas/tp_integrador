@@ -11,12 +11,12 @@ using System.Net;
 namespace Negocio
 {
 
-    public class Email
+    public class Emailss
     {
         private MailMessage email;
         private SmtpClient server;
 
-        public Email()
+        public Emailss()
         {
             server = new SmtpClient();
             server.Credentials = new NetworkCredential("taruka747@gmail.com", "mm15975356482");

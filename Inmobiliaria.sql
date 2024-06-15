@@ -107,4 +107,17 @@ insert into Imagen values ('https://definicion.de/wp-content/uploads/2011/01/cas
 ('https://definicion.de/wp-content/uploads/2011/01/ambiente.jpg',1)
 
 
-select * from Inmueble
+create table  Email(
+Id int identity (1,1) not null,
+destinatario varchar (50) not null foreign key references Usuario (Nombre),
+remitente varchar (50) not null foreign key references Usuario (Nombre),
+Asunto varchar (100) not null,
+Mensaje varchar (500) not null,
+Estado bit, 
+primary key (Id)
+)
+go
+
+
+Insert into Email values('admin','normal','hola', 'tu inmueble me interesa',1)
+select * from Email
