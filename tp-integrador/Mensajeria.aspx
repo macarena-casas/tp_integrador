@@ -2,30 +2,78 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div style="display: flex; flex-direction: column; text-align: center; gap: 15px;">
-        <div style="position: relative;" class="txt-nombre">
-            <label>Nombre y apellido</label>
-            <asp:TextBox style="width: 100%; height: 40px; padding: 0 10px; outline: none; background: lightblue; border: 3px double; border-color: black; letter-spacing: 1px; transition: .3s; color: black;" runat="server" ID="txtnombre" />
-            <i style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px; color: rgba(255 255 255 ); transition: .3s;" class="fa-solid fa-user"></i>
-        </div>
-        <div style="position: relative;" class="txt-email">
-            <label>Email</label>
-            <asp:TextBox style="width: 100%; height: 40px; padding: 0 10px; outline: none; background: lightblue; border: 3px double; border-color: black; letter-spacing: 1px; transition: .3s; color: black;" runat="server" ID="txtemail" />
+       <ul class="nav nav-tabs" style="border-color: aqua">
+        <li class="nav-item" style="font-size: 20px;">
+            <a class="nav-link active" aria-current="page" href="#" style="color: black; border-color: aqua;"><strong>Principal</strong></a>
+        </li>
+        <li class="nav-item dropdown" style="font-size: 20px;">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: black; border-color: aqua;"><strong>Mensajes</strong></a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><strong>Recibidos</strong></a></li>
+                <li><a class="dropdown-item" href="#"><strong>Enviados</strong></a></li>
+                <li><a class="dropdown-item" href="#"><strong>Editar</strong></a></li>
 
-            <i style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px; color: rgba(255 255 255 ); transition: .3s;" class="fa-solid fa-envelope"></i>
-        </div>
-        <div style="position: relative;" class="txt-asunto">
-            <label>Asunto</label>
-            <asp:TextBox style="width: 100%; height: 40px; padding: 0 10px; outline: none; background: lightblue; border: 3px double; border-color: black; letter-spacing: 1px; transition: .3s; color: black;" runat="server" ID="txtasunto" />
-            <i style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px; color: blue; transition: .3s;" class="fa-solid fa-pen-to-square"></i>
-        </div>
-        <div style="position: relative;" class="txt-mensaje">
-            <label>Mensaje</label>
-            <asp:TextBox style="width: 100%; height: 130px; padding: 10px; background: lightblue; border: 3px double; letter-spacing: 1px; border-color: black; outline: none; transition: .3s; color: black; letter-spacing: 1.5px;" runat="server" ID="txtmensaje" />
+            </ul>
+        </li>
+    </ul>
+    <br />
+    <br />
 
+    <div class="container-fluid " style="height: 50px; width: 98%;  margin-left:10px;margin-right:10px; margin-top: 10px; border: 2px solid darkcyan; padding: 5px; align-content: center;">
+        <div class="row g-3">
+
+
+            <div class="col-5 ">
+                <asp:Label Text="" ID="txtMensajes" runat="server" Style="font-size: 20px; font-weight: bold;" />
+            </div>
+            <div class="col-5 text-start">
+                <asp:Label Text="" ID="txtremi" runat="server" Style="font-size: 20px; font-weight: bold;" />
+
+            </div>
+
+            <div class="col-2 d-flex justify-content-end align-items-center">
+                <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center" style="border-radius: 20px; height: 35px; font-size: 20px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="bi bi-arrow-right-circle"></i>
+                </button>
+
+            </div>
         </div>
-        <asp:Button Style="width: 100%; padding: 10px; outline: none; background: blue; color:black; border: none; transition: .1s; cursor: pointer; font-size: 1rem;" Text="text" runat="server" ID="btnaceptar" />
     </div>
 
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header alert-info">
+                    <div class="row g-3">
+
+                        <div class="col-auto">
+                            <asp:Label Text="" ID="txtasunto" runat="server" Style="font-size: 30px; color: darkcyan; font-weight: bold; align-items: flex-start;"/>
+                        </div>
+                        <div class="col-auto ms-auto">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" style="align-items: flex-end;" aria-label="Cerar"></button>
+                        </div>
+                        <div class="row g-2">
+                            <asp:Label Text="" ID="txtremitente" runat="server" Style="font-size: 25px; font-weight: bold;" />
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-body">
+                    <asp:Label Text="" ID="txtMensaje" runat="server" Style="font-size: 15px; font-weight: bold; margin-top: 15px;" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><strong>Cerrar</strong></button>
+                    <asp:Button Text="Responder" class="btn btn-primary" ID="btnResponder" OnClick="btnResponder_Click" runat="server" Style="font-weight: bold;" />
+                </div>
+            </div>
+        </div>
+    </div>
 
 </asp:Content>

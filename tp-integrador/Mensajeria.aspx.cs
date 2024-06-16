@@ -16,7 +16,7 @@ namespace tp_integrador
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usu = (Usuario)Session["usuario"];
+           /* Usuario usu = (Usuario)Session["usuario"];
             Email email = new Email();
             NegocioEmail negoE = new NegocioEmail();
             listaemail = negoE.listar(usu.nombre_u);
@@ -25,8 +25,13 @@ namespace tp_integrador
             txtnombre.Text = email.destino;
             txtemail.Text = email.remitente;
             txtasunto.Text = email.asunto;
-            txtmensaje.Text = email.mensaje;
+            txtmensaje.Text = email.mensaje;*/
 
+
+        }
+
+        protected void btnResponder_Click(object sender, EventArgs e)
+        {
 
         }
     }
