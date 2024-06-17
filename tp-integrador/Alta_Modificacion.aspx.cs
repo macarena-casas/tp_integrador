@@ -106,7 +106,29 @@ namespace tp_integrador
 
         protected void txtImagenurl_TextChanged(object sender, EventArgs e)
         {
-            imginmueble.ImageUrl = txtImagenurl.Text;
+
+
+            string urls = txtImagenurl.Text;
+             List<string> imagenes = urls.Split(',').Select(url => url.Trim()).ToList();
+           
+
+
+            if (imagenes.Count > 0)
+            {
+                inmueble.Imagenes[0].Nombre_imagen = imagenes[0];
+            }
+            if (imagenes.Count > 1)
+            {
+                inmueble.Imagenes[1].Nombre_imagen = imagenes[1];
+            }
+            if (imagenes.Count > 2)
+            {
+                inmueble.Imagenes[2].Nombre_imagen = imagenes[2];
+            }
+
+
+            Session["Imagenes"] = imagenes;
+            Session["ImagenesCount"] = imagenes.Count;
         }
 
 

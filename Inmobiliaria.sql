@@ -3,6 +3,7 @@ go
 create database Inmobiliaria
 go
 use Inmobiliaria
+/*
 go
 create table Localidad(
 CP int not null,
@@ -118,6 +119,5 @@ primary key (Id)
 )
 go
 
-
-Insert into Email values('admin','normal','hola', 'tu inmueble me interesa',1)
-select * from Email
+*/
+select * from Inmueble

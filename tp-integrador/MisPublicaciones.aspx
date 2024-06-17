@@ -11,11 +11,11 @@
             { %>
         <div class="col-12 col-md-6 col-lg-4 mb-2">
             <div class="card border-primary" style="border-color: blue; height: 550px; width: 350px">
-                <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                <div id="carouselExampleDark_<%: inmueble.Id_I %>" class="carousel carousel-dark slide">
                     <div class="carousel-indicators">
                         <% for (int i = 0; i < inmueble.Imagenes.Count(); i++)
                             { %>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="<%= i %>"
+                        <button type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide-to="<%= i %>"
                             <% if (i == 0)
                             { %>
                             class="active" aria-current="true" <% } %> aria-label="Slide <%= i + 1 %>">
@@ -66,15 +66,14 @@
                             } %>
                     </div>
 
-                    <button class="carousel-control-prev" id="ant" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="Anterior">
-                        <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-
-                    <button class="carousel-control-next" id="sig" type="button" data-bs-target="#carouselExampleDark " data-bs-slide="Siguiente">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
+                     <button class="carousel-control-prev" id="ant" type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                            <span class="visually-hidden">Prev</span>
+                     </button> 
+                     <button class="carousel-control-next" id="sig" type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                     </button> 
 
                 </div>
 
