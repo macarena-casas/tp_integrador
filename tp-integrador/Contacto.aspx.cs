@@ -10,7 +10,7 @@ using Negocio;
 namespace tp_integrador
 {
     public partial class Contacto : System.Web.UI.Page
-    {
+    { 
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["ReturnUrl"] = Request.Url.ToString();
@@ -23,7 +23,13 @@ namespace tp_integrador
 
         protected void btnaceptar_Click(object sender, EventArgs e)
         {
-
+            Email email = new Email();
+            email.mensaje = txtmensaje.Text;
+            email.remitente = txtemail.Text;
+            email.asunto = txtasunto.Text;
+            email.destino = "admin";
+            NegocioEmail negoE = new NegocioEmail();
+            negoE.agregar(email);
         }
     }
 }

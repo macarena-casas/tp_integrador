@@ -15,24 +15,6 @@ namespace tp_integrador
     {
 
         /// <summary>
-        /// Control txtMensajes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtMensajes;
-
-        /// <summary>
-        /// Control txtremi.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtremi;
-
-        /// <summary>
         /// Control txtasunto.
         /// </summary>
         /// <remarks>
