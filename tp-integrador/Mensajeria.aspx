@@ -31,16 +31,23 @@
                         <asp:Label Text='<%# Eval("remitente") %>' ID="txtremitent" runat="server" Style="font-size: 25px; font-weight: bold;" />
 
                     </div>
-                 
-                   
+
+
                     <div class="col-2 d-flex justify-content-end align-items-center">
-                        <button type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary d-flex justify-content-center align-items-center" style="border-radius: 20px; height: 35px; font-size: 20px;">
+                        <asp:LinkButton ID="btnSelect" runat="server" CommandName="Select" CommandArgument='<%# Container.ItemIndex %>' CssClass="btn btn-primary d-flex justify-content-center align-items-center" Style="border-radius: 20px; height: 35px; font-size: 20px;">
+                         <i class="bi bi-arrow-right-circle"></i>
+                        </asp:LinkButton>
+
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary d-flex justify-content-center align-items-center" style="border-radius: 20px; height: 35px; font-size: 20px;" >
                             <i class="bi bi-arrow-right-circle"></i>
                         </button>
                     </div>
+                    
+
 
                 </div>
             </div>
+
 
         </ItemTemplate>
     </asp:Repeater>

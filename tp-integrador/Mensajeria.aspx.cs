@@ -24,32 +24,39 @@ namespace tp_integrador
             Session["Emails"] = listaemail;
 
             repetir.DataSource = listaemail;
+
             repetir.DataBind();
 
-            email = listaemail[0];
-            txtremitente.Text = "Remitente: " + email.remitente;
-            txtasunto.Text = "Asunto: " + email.asunto;
-            txtMensaje.Text = email.mensaje;
-
-
-
 
         }
-        protected void repetir_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            Label lblIndex = (Label)e.Item.FindControl("txtindice");
-            int index = Convert.ToInt32(lblIndex.Text);
-
-
-
-        }
-
 
 
         protected void btnResponder_Click(object sender, EventArgs e)
         {
             Response.Redirect("Contacto.aspx");
         }
-        /*      <asp:Label ID="txtindice" runat="server" Text='<%# Container.ItemIndex %>' />*/
+
+        public void repetir_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                Email dataItem = listaemail[index];
+
+                txtasunto.Text = dataItem.asunto;
+                txtremitente.Text = dataItem.remitente;
+                txtMensaje.Text = dataItem.mensaje;
+
+            }
+        }
+        /*<script>   
+                        function ShowModal(button) {
+
+
+                            var modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+                            modal.show();
+                            return false; // Esto evita que la página se recargue
+                        } </script>*/
+
     }
 }

@@ -73,6 +73,7 @@ namespace tp_integrador
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+
             Inmueble inmueble = new Inmueble();
             NegocioInmueble INegocio = new NegocioInmueble();
             inmueble.nombre_I = txtnombre.Text;
@@ -80,7 +81,7 @@ namespace tp_integrador
             //inmueble.precio_I = decimal.Parse(txtprecio.Text);
             inmueble.baños = int.Parse(baños.SelectedValue);
             inmueble.ambientes = int.Parse(ambientes.SelectedValue);
-
+            
             if (checkagua.Checked == true) { inmueble.aguacorriente = true; }
             if (Checkluz.Checked == true) { inmueble.luz = true; }
             if (checkgas.Checked == true) { inmueble.gasnatural = true; }
@@ -140,7 +141,9 @@ namespace tp_integrador
 
             inmueble.baños = int.Parse(baños.SelectedValue);
             inmueble.ambientes = int.Parse(ambientes.SelectedValue);
-
+           /* inmueble.direccion = txtdireccion.Text;
+            inmueble.cp = int.Parse(Cp.selectedvalue);
+            inmueble.localidad = txtlocalidad.Text;*/
             INegocio.modificar(inmueble);
             Response.Redirect("~/Default.aspx");
 

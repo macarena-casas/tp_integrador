@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alta_Modificacion.aspx" />
+    <Content Include="BandejaVacia.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Detalles.aspx" />
     <Content Include="EliminarPausar.aspx" />
@@ -123,6 +124,13 @@
     </Compile>
     <Compile Include="Alta_Modificacion.aspx.designer.cs">
       <DependentUpon>Alta_Modificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BandejaVacia.aspx.cs">
+      <DependentUpon>BandejaVacia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BandejaVacia.aspx.designer.cs">
+      <DependentUpon>BandejaVacia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
