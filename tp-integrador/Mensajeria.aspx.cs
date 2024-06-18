@@ -20,16 +20,11 @@ namespace tp_integrador
             Usuario usu = (Usuario)Session["usuario"];
             Email email = new Email();
             NegocioEmail negoE = new NegocioEmail();
-            listaemail = negoE.listar(usu.nombre_u);
+            listaemail = negoE.listartodos(usu.nombre_u);
             Session["Emails"] = listaemail;
-
             repetir.DataSource = listaemail;
-
             repetir.DataBind();
-
-
         }
-
 
         protected void btnResponder_Click(object sender, EventArgs e)
         {
@@ -47,16 +42,51 @@ namespace tp_integrador
                 txtremitente.Text = dataItem.remitente;
                 txtMensaje.Text = dataItem.mensaje;
 
+
+
+
             }
         }
-        /*<script>   
-                        function ShowModal(button) {
 
+        protected void btnenviados_Click(object sender, EventArgs e)
+        {
+            Usuario usu = (Usuario)Session["usuario"];
+            Email email = new Email();
+            NegocioEmail negoE = new NegocioEmail();
+            listaemail = negoE.listarenviados(usu.nombre_u);
+            Session["Emails"] = listaemail;
+            repetir.DataSource = listaemail;
+            repetir.DataBind();
+        }
 
-                            var modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-                            modal.show();
-                            return false; // Esto evita que la página se recargue
-                        } </script>*/
+        protected void btnrecibidos_Click(object sender, EventArgs e)
+        {
+            Usuario usu = (Usuario)Session["usuario"];
+            Email email = new Email();
+            NegocioEmail negoE = new NegocioEmail();
+            listaemail = negoE.listarrecibidos(usu.nombre_u);
+            Session["Emails"] = listaemail;
+            repetir.DataSource = listaemail;
+            repetir.DataBind();
+        }
 
+        protected void btnnuevo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Contacto.aspx");
+        }
+
+        protected void btnEliminarmensaje_Click(object sender, EventArgs e)
+        {
+            /* NegocioEmail nego = new NegocioEmail();
+             LinkButton btn = (LinkButton)sender;
+             int id = email.Id;
+
+             nego.BajaLogica(id, false);
+             Response.Redirect("~/Mensajeria.aspx");
+
+             txtasunto.Text = dataItem.asunto;
+             txtremitente.Text = dataItem.remitente;
+             txtMensaje.Text = dataItem.mensaje;*/
+        }
     }
 }

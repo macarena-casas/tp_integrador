@@ -9,9 +9,9 @@
         <li class="nav-item dropdown" style="font-size: 20px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: black; border-color: aqua;"><strong>Mensajes</strong></a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#"><strong>Recibidos</strong></a></li>
-                <li><a class="dropdown-item" href="#"><strong>Enviados</strong></a></li>
-                <li><a class="dropdown-item" href="#"><strong>Editar</strong></a></li>
+                <asp:Button class="dropdown-item" Text="Bandeja de Salida" runat="server" ID="btnenviados" OnClick="btnenviados_Click" Style="padding: 7px 10px; color: black; background-color: turquoise; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
+                <asp:Button class="dropdown-item" Text="Bandeja de Entrada" runat="server" ID="btnrecibidos" OnClick="btnrecibidos_Click" Style="padding: 7px 10px; color: black; background-color: turquoise; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
+                <asp:Button class="dropdown-item" Text="Nuevo Mensaje" runat="server" ID="btnnuevo" OnClick="btnnuevo_Click" Style="padding: 7px 10px; color: black; background-color: turquoise; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
 
             </ul>
         </li>
@@ -31,33 +31,31 @@
                         <asp:Label Text='<%# Eval("remitente") %>' ID="txtremitent" runat="server" Style="font-size: 25px; font-weight: bold;" />
 
                     </div>
-
-
                     <div class="col-2 d-flex justify-content-end align-items-center">
+                        <asp:LinkButton ID="btnEliminarmensaje1" runat="server" OnClick="btnEliminarmensaje_Click" CommandArgument='<%# Eval("Id")%>' UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea eliminar ?');">
+                            <i class="bi bi-trash-fill text-danger"></i>
+                        </asp:LinkButton>
+
                         <asp:LinkButton ID="btnSelect" runat="server" CommandName="Select" CommandArgument='<%# Container.ItemIndex %>' CssClass="btn btn-primary d-flex justify-content-center align-items-center" Style="border-radius: 20px; height: 35px; font-size: 20px;">
                          <i class="bi bi-arrow-right-circle"></i>
                         </asp:LinkButton>
-
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary d-flex justify-content-center align-items-center" style="border-radius: 20px; height: 35px; font-size: 20px;" >
+                        <button type="button" id="btnmodal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary d-flex justify-content-center align-items-center" style="border-radius: 20px; height: 35px; font-size: 20px;">
                             <i class="bi bi-arrow-right-circle"></i>
                         </button>
                     </div>
-                    
-
-
                 </div>
             </div>
 
-
         </ItemTemplate>
     </asp:Repeater>
+
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header alert-info">
                     <div class="row g-3">
-                        
+
                         <div class="col-auto">
                             <asp:Label Text="" ID="txtasunto" runat="server" Style="font-size: 30px; color: darkcyan; font-weight: bold; align-items: flex-start;" />
                         </div>
@@ -75,9 +73,13 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><strong>Cerrar</strong></button>
                     <asp:Button Text="Responder" class="btn btn-primary" ID="btnResponder" OnClick="btnResponder_Click" runat="server" Style="font-weight: bold;" />
+                    <asp:LinkButton ID="btnEliminarmensaje" runat="server" OnClick="btnEliminarmensaje_Click" UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea eliminar ?');">
+                            <i class="bi bi-trash-fill text-danger"></i>
+                    </asp:LinkButton>
                 </div>
             </div>
         </div>
     </div>
+
 
 </asp:Content>

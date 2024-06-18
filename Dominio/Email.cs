@@ -9,9 +9,10 @@ namespace Dominio
 {
     public class Email
     {
-
         [DisplayName("Destinatario")]
         public string destino { get; set; }
+        [DisplayName("Id")]
+        public int Id { get; set; }
         [DisplayName("Remitente")]
         public string remitente { get; set; }
         [DisplayName("Asunto")]
@@ -29,8 +30,9 @@ namespace Dominio
 
         }
 
-        public Email(string des, string rem, string asu, string mens, bool es)
+        public Email(int id, string des, string rem, string asu, string mens, bool es)
         {
+            Id = id;
             destino = des;
             remitente = rem;
             asunto = asu;
@@ -40,3 +42,4 @@ namespace Dominio
 
     }
 }
+

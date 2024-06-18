@@ -36,19 +36,20 @@ namespace Negocio
                 datos.cerrarconexion();
             }
         }
-        public List<Email> listar(string des)
+        public List<Email> listarrecibidos(string des)
         {
             List<Email> lista = new List<Email>();
             Acceso_Datos datos = new Acceso_Datos();
 
             try
             {
-                datos.setearconsulta("select destinatario, remitente, Asunto,Mensaje,Estado from Email where destinatario = @desti");
+                datos.setearconsulta("select Id,destinatario, remitente, Asunto,Mensaje,Estado from Email where destinatario = @desti");
                 datos.setearparametro("@desti", des);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
                 {
                     Email aux = new Email();
+                    aux.Id = (int)datos.lector["Id"];
                     aux.destino = (string)datos.lector["destinatario"];
                     aux.remitente = (string)datos.lector["remitente"];
                     aux.asunto = (string)datos.lector["Asunto"];
@@ -70,6 +71,98 @@ namespace Negocio
                 datos.cerrarconexion();
             }
 
+        }
+        public List<Email> listarenviados(string rem)
+        {
+            List<Email> lista = new List<Email>();
+            Acceso_Datos datos = new Acceso_Datos();
+
+            try
+            {
+                datos.setearconsulta("select Id,destinatario, remitente, Asunto,Mensaje,Estado from Email where remitente = @remi");
+                datos.setearparametro("@remi", rem);
+                datos.ejecutarlectura();
+                while (datos.lector.Read())
+                {
+                    Email aux = new Email();
+                    aux.Id = (int)datos.lector["Id"];
+                    aux.destino = (string)datos.lector["destinatario"];
+                    aux.remitente = (string)datos.lector["remitente"];
+                    aux.asunto = (string)datos.lector["Asunto"];
+                    aux.mensaje = (string)datos.lector["Mensaje"];
+                    aux.Estado = (bool)datos.lector["Estado"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+
+        }
+        public List<Email> listartodos(string usu)
+        {
+            List<Email> lista = new List<Email>();
+            Acceso_Datos datos = new Acceso_Datos();
+
+            try
+            {
+                datos.setearconsulta("select Id, destinatario, remitente, Asunto,Mensaje,Estado from Email where destinatario = @usua or remitente = @usua");
+                datos.setearparametro("@usua", usu);
+                datos.ejecutarlectura();
+                while (datos.lector.Read())
+                {
+                    Email aux = new Email();
+
+                    aux.Id = (int)datos.lector["Id"];
+                    aux.destino = (string)datos.lector["destinatario"];
+                    aux.remitente = (string)datos.lector["remitente"];
+                    aux.asunto = (string)datos.lector["Asunto"];
+                    aux.mensaje = (string)datos.lector["Mensaje"];
+                    aux.Estado = (bool)datos.lector["Estado"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+
+        }
+        public void BajaLogica(int id, bool pausa = false)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+
+            try
+            {
+                datos.setearconsulta("update Email set  Pausa= @pausa where Id=@Id");
+
+                datos.setearparametro("@Pausa", pausa);
+                datos.setearparametro("@Id", id);
+                datos.ejecutaraccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
 
