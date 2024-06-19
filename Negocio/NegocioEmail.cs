@@ -43,7 +43,7 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("select Id,destinatario, remitente, Asunto,Mensaje,Estado from Email where destinatario = @desti");
+                datos.setearconsulta("select Id,destinatario, remitente, Asunto,Mensaje,Estado from Email where Estado = 1 and  destinatario = @desti");
                 datos.setearparametro("@desti", des);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
@@ -79,7 +79,7 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("select Id,destinatario, remitente, Asunto,Mensaje,Estado from Email where remitente = @remi");
+                datos.setearconsulta("select Id,destinatario, remitente, Asunto,Mensaje,Estado from Email where Estado = 1 and remitente = @remi");
                 datos.setearparametro("@remi", rem);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
@@ -115,7 +115,7 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("select Id, destinatario, remitente, Asunto,Mensaje,Estado from Email where destinatario = @usua or remitente = @usua");
+                datos.setearconsulta("select Id, destinatario, remitente, Asunto,Mensaje,Estado from Email where Estado=1 and destinatario = @usua or remitente = @usua");
                 datos.setearparametro("@usua", usu);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
@@ -151,7 +151,7 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("update Email set  Pausa= @pausa where Id=@Id");
+                datos.setearconsulta("update Email set  Estado= @pausa where Id=@Id");
 
                 datos.setearparametro("@Pausa", pausa);
                 datos.setearparametro("@Id", id);
@@ -164,7 +164,43 @@ namespace Negocio
                 throw ex;
             }
         }
+        public List<Email> listarpapelera(string usu)
+        {
+            List<Email> lista = new List<Email>();
+            Acceso_Datos datos = new Acceso_Datos();
 
+            try
+            {
+                datos.setearconsulta("select Id, destinatario, remitente, Asunto,Mensaje,Estado from Email where Estado=0 and destinatario = @usua or remitente = @usua");
+                datos.setearparametro("@usua", usu);
+                datos.ejecutarlectura();
+                while (datos.lector.Read())
+                {
+                    Email aux = new Email();
+
+                    aux.Id = (int)datos.lector["Id"];
+                    aux.destino = (string)datos.lector["destinatario"];
+                    aux.remitente = (string)datos.lector["remitente"];
+                    aux.asunto = (string)datos.lector["Asunto"];
+                    aux.mensaje = (string)datos.lector["Mensaje"];
+                    aux.Estado = (bool)datos.lector["Estado"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+
+        }
 
 
     }

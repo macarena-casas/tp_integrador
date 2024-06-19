@@ -110,6 +110,7 @@
     <Content Include="Favoritos.aspx" />
     <Content Include="FavoritosVacio.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Mensaje.aspx" />
     <Content Include="Mensajeria.aspx" />
     <Content Include="MisPublicaciones.aspx" />
     <Content Include="Registro.aspx" />
@@ -180,6 +181,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mensaje.aspx.cs">
+      <DependentUpon>Mensaje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mensaje.aspx.designer.cs">
+      <DependentUpon>Mensaje.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mensajeria.aspx.cs">
       <DependentUpon>Mensajeria.aspx</DependentUpon>

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <ul class="nav nav-tabs" style="border-color: aqua">
+ <ul class="nav nav-tabs" style="border-color: aqua">
         <li class="nav-item" style="font-size: 20px;">
             <a class="nav-link active" aria-current="page" href="#" style="color: black; border-color: aqua;"><strong>Principal</strong></a>
         </li>
@@ -11,6 +11,8 @@
             <ul class="dropdown-menu">
                 <asp:Button class="dropdown-item" Text="Bandeja de Salida" runat="server" ID="btnenviados" OnClick="btnenviados_Click" Style="padding: 7px 10px; color: black; background-color: turquoise; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
                 <asp:Button class="dropdown-item" Text="Bandeja de Entrada" runat="server" ID="btnrecibidos" OnClick="btnrecibidos_Click" Style="padding: 7px 10px; color: black; background-color: turquoise; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
+                <asp:Button class="dropdown-item" Text="Todos" runat="server" ID="btntodos" OnClick="btntodos_Click" Style="padding: 7px 10px; color: black; background-color: turquoise; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
+                <asp:Button class="dropdown-item" Text="Papelera" runat="server" ID="btnPapelera" OnClick="btnPapelera_Click" Style="padding: 7px 10px; color: black; background-color: turquoise; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
                 <asp:Button class="dropdown-item" Text="Nuevo Mensaje" runat="server" ID="btnnuevo" OnClick="btnnuevo_Click" Style="padding: 7px 10px; color: black; background-color: turquoise; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
 
             </ul>
@@ -18,68 +20,26 @@
     </ul>
     <br />
     <br />
-    <asp:Repeater ID="repetir" runat="server" OnItemCommand="repetir_ItemCommand">
-        <ItemTemplate>
-            <div class="container-fluid " style="height: 50px; width: 98%; margin-left: 10px; margin-right: 10px; margin-top: 10px; border: 2px solid darkcyan; padding: 5px; align-content: center;">
-                <div class="row g-3">
+ 
+    <% foreach (Dominio.Email email in listaemail)
+        { %>
+    <div class="container-fluid " style="height: 50px; width: 98%; margin-left: 10px; margin-right: 10px; margin-top: 10px; border: 2px solid darkcyan; padding: 5px; align-content: center;">
+        <div class="row g-3">
 
-
-                    <div class="col-5 ">
-                        <asp:Label Text='<%# Eval("asunto") %>' ID="txtasunt" runat="server" Style="font-size: 30px; color: darkcyan; font-weight: bold; align-items: flex-start;" />
-                    </div>
-                    <div class="col-5 text-start">
-                        <asp:Label Text='<%# Eval("remitente") %>' ID="txtremitent" runat="server" Style="font-size: 25px; font-weight: bold;" />
-
-                    </div>
-                    <div class="col-2 d-flex justify-content-end align-items-center">
-                        <asp:LinkButton ID="btnEliminarmensaje1" runat="server" OnClick="btnEliminarmensaje_Click" CommandArgument='<%# Eval("Id")%>' UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea eliminar ?');">
-                            <i class="bi bi-trash-fill text-danger"></i>
-                        </asp:LinkButton>
-
-                        <asp:LinkButton ID="btnSelect" runat="server" CommandName="Select" CommandArgument='<%# Container.ItemIndex %>' CssClass="btn btn-primary d-flex justify-content-center align-items-center" Style="border-radius: 20px; height: 35px; font-size: 20px;">
-                         <i class="bi bi-arrow-right-circle"></i>
-                        </asp:LinkButton>
-                        <button type="button" id="btnmodal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary d-flex justify-content-center align-items-center" style="border-radius: 20px; height: 35px; font-size: 20px;">
-                            <i class="bi bi-arrow-right-circle"></i>
-                        </button>
-                    </div>
-                </div>
+            <div class="col-5 ">
+                <p class="card-text" style="font-size: 30px; color: darkcyan; font-weight: bold; align-items: flex-start;"><%:email.asunto%></p>
             </div>
+            <div class="col-5 text-start">
+                <p class="card-text" style="font-size: 30px; color: darkcyan; font-weight: bold; align-items: flex-start;"><%:email.remitente%></p>
+            </div>
+            <div class="col-2 d-flex justify-content-end align-items-center">
 
-        </ItemTemplate>
-    </asp:Repeater>
+                <a href="<%:ResolveUrl("~/Mensaje.aspx?id=" + email.Id) %>" class="btn btn-outline-info" style="border-radius: 20px; height: 35px; font-size: 20px; font-weight: bold; border-color: darkturquoise;" title="modif"><i class="bi bi-arrow-right-circle"></i></a>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header alert-info">
-                    <div class="row g-3">
-
-                        <div class="col-auto">
-                            <asp:Label Text="" ID="txtasunto" runat="server" Style="font-size: 30px; color: darkcyan; font-weight: bold; align-items: flex-start;" />
-                        </div>
-                        <div class="col-auto ms-auto">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" style="align-items: flex-end;" aria-label="Cerar"></button>
-                        </div>
-                        <div class="row g-2">
-                            <asp:Label Text="" ID="txtremitente" runat="server" Style="font-size: 25px; font-weight: bold;" />
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <asp:Label Text="" ID="txtMensaje" runat="server" Style="font-size: 15px; font-weight: bold; margin-top: 15px;" />
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><strong>Cerrar</strong></button>
-                    <asp:Button Text="Responder" class="btn btn-primary" ID="btnResponder" OnClick="btnResponder_Click" runat="server" Style="font-weight: bold;" />
-                    <asp:LinkButton ID="btnEliminarmensaje" runat="server" OnClick="btnEliminarmensaje_Click" UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea eliminar ?');">
-                            <i class="bi bi-trash-fill text-danger"></i>
-                    </asp:LinkButton>
-                </div>
+              
             </div>
         </div>
     </div>
-
+    <%} %>
 
 </asp:Content>

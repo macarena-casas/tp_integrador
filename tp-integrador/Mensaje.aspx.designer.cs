@@ -11,52 +11,61 @@ namespace tp_integrador
 {
 
 
-    public partial class Mensajeria
+    public partial class Mensaje
     {
 
         /// <summary>
-        /// Control btnenviados.
+        /// Control txtasunto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnenviados;
+        protected global::System.Web.UI.WebControls.Label txtasunto;
 
         /// <summary>
-        /// Control btnrecibidos.
+        /// Control btncerrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnrecibidos;
+        protected global::System.Web.UI.WebControls.Button btncerrar;
 
         /// <summary>
-        /// Control btntodos.
+        /// Control txtremitente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btntodos;
+        protected global::System.Web.UI.WebControls.Label txtremitente;
 
         /// <summary>
-        /// Control btnPapelera.
+        /// Control txtmensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPapelera;
+        protected global::System.Web.UI.WebControls.Label txtmensaje;
 
         /// <summary>
-        /// Control btnnuevo.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnnuevo;
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// Control btneliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btneliminar;
     }
 }
