@@ -4,70 +4,66 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <br />  
-    <br />  
+  <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
+        <div class="reg ">
+            <div class="card border-primary" style="text-align: center; background: lightblue; border-radius: 3%; min-height: 500px; min-width: 400px;">
+                <div class="card-header text-center" style="padding: 0 45px; box-sizing: border-box; left: 20px; margin-top: 15px; text-align: center;">
+                    <div class="row ">
+                        <div class="col-auto">
+                            <h1 style="text-align: center; letter-spacing: 2px;">MENSAJE NUEVO</h1>
+                        </div>
+                        <div class="col-auto ms-auto">
+                            <asp:Button runat="server" type="button" class="btn-close" ID="Button1" OnClick="btncerrar_Click" data-bs-dismiss="modal" Style="align-items: flex-end; margin-top: 10px;" aria-label="Cerrar"></asp:Button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body " style="padding: 0 20px; box-sizing: border-box;margin-left:10px;margin-right:10px; ">
+                    <div class="row mb-3 ">
+                        <div class="col-1">
+                            <label><strong>De:</strong></label>
+                        </div>
+                        <div class="col-11 " style="text-align: left;">
+                            <asp:Label Text="" ID="txtremitente" runat="server" Style="margin-left: 5px; font-size: 20px; font-weight: bold; padding: 0 10px; outline: none; background: lightblue; letter-spacing: 1px; transition: .3s; color: black;" />
+                        </div>
+                    </div>
 
-    <div class="container" style="background: lightgrey;">
-        <div class="box-info">
-            <h1>---------------------------------------------------------------------</h1>
-            <h1 style="text-align: center; letter-spacing: 5px;">CONTÁCTATE CON EL PROPIETARIO</h1>
-            <div class="data" style="padding-top: 100px">
-                <table style="text-align: center; align-items: center">
-                    <tr>
-                        <td style="padding-right: 100px">
-                            <h2>Numero de telefono</h2>
-                        </td>
+                    <div class="row mb-3">
+                        <div class="col-1">
+                            <label><strong>Para:</strong></label>
+                        </div>
+                        <div class="col-11" style="text-align: left;">
+                            <asp:Label Text="" ID="txtpara" runat="server" Style="margin-left: 5px; font-size: 20px; font-weight: bold; padding: 0 10px; outline: none; background: lightblue; letter-spacing: 1px; transition: .3s; color: black;" />
+                            
+                            <asp:TextBox runat="server" ID="txtdestino" Style="width: 70%; height: 40px; padding: 0 10px; outline: none; background: lightblue; border: 3px solid darkcyan; letter-spacing: 1px; transition: .3s; color: black;"  />
+                        </div>
+                        
+                    </div>
+                    <div class="row mb-3 ">
+                        <div class="col-2">
+                            <label><strong>Asunto:</strong></label>
+                        </div>
+                        <div class="col-10 ">
 
-                        <td style="padding-right: 100px">
-                            <h2>Email</h2>
-                        </td>
+                            <asp:TextBox Style="width: 100%; height: 40px; padding: 0 10px; outline: none; background: lightblue; border: 3px solid darkcyan; letter-spacing: 1px; transition: .3s; color: black;" runat="server" ID="txtasunto" />
+                        </div>
+                    </div>
+                    <div class="row mb-3 ">
+                        <div style="position: relative;" class="txt-mensaje">
+                            <label><strong>Mensaje: </strong></label>
+                        </div>
 
-                        <td style="padding-right: 100px">
-                            <h2>Localidad</h2>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="padding-right: 90px">
-                            <p style="font-size: 1rem;"><i style="color: crimson; margin-right: 10px; font-size: 25px;" class="fa-solid fa-phone"></i>+1 xx xxxx xxxx</p>
-                        </td>
-                        <td style="padding-right: 90px">
-                            <p style="font-size: 1rem;"><i style="color: crimson; margin-right: 10px; font-size: 25px;" class="fa-solid fa-envelope"></i>fulanito@gmial.com</p>
-                        </td>
-                        <td style="padding-right: 90px">
-                            <p style="font-size: 1rem;"><i style="color: crimson; margin-right: 10px; font-size: 25px;" class="fa-solid fa-location-dot"></i>gutemberg 850</p>
-                        </td>
-
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div style="display: flex; flex-direction: column; text-align: center; gap: 15px;">
-            <div style="position: relative;" class="txt-nombre">
-                <label>Nombre y apellido</label>
-                <asp:TextBox  style="width: 100%; height: 40px; padding: 0 10px; outline: none; background: lightblue; border: 3px double; border-color: black; letter-spacing: 1px; transition: .3s; color: black;" runat="server" ID="txtnombre" />
-                <i style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px; color: rgba(255 255 255 ); transition: .3s;" class="fa-solid fa-user"></i>
-            </div>
-            <div style="position: relative;" class="txt-email">
-                <label>Email</label>
-                 <asp:TextBox  style="width: 100%; height: 40px; padding: 0 10px; outline: none; background: lightblue; border: 3px double; border-color: black; letter-spacing: 1px; transition: .3s; color: black;" runat="server" ID="txtemail" />
-
-                <i style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px; color: rgba(255 255 255 ); transition: .3s;" class="fa-solid fa-envelope"></i>
-            </div>
-            <div style="position: relative;" class="txt-asunto">
-                <label>Asunto</label>
-                <asp:TextBox  style="width: 100%; height: 40px; padding: 0 10px; outline: none; background: lightblue; border: 3px double; border-color: black; letter-spacing: 1px; transition: .3s; color: black;" runat="server" ID="txtasunto" />
-                <i style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px; color: blue; transition: .3s;" class="fa-solid fa-pen-to-square"></i>
-            </div>
-            <div style="position: relative;" class="txt-mensaje">
-                <label>Mensaje</label>
-                 <asp:TextBox  style="width: 100%; height: 130px; padding: 10px; background: lightblue; border: 3px double; letter-spacing: 1px; border-color: black; outline: none; transition: .3s; color: black; letter-spacing: 1.5px;" runat="server" ID="txtmensaje" />
-
-            </div>
-            <asp:Button Style="width: 100%; padding: 10px; outline: none; background: blue; color: #fff; border: none; transition: .1s; cursor: pointer; font-size: 1rem;" Text="text" runat="server" ID="btnaceptar" OnClick="btnaceptar_Click" />
-            <div>
-                <h1>---------------------------------------------------------------------
-                </h1>
+                        <div class="row mb-3" >
+                        
+                                <asp:TextBox TextMode="MultiLine" Style="margin-left: 10px; width: 100%; height: 250px; max-height: 250px; padding: 0 10px; background: lightblue; border: 3px solid darkcyan; letter-spacing: 1px; outline: none; transition: .3s; color: black; letter-spacing: 1.5px;" runat="server" ID="txtmensaje" />
+                            </div>
+                       
+                    </div>
+                </div>
+                <div class="card-footer" style="padding: 0 45px; box-sizing: border-box; left: 20px;">
+                    <div class="row mb-3">
+                        <asp:Button Style="width: 100%; margin-top: 10px; padding: 10px; outline: none; background: blue; color: #fff; border: none; transition: .1s; cursor: pointer; font-size: 1rem;" Text="Enviar" runat="server" ID="btnaceptar" OnClick="btnaceptar_Click" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
