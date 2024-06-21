@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <% if ((List<Dominio.Inmueble>)Session["inmueblesfiltrados"] != null)
+   <% if ((List<Dominio.Inmueble>)Session["inmueblesfiltrados"] != null)
         {
             listainmueble = (List<Dominio.Inmueble>)Session["inmueblesfiltrados"];
             Session.Remove("inmueblesfiltrados");
@@ -30,10 +30,6 @@
                             class="active" aria-current="true" <% } %> aria-label="Slide <%= i + 1 %>">
                         </button>
                         <% } %>
-
-
-                        
-
                     </div>
                     <div class="carousel-inner">
                         <%
@@ -77,17 +73,17 @@
                         </div>
                         <% }
                             }%>
-                             </div>    
-                    
-                 
+                    </div>
+
+
                     <button class="carousel-control-prev" id="ant" type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon " aria-hidden="true"></span>
                         <span class="visually-hidden">Prev</span>
-                    </button> 
+                    </button>
                     <button class="carousel-control-next" id="sig" type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
-                    </button> 
+                    </button>
                 </div>
 
 
@@ -101,7 +97,7 @@
                             { %>
                         <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="modif">Modificar</a>
                         <%} %>
-                        <a href="<%: ResolveUrl("~/Contacto.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise; font-weight: bold;"><i class="bi bi-phone-vibrate "></i></a>
+                        <a href="<%: ResolveUrl("~/Contacto.aspx?id=" + inmueble.NombreUsuario) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise; font-weight: bold;"><i class="bi bi-phone-vibrate "></i></a>
 
                         <br />
                         <br />
