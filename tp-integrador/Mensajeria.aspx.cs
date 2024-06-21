@@ -16,11 +16,39 @@ namespace tp_integrador
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usu = (Usuario)Session["usuario"];
-            Email email = new Email();
-            NegocioEmail negoE = new NegocioEmail();
-            listaemail = negoE.listartodos(usu.nombre_u);
-            Session["Emails"] = listaemail;
+            Session["ReturnUrl"] = Request.Url.ToString();
+            if (Session["usuario"] != null)
+            {
+
+                Usuario usu = (Usuario)Session["usuario"];
+                Email email = new Email();
+                NegocioEmail negoE = new NegocioEmail();
+                if (Session["Emails"] == null)
+                {
+                    listaemail = negoE.listartodos(usu.nombre_u);
+                    Session["Emails"] = listaemail;
+                }
+                listaemail = (List<Email>)Session["Emails"];
+                if (listaemail.Count == 0)
+                {
+
+                    Session["Emails"] = null;
+                    Response.Redirect("BandejaVacia.aspx");
+                }
+
+
+            }
+            else
+            {
+                Session["Emails"] = null;
+                Session.Add("error", "Debes Iniciar Sesión para Ingresar");
+                Response.Redirect("Login.aspx");
+
+
+            }
+
+
+
 
         }
 
@@ -36,7 +64,14 @@ namespace tp_integrador
             Email email = new Email();
             NegocioEmail negoE = new NegocioEmail();
             listaemail = negoE.listarenviados(usu.nombre_u);
-            Session["Emails"] = listaemail;
+            if (listaemail.Count == 0)
+            {
+                Response.Redirect("BandejaVacia.aspx");
+            }
+            else
+            {
+                Session["Emails"] = listaemail;
+            }
         }
 
         protected void btnrecibidos_Click(object sender, EventArgs e)
@@ -45,8 +80,14 @@ namespace tp_integrador
             Email email = new Email();
             NegocioEmail negoE = new NegocioEmail();
             listaemail = negoE.listarrecibidos(usu.nombre_u);
-            Session["Emails"] = listaemail;
-
+            if (listaemail.Count == 0)
+            {
+                Response.Redirect("BandejaVacia.aspx");
+            }
+            else
+            {
+                Session["Emails"] = listaemail;
+            }
         }
 
         protected void btnnuevo_Click(object sender, EventArgs e)
@@ -60,7 +101,14 @@ namespace tp_integrador
             Email email = new Email();
             NegocioEmail negoE = new NegocioEmail();
             listaemail = negoE.listartodos(usu.nombre_u);
-            Session["Emails"] = listaemail;
+            if (listaemail.Count == 0)
+            {
+                Response.Redirect("BandejaVacia.aspx");
+            }
+            else
+            {
+                Session["Emails"] = listaemail;
+            }
         }
 
         protected void btnPapelera_Click(object sender, EventArgs e)
@@ -69,7 +117,15 @@ namespace tp_integrador
             Email email = new Email();
             NegocioEmail negoE = new NegocioEmail();
             listaemail = negoE.listarpapelera(usu.nombre_u);
-            Session["Emails"] = listaemail;
+            if (listaemail.Count == 0)
+            {
+                Response.Redirect("BandejaVacia.aspx");
+
+            }
+            else
+            {
+                Session["Emails"] = listaemail;
+            }
         }
     }
 }

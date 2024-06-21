@@ -11,7 +11,8 @@ namespace Dominio
     {
         [DisplayName("Nombre")]
         public string nombre_I { get; set; }
-
+        [DisplayName("Nombre Usuario")]
+        public string NombreUsuario { get; set; }
         public int Id_I { get; set; }
         [DisplayName("Precio")]
         public decimal precio_I { get; set; }
@@ -28,6 +29,7 @@ namespace Dominio
         public Ubicacion ubicacion { get; set; }
         public bool Pausa { get; set; }
         public bool Estado { get; set; }
+
 
         public int ambientes { get; set; }
         public int baños { get; set; }
@@ -62,13 +64,14 @@ namespace Dominio
             pavimento = false;
             Pausa = false;
             Estado = false;
-
+            NombreUsuario = "nada";
         }
-        public Inmueble(string nom, string desc, Ubicacion ubi, Categoria cat, decimal pre, int am, int ba, bool g, bool ag, bool cl, bool l, bool pa, bool ai, bool cale, bool pavi, bool est, bool pau)
+        public Inmueble(string nom, string desc, string nomusu, Ubicacion ubi, Categoria cat, decimal pre, int am, int ba, bool g, bool ag, bool cl, bool l, bool pa, bool ai, bool cale, bool pavi, bool est, bool pau)
         {
             ubicacion = new Ubicacion();
             categoria_I = new Categoria();
             nombre_I = nom;
+            NombreUsuario = nomusu;
             descripcion_I = desc;
             categoria_I = cat;
             ubicacion = ubi;

@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body style="overflow-x: hidden; overflow-y: unset;">
+<% if (HttpContext.Current.Request.Url.AbsolutePath.EndsWith("Default.aspx"))
+{%>
+
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -35,6 +38,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+  <%} %>
     <form id="form1" runat="server">
         <div>
             <nav class="navbar " style="background-color: navy" data-bs-theme="info">

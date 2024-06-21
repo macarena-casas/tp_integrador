@@ -26,6 +26,7 @@ namespace Negocio
                     Ubicacion auxi = new Ubicacion();
                     Imagen aux = new Imagen();
 
+                    inmueble.NombreUsuario = (string)inmunegocio.lector["Nombreusuario"];
                     inmueble.Imagenes = new List<Imagen>();
                     inmueble.Id_I = (int)inmunegocio.lector["Id"];
                     inmueble.nombre_I = (string)inmunegocio.lector["Nombre"];
@@ -73,7 +74,7 @@ namespace Negocio
         }
         public List<Inmueble> Listacompleta()
         {
-            return uploadInmuebleList("select I.Id As Id, I.Nombre As Nombre ,I.Pausa, I.Estado, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio,I.Ambientes,  I.Baños, I.Gas_Natural,I.Agua_Corriente,I.Cloacas,I.Luz,I.Cochera,I.Patio, I.Aire_Acondicionado,I.Calefacción, I.Pavimento FROM  Inmueble I left join Categoria C on C.Id= I.Id_categoria");
+            return uploadInmuebleList("select I.Id As Id,I.Nombreusuario, I.Nombre As Nombre ,I.Pausa, I.Estado, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio,I.Ambientes,  I.Baños, I.Gas_Natural,I.Agua_Corriente,I.Cloacas,I.Luz,I.Cochera,I.Patio, I.Aire_Acondicionado,I.Calefacción, I.Pavimento FROM  Inmueble I left join Categoria C on C.Id= I.Id_categoria");
 
         }
         public bool verificarusuario(string usuari, int id)
@@ -113,7 +114,7 @@ namespace Negocio
             try
             {
 
-                inmunegocio.setearconsulta("select I.Id As Id, I.Pausa, I.Estado, I.Nombre As Nombre, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio, I.Ambientes, I.Baños, I.Gas_Natural, I.Agua_Corriente, I.Cloacas, I.Luz, I.Cochera, I.Patio, I.Aire_Acondicionado, I.Calefacción, I.Pavimento FROM  Inmueble I  left join Categoria C on C.Id = I.Id_categoria where I.Nombreusuario = @Nombre");
+                inmunegocio.setearconsulta("select I.Id As Id,I.Nombreusuario, I.Pausa, I.Estado, I.Nombre As Nombre, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio, I.Ambientes, I.Baños, I.Gas_Natural, I.Agua_Corriente, I.Cloacas, I.Luz, I.Cochera, I.Patio, I.Aire_Acondicionado, I.Calefacción, I.Pavimento FROM  Inmueble I  left join Categoria C on C.Id = I.Id_categoria where I.Nombreusuario = @Nombre");
                 inmunegocio.setearparametro("@Nombre", usuari);
                 inmunegocio.ejecutarlectura();
 
@@ -123,6 +124,7 @@ namespace Negocio
                     Ubicacion auxi = new Ubicacion();
                     Imagen aux = new Imagen();
 
+                    inmueble.NombreUsuario = (string)inmunegocio.lector["Nombreusuario"];
                     inmueble.Imagenes = new List<Imagen>();
                     inmueble.Id_I = (int)inmunegocio.lector["Id"];
                     inmueble.Pausa = (bool)inmunegocio.lector["Pausa"];
@@ -179,12 +181,14 @@ namespace Negocio
             try
             {
 
-                datos.setearconsulta("select I.Nombre, I.Precio, I.Id ,I.Pausa, I.Estado, I.Descripcion, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble AS I left join Categoria C ON I.Id_categoria = C.Id ");
+                datos.setearconsulta("select I.Nombre,I.Nombreusuario, I.Precio, I.Id ,I.Pausa, I.Estado, I.Descripcion, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble AS I left join Categoria C ON I.Id_categoria = C.Id ");
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
                 {
                     Inmueble aux = new Inmueble();
                     aux.nombre_I = (string)datos.lector["Nombre"];
+                    aux.NombreUsuario = (string)datos.lector["Nombreusuario"];
+
                     aux.precio_I = (decimal)datos.lector["Precio"];
                     aux.precio_I = Math.Round(aux.precio_I, 2);
                     aux.descripcion_I = (string)datos.lector["Descripcion"];
@@ -268,13 +272,14 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("select  I.Id , I.Nombre, I.Precio,I.Pausa, I.Estado, I.Descripcion Detalle, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Id=@Id  and C.Id = I.Id_categoria ");
+                datos.setearconsulta("select  I.Id , I.Nombreusuario, I.Nombre, I.Precio,I.Pausa, I.Estado, I.Descripcion Detalle, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Id=@Id  and C.Id = I.Id_categoria ");
                 datos.setearparametro("@Id", id);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
                 {
                     Inmueble aux = new Inmueble();
                     aux.nombre_I = (string)datos.lector["Nombre"];
+                    aux.NombreUsuario = (string)datos.lector["Nombreusuario"];
                     aux.precio_I = (decimal)datos.lector["Precio"];
                     aux.precio_I = Math.Round(aux.precio_I, 2);
                     aux.descripcion_I = (string)datos.lector["Descripcion"];
@@ -307,13 +312,14 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("select I.Id , I.Nombre,I.Pausa, I.Estado, I.Precio, I.Descripcion Detalle, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Nombre = @nombre and C.Id = I.Id_categoria");
+                datos.setearconsulta("select I.Id , I.Nombreusuario, I.Nombre,I.Pausa, I.Estado, I.Precio, I.Descripcion Detalle, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Nombre = @nombre and C.Id = I.Id_categoria");
                 datos.setearparametro("@nombre", nom);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
                 {
                     Inmueble aux = new Inmueble();
                     aux.nombre_I = (string)datos.lector["Nombre"];
+                    aux.NombreUsuario = (string)datos.lector["Nombreusuario"];
                     aux.precio_I = (decimal)datos.lector["Precio"];
                     aux.precio_I = Math.Round(aux.precio_I, 2);
                     aux.descripcion_I = (string)datos.lector["Descripcion"];
@@ -347,13 +353,14 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("select I.Id, I.Nombre,I.Pausa, I.Estado, I.Precio, I.Descripcion, C.Nombre Categoria, i.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Id_categoria = @Id and C.Id = @Id");
+                datos.setearconsulta("select I.Id, I.Nombre, I.Nombreusuario, I.Pausa, I.Estado, I.Precio, I.Descripcion, C.Nombre Categoria, i.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Id_categoria = @Id and C.Id = @Id");
                 datos.setearparametro("@Id", id.codigo_categoria);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
                 {
                     Inmueble aux = new Inmueble();
                     aux.nombre_I = (string)datos.lector["Nombre"];
+                    aux.NombreUsuario = (string)datos.lector["Nombreusuario"];
                     aux.precio_I = (decimal)datos.lector["Precio"];
                     aux.precio_I = Math.Round(aux.precio_I, 2);
                     aux.descripcion_I = (string)datos.lector["Descripcion"];

@@ -15,13 +15,13 @@ namespace tp_integrador
     {
 
         /// <summary>
-        /// Control txtasunto.
+        /// Control txtremitente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtasunto;
+        protected global::System.Web.UI.WebControls.Label txtremitente;
 
         /// <summary>
         /// Control btncerrar.
@@ -33,13 +33,13 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.Button btncerrar;
 
         /// <summary>
-        /// Control txtremitente.
+        /// Control txtasunto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtremitente;
+        protected global::System.Web.UI.WebControls.Label txtasunto;
 
         /// <summary>
         /// Control txtmensaje.
@@ -51,13 +51,22 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.Label txtmensaje;
 
         /// <summary>
-        /// Control Button1.
+        /// Control btncerrar2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btncerrar2;
+
+        /// <summary>
+        /// Control btnresponder.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnresponder;
 
         /// <summary>
         /// Control btneliminar.

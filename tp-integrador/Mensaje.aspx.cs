@@ -32,7 +32,7 @@ namespace tp_integrador
 
         protected void btnResponder_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Contacto.aspx?id=" + txtremitente.Text);
         }
 
         protected void btnEliminarmensaje_Click(object sender, EventArgs e)

@@ -115,7 +115,7 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("select Id, destinatario, remitente, Asunto,Mensaje,Estado from Email where Estado=1 and destinatario = @usua or remitente = @usua");
+                datos.setearconsulta("select Id, destinatario, remitente, Asunto,Mensaje,Estado from Email where Estado=1 and (destinatario = @usua or remitente = @usua)");
                 datos.setearparametro("@usua", usu);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
@@ -171,7 +171,7 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("select Id, destinatario, remitente, Asunto,Mensaje,Estado from Email where Estado=0 and destinatario = @usua or remitente = @usua");
+                datos.setearconsulta("select Id, destinatario, remitente, Asunto,Mensaje,Estado from Email where Estado=0 and (destinatario = @usua or remitente = @usua)");
                 datos.setearparametro("@usua", usu);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
