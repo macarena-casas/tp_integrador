@@ -24,6 +24,20 @@ namespace Negocio
             conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Inmobiliaria; integrated security=true");
             comando = new SqlCommand();
 
+
+
+        }
+        public void setearconexion(SqlConnection conexion)
+        {
+            this.conexion = conexion;
+        }
+        public void abrir()
+        {
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Inmobiliaria; integrated security=true");
+            comando = new SqlCommand();
+            conexion.Open();
+
+
         }
 
         public void setearconsulta(string consulta)
@@ -62,6 +76,21 @@ namespace Negocio
             {
                 conexion.Open();
                 comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void ejecutaraccion2()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+                conexion.Close();
             }
             catch (Exception ex)
             {

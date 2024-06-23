@@ -27,11 +27,10 @@
             <div class="row g-3" style="margin-left: 25px; font-weight: bold;">
 
                 <label for="inputGroupSelect01" class="form-label">Tipo de Propiedad</label>
-                <asp:DropDownList runat="server" ID="selpropiedad" class="form-select" Style="border-color: aqua">
-                    <asp:ListItem Text="1" />
-                    <asp:ListItem Text="2" />
-                    <asp:ListItem Text="3" />
+                <asp:DropDownList runat="server" ID="selpropiedad" AppendDataBoundItems="true" class="form-select" Style="border-color: aqua">
+                    
                 </asp:DropDownList>
+
             </div>
             <br />
             <div class="row g-3">
@@ -78,17 +77,19 @@
         <div class="col-10 col-md-6">
 
 
-            <asp:UpdatePanel ID="Updatepanel1" runat="server" style=" margin-left: 50px;">
+              <asp:UpdatePanel ID="Updatepanel1" runat="server" style=" margin-left: 50px;">
                 <ContentTemplate>
                     <div class="row g-3" style="margin-left: 15px; font-weight: bold; height: 100px;border-radius: 20px;">
                         <label for="txtImagenurl" class="form-label"><strong>Url imagen</strong></label>
                         <asp:TextBox runat="server" type="text" ID="txtImagenurl" CssClass="from-control" Style="width: 80%; border-color: aqua;"
                             AutoPostBack="true" OnTextChanged="txtImagenurl_TextChanged" />
+                                    <asp:Button Text="Agregar imagenes" runat="server" type="submit" style="width:80%" class="btn btn-info" ID="Btn_addimg" onclick="Btn_addimg_Click" />
+
 
                     </div>
                     <center>
 
-                        <div style="font-weight: bold; margin-top: 20px;">
+                        <div style="font-weight: bold; margin-top: 20px;padding-top:100px">
                             <asp:Image ImageUrl="https://img.freepik.com/vector-premium/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg"
                                 runat="server" ID="imginmueble" Width="60%" />
                         </div>
@@ -111,9 +112,7 @@
             <asp:DropDownList runat="server" ID="tipoope" class="form-select" Style="width: 20px; border-color: aqua; font-weight: bold;">
                 <asp:ListItem Text="Alquiler" />
                 <asp:ListItem Text="Venta" />
-                <asp:ListItem Text="3" />
-                <asp:ListItem Text="4" />
-                <asp:ListItem Text="5" />
+
             </asp:DropDownList>
         </div>
     </div>
@@ -178,5 +177,4 @@
         </div>
     </div>
     <br />
-
 </asp:Content>

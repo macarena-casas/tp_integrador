@@ -23,7 +23,7 @@ namespace Negocio
                 {
                     Categoria aux = new Categoria();
                     aux.nombre_categoria = (string)datos.lector["Nombre"];
-                    aux.codigo_categoria = (int)datos.lector["Id"];
+                    aux.codigo_categoria = (short)datos.lector["Id"];
 
                     lista.Add(aux);
                 }

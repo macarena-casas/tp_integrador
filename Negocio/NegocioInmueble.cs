@@ -219,7 +219,7 @@ namespace Negocio
             }
         }
 
-
+        /*
         public void agregar(Inmueble nuevo)
         {
             Acceso_Datos datos = new Acceso_Datos();
@@ -263,6 +263,54 @@ namespace Negocio
                 datos.cerrarconexion();
             }
 
+        }
+        */
+        public void agregar(Inmueble nuevo, List<string> imagenUrls)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+
+            try
+            {
+
+                datos.setearconsulta("INSERT INTO Inmueble (Nombre, Descripcion, Id_categoria, Precio, Ambientes, Baños, Gas_Natural, Agua_Corriente, Cloacas, Luz, Cochera, Patio, Aire_Acondicionado, Calefacción, Pavimento, Nombreusuario, Codigo_Postal)VALUES (@Nombre, @Descripcion, @Id_categoria, @Precio, @Ambientes, @Baños, @GasNatural, @AguaCorriente, @Cloacas, @Luz, @Cochera, @Patio, @AireAcondicionado, @Calefaccion, @Pavimento, @Nombreusuario, @CodigoPostal)");
+
+                datos.setearparametro("@Descripcion", nuevo.descripcion_I);
+                datos.setearparametro("@Id_categoria", nuevo.categoria_I.codigo_categoria);
+                datos.setearparametro("@Nombre", nuevo.nombre_I);
+                datos.setearparametro("@Precio", nuevo.precio_I);
+                datos.setearparametro("@Ambientes", nuevo.ambientes);
+                datos.setearparametro("@Baños", nuevo.baños);
+                datos.setearparametro("@GasNatural", nuevo.gasnatural);
+                datos.setearparametro("@AguaCorriente", nuevo.aguacorriente);
+                datos.setearparametro("@Cloacas", nuevo.cloacas);
+                datos.setearparametro("@Luz", nuevo.luz);
+                datos.setearparametro("@Cochera", nuevo.cochera);
+                datos.setearparametro("@Patio", nuevo.patio);
+                datos.setearparametro("@AireAcondicionado", nuevo.aireacondicionado);
+                datos.setearparametro("@Calefaccion", nuevo.calefaccion);
+                datos.setearparametro("@Pavimento", nuevo.pavimento);
+                datos.setearparametro("@Nombreusuario", "admin");
+                datos.setearparametro("@CodigoPostal", "1617");
+
+                datos.ejecutaraccion();
+
+
+                datos.setearconsulta("select top 1 Id from Inmueble order by Id desc");
+                int id = Convert.ToInt32(datos.ejecutarScalar());
+
+                NegocioImagen imagen = new NegocioImagen();
+                imagen.Agregar(imagenUrls, id);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarconexion();
+
+            }
         }
 
 
@@ -394,10 +442,10 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("update Inmueble set Nombre= @Nombre, Descripcion = @Descripcion, Id_categoria = @IdCategoria, Precio= @Precio where Id=@Id ");
+                datos.setearconsulta("update Inmueble set Nombre= @Nombre, Descripcion = @Descripcion, Id_categoria = @IdCategoria, Precio= @Precio, Cloacas=@Cloaca, Ambientes=@Ambientes, Baños=@Baños, Calefacción = @Calefaccion, Pavimento=@Pavimento, Aire_Acondicionado=@AireAcondicionado, Agua_Corriente=@AguaCorriente, Gas_Natural=@GasNatural, Luz=@Luz, Cochera=@Cochera, Patio=@Patio where Id=@Id ");
                 datos.setearparametro("@Nombre", articulo.nombre_I);
                 datos.setearparametro("@Descripcion", articulo.descripcion_I);
-                datos.setearparametro("@IdCategoria", 6);
+                datos.setearparametro("@IdCategoria", articulo.categoria_I.codigo_categoria);
                 datos.setearparametro("@Precio", articulo.precio_I);
                 datos.setearparametro("@Id", articulo.Id_I);
                 datos.setearparametro("@Ambientes", articulo.ambientes);
@@ -411,7 +459,7 @@ namespace Negocio
                 datos.setearparametro("@AireAcondicionado", articulo.aireacondicionado);
                 datos.setearparametro("@Calefaccion", articulo.calefaccion);
                 datos.setearparametro("@Pavimento", articulo.pavimento);
-                datos.setearparametro("@Imagen", articulo.Imagenes[0].Nombre_imagen);
+                //datos.setearparametro("@Imagen", articulo.Imagenes[0].Nombre_imagen);
                 datos.ejecutaraccion();
 
             }

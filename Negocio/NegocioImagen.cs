@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Negocio
 {
@@ -121,7 +120,32 @@ namespace Negocio
 
             }
         }
-      
+        public void Agregar(List<string> imagenes, int productId)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+            try
+            {
+                foreach (var imagen in imagenes)
+                {
 
+                    datos.setearconsulta("INSERT INTO Imagen (ImagenUrl, Id_Inmueble) VALUES ('" + imagen + "','" + productId + "' )");
+                    //datos.setearparametro("@Id_inmueble", productId);
+                    //datos.setearparametro("@Url",imagen);
+                    datos.ejecutaraccion2();
+                    datos.cerrarconexion();
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+        }
     }
 }
