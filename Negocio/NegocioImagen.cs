@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Negocio
 {
@@ -120,5 +121,7 @@ namespace Negocio
 
             }
         }
+      
+
     }
 }
