@@ -38,10 +38,13 @@ namespace Negocio
                     else
                     {
                         inmueble.categoria_I.nombre_categoria = (string)inmunegocio.lector["Categoria"];
-                        // inmueble.categoria_I.codigo_categoria =(int)inmunegocio.lector["IdCategoria"];
+                        inmueble.categoria_I.codigo_categoria = (short)inmunegocio.lector["IdCategoria"];
                     }
-                    //auxi.Direccion = (string)inmunegocio.lector["Direccion"]; solicitar en base
-                    // auxi.Localidad = (string)inmunegocio.lector["Localidad"];
+                    inmueble.ubicacion.Direccion = (string)inmunegocio.lector["Domicilio"];
+                    inmueble.ubicacion.Codigo_Postal = (int)inmunegocio.lector["Codigo_Postal"];
+                    inmueble.ubicacion.Localidad = (string)inmunegocio.lector["Localidad"];
+                    inmueble.ubicacion.Partido = (string)inmunegocio.lector["Partido"];
+                    inmueble.tipo_operacion = (string)inmunegocio.lector["TipoOperacion"];
                     inmueble.precio_I = (decimal)inmunegocio.lector["Precio"];
                     inmueble.precio_I = Math.Round(inmueble.precio_I, 2);
                     inmueble.ambientes = (int)inmunegocio.lector["Ambientes"];
@@ -70,18 +73,16 @@ namespace Negocio
             {
                 throw ex;
             }
-
         }
+
         public List<Inmueble> Listacompleta()
         {
-            return uploadInmuebleList("select I.Id As Id,I.Nombreusuario, I.Nombre As Nombre ,I.Pausa, I.Estado, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio,I.Ambientes,  I.Baños, I.Gas_Natural,I.Agua_Corriente,I.Cloacas,I.Luz,I.Cochera,I.Patio, I.Aire_Acondicionado,I.Calefacción, I.Pavimento FROM  Inmueble I left join Categoria C on C.Id= I.Id_categoria");
-
+            return uploadInmuebleList("select I.Id As Id,I.Nombreusuario,I.Domicilio,I.TipoOperacion, I.Nombre As Nombre ,I.Pausa, I.Estado,l.Nombre As Localidad,l.Partido, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio,I.Ambientes,  I.Baños, I.Gas_Natural,I.Agua_Corriente,I.Cloacas,I.Luz,I.Cochera,I.Patio, I.Aire_Acondicionado,I.Calefacción, I.Pavimento, I.Codigo_Postal FROM  Inmueble I left join Categoria C on C.Id= I.Id_categoria left join Localidad l on l.CP=I.Codigo_Postal where I.Activa=1");
         }
+
         public bool verificarusuario(string usuari, int id)
         {
-
             Acceso_Datos inmunegocio = new Acceso_Datos();
-
             try
             {
                 inmunegocio.setearconsulta("select I.Id As Id, I.Pausa, I.Estado, I.Nombreusuario FROM  Inmueble I  where I.Nombreusuario = @Nombre and I.Id = @Id");
@@ -93,18 +94,13 @@ namespace Negocio
                 {
                     return true;
                 }
-
                 return false;
-
-
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
-
         public List<Inmueble> Listapropia(string usuari)
         {
 
@@ -113,8 +109,7 @@ namespace Negocio
             NegocioImagen inegocio = new NegocioImagen();
             try
             {
-
-                inmunegocio.setearconsulta("select I.Id As Id,I.Nombreusuario, I.Pausa, I.Estado, I.Nombre As Nombre, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio, I.Ambientes, I.Baños, I.Gas_Natural, I.Agua_Corriente, I.Cloacas, I.Luz, I.Cochera, I.Patio, I.Aire_Acondicionado, I.Calefacción, I.Pavimento FROM  Inmueble I  left join Categoria C on C.Id = I.Id_categoria where I.Nombreusuario = @Nombre");
+                inmunegocio.setearconsulta("select I.Id As Id,I.Nombreusuario,I.Activa,I.Domicilio,I.Codigo_Postal, I.Pausa, I.Estado, I.Nombre As Nombre, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio, I.Ambientes, I.Baños, I.Gas_Natural, I.Agua_Corriente, I.Cloacas, I.Luz, I.Cochera, I.Patio, I.Aire_Acondicionado, I.Calefacción, I.Pavimento FROM  Inmueble I  left join Categoria C on C.Id = I.Id_categoria where I.Nombreusuario=@Nombre and I.Activa=1 ");
                 inmunegocio.setearparametro("@Nombre", usuari);
                 inmunegocio.ejecutarlectura();
 
@@ -137,10 +132,10 @@ namespace Negocio
                     else
                     {
                         inmueble.categoria_I.nombre_categoria = (string)inmunegocio.lector["Categoria"];
-                        // inmueble.categoria_I.codigo_categoria =(int)inmunegocio.lector["IdCategoria"];
+                        inmueble.categoria_I.codigo_categoria = (short)inmunegocio.lector["IdCategoria"];
                     }
-                    //auxi.Direccion = (string)inmunegocio.lector["Direccion"]; solicitar en base
-                    // auxi.Localidad = (string)inmunegocio.lector["Localidad"];
+                    inmueble.ubicacion.Codigo_Postal = (int)inmunegocio.lector["Codigo_Postal"];
+                    inmueble.ubicacion.Direccion = (string)inmunegocio.lector["Domicilio"];
                     inmueble.precio_I = (decimal)inmunegocio.lector["Precio"];
                     inmueble.precio_I = Math.Round(inmueble.precio_I, 2);
                     inmueble.ambientes = (int)inmunegocio.lector["Ambientes"];
@@ -170,18 +165,15 @@ namespace Negocio
                 throw ex;
             }
 
-
         }
 
         public List<Inmueble> listar()
         {
             List<Inmueble> lista = new List<Inmueble>();
             Acceso_Datos datos = new Acceso_Datos();
-
             try
             {
-
-                datos.setearconsulta("select I.Nombre,I.Nombreusuario, I.Precio, I.Id ,I.Pausa, I.Estado, I.Descripcion, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble AS I left join Categoria C ON I.Id_categoria = C.Id ");
+                datos.setearconsulta("select I.Nombre,I.Nombreusuario, I.Precio, I.Id ,I.Pausa, I.Estado, I.Descripcion, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble AS I left join Categoria C ON I.Id_categoria = C.Id where I.Activa=1 ");
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
                 {
@@ -199,18 +191,13 @@ namespace Negocio
                         aux.categoria_I = new Categoria();
                         aux.categoria_I.nombre_categoria = (string)datos.lector["Categoria"];
                         aux.categoria_I.codigo_categoria = (int)datos.lector["IdCategoria"];
-
                     }
-
                     lista.Add(aux);
-
                 }
-
                 return lista;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -223,18 +210,20 @@ namespace Negocio
         public void agregar(Inmueble nuevo, List<string> imagenUrls)
         {
             Acceso_Datos datos = new Acceso_Datos();
-
             try
             {
+                datos.setearconsulta("INSERT INTO Inmueble (NombreUsuario.Nombre, Descripcion,Domicilio, Id_categoria, Codigo_Postal, Precio, Ambientes, Baños, Gas_Natural, Agua_Corriente, Cloacas, Luz, Cochera, Patio, Aire_Acondicionado, Calefacción, Pavimento,Tipo_Operacion)VALUES (@Nombreusuario, @Nombre, @Descripcion, @Id_categoria,@CodigoPostal, @Precio, @Ambientes, @Baños, @GasNatural, @AguaCorriente, @Cloacas, @Luz, @Cochera, @Patio, @AireAcondicionado, @Calefaccion, @Pavimento, @TipoOperacion)");
 
-                datos.setearconsulta("INSERT INTO Inmueble (Nombre, Descripcion, Id_categoria, Precio, Ambientes, Baños, Gas_Natural, Agua_Corriente, Cloacas, Luz, Cochera, Patio, Aire_Acondicionado, Calefacción, Pavimento, Nombreusuario, Codigo_Postal)VALUES (@Nombre, @Descripcion, @Id_categoria, @Precio, @Ambientes, @Baños, @GasNatural, @AguaCorriente, @Cloacas, @Luz, @Cochera, @Patio, @AireAcondicionado, @Calefaccion, @Pavimento, @Nombreusuario, @CodigoPostal)");
-
-                datos.setearparametro("@Descripcion", nuevo.descripcion_I);
-                datos.setearparametro("@Id_categoria", nuevo.categoria_I.codigo_categoria);
+                datos.setearparametro("@Nombreusuario", nuevo.NombreUsuario);
                 datos.setearparametro("@Nombre", nuevo.nombre_I);
+                datos.setearparametro("@Descripcion", nuevo.descripcion_I);
+                datos.setearparametro("@Domicilio", nuevo.ubicacion.Direccion);
+                datos.setearparametro("@Id_categoria", nuevo.categoria_I.codigo_categoria);
+                datos.setearparametro("@CodigoPostal", nuevo.ubicacion.Codigo_Postal);
                 datos.setearparametro("@Precio", nuevo.precio_I);
                 datos.setearparametro("@Ambientes", nuevo.ambientes);
                 datos.setearparametro("@Baños", nuevo.baños);
+                datos.setearparametro("@TipoOperacion", nuevo.tipo_operacion);
                 datos.setearparametro("@GasNatural", nuevo.gasnatural);
                 datos.setearparametro("@AguaCorriente", nuevo.aguacorriente);
                 datos.setearparametro("@Cloacas", nuevo.cloacas);
@@ -244,12 +233,8 @@ namespace Negocio
                 datos.setearparametro("@AireAcondicionado", nuevo.aireacondicionado);
                 datos.setearparametro("@Calefaccion", nuevo.calefaccion);
                 datos.setearparametro("@Pavimento", nuevo.pavimento);
-                datos.setearparametro("@Nombreusuario", "admin");
-                datos.setearparametro("@CodigoPostal", "1617");
 
                 datos.ejecutaraccion();
-
-
                 datos.setearconsulta("select top 1 Id from Inmueble order by Id desc");
                 int id = Convert.ToInt32(datos.ejecutarScalar());
 
@@ -303,7 +288,7 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("select  I.Id , I.Nombreusuario, I.Nombre, I.Precio,I.Pausa, I.Estado, I.Descripcion Detalle, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Id=@Id  and C.Id = I.Id_categoria ");
+                datos.setearconsulta("select  I.Id , I.Nombreusuario, I.Nombre, I.Precio,I.Pausa, I.Estado, I.Descripcion Detalle, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Id=@Id  and C.Id = I.Id_categoria and Activa=1");
                 datos.setearparametro("@Id", id);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
@@ -343,7 +328,7 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("select I.Id , I.Nombreusuario, I.Nombre,I.Pausa, I.Estado, I.Precio, I.Descripcion Detalle, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Nombre = @nombre and C.Id = I.Id_categoria");
+                datos.setearconsulta("select I.Id , I.Nombreusuario, I.Nombre,I.Pausa, I.Estado, I.Precio, I.Descripcion Detalle, C.Nombre Categoria, I.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Nombre = @nombre and C.Id = I.Id_categoria and Activa=1");
                 datos.setearparametro("@nombre", nom);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
@@ -384,7 +369,7 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("select I.Id, I.Nombre, I.Nombreusuario, I.Pausa, I.Estado, I.Precio, I.Descripcion, C.Nombre Categoria, i.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Id_categoria = @Id and C.Id = @Id");
+                datos.setearconsulta("select I.Id, I.Nombre, I.Nombreusuario, I.Pausa, I.Estado, I.Precio, I.Descripcion, C.Nombre Categoria, i.Id_categoria IdCategoria from Inmueble I, Categoria C where I.Id_categoria = @Id and C.Id = @Id and Activa=1");
                 datos.setearparametro("@Id", id.codigo_categoria);
                 datos.ejecutarlectura();
                 while (datos.lector.Read())
@@ -422,10 +407,9 @@ namespace Negocio
         public void modificar(Inmueble articulo)
         {
             Acceso_Datos datos = new Acceso_Datos();
-
             try
             {
-                datos.setearconsulta("update Inmueble set Nombre= @Nombre, Descripcion = @Descripcion, Id_categoria = @IdCategoria, Precio= @Precio, Cloacas=@Cloaca, Ambientes=@Ambientes, Baños=@Baños, Calefacción = @Calefaccion, Pavimento=@Pavimento, Aire_Acondicionado=@AireAcondicionado, Agua_Corriente=@AguaCorriente, Gas_Natural=@GasNatural, Luz=@Luz, Cochera=@Cochera, Patio=@Patio where Id=@Id ");
+                datos.setearconsulta("update Inmueble set Nombre= @Nombre,Domicilio=@Domicilio,TipoOperacion=@TipoOperacion, Descripcion = @Descripcion, Id_categoria = @IdCategoria, Precio= @Precio, Cloacas=@Cloaca, Ambientes=@Ambientes, Baños=@Baños, Calefacción = @Calefaccion, Pavimento=@Pavimento, Aire_Acondicionado=@AireAcondicionado, Agua_Corriente=@AguaCorriente, Gas_Natural=@GasNatural, Luz=@Luz, Cochera=@Cochera, Patio=@Patio where Id=@Id ");
                 datos.setearparametro("@Nombre", articulo.nombre_I);
                 datos.setearparametro("@Descripcion", articulo.descripcion_I);
                 datos.setearparametro("@IdCategoria", articulo.categoria_I.codigo_categoria);
@@ -442,13 +426,13 @@ namespace Negocio
                 datos.setearparametro("@AireAcondicionado", articulo.aireacondicionado);
                 datos.setearparametro("@Calefaccion", articulo.calefaccion);
                 datos.setearparametro("@Pavimento", articulo.pavimento);
-                //datos.setearparametro("@Imagen", articulo.Imagenes[0].Nombre_imagen);
-                datos.ejecutaraccion();
+                datos.setearparametro("@Domicilio", articulo.ubicacion.Direccion);
+                datos.setearparametro("@TipoOperacion", articulo.tipo_operacion);
 
+                datos.ejecutaraccion();
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -459,7 +443,7 @@ namespace Negocio
 
             try
             {
-                datos.setearconsulta("update Inmueble set  Pausa= @pausa where Id=@Id");
+                datos.setearconsulta("update Inmueble set  Pausa= @pausa where Id=@Id and Activa=1");
 
                 datos.setearparametro("@Pausa", pausa);
                 datos.setearparametro("@Id", id);
@@ -493,6 +477,86 @@ namespace Negocio
             }
 
 
+        }
+        public void AdminElimina_Activa(int Id, bool activa = false)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+            try
+            {
+                datos.setearconsulta("update Inmueble set Activa= @Activa where Id=@Id");
+                datos.setearparametro("@Activa", activa);
+                datos.setearparametro("@Id", Id);
+
+                datos.ejecutaraccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Inmueble> Listaautorizar()
+        {
+
+            List<Inmueble> inm = new List<Inmueble>();
+            Acceso_Datos inmunegocio = new Acceso_Datos();
+            NegocioImagen inegocio = new NegocioImagen();
+            try
+            {
+                inmunegocio.setearconsulta("select I.Id As Id,I.Nombreusuario, I.Pausa, I.Estado, I.Nombre As Nombre, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio, I.Ambientes, I.Baños, I.Gas_Natural, I.Agua_Corriente, I.Cloacas, I.Luz, I.Cochera, I.Patio, I.Aire_Acondicionado, I.Calefacción, I.Pavimento, I.Domicilio,I.Codigo_Postal FROM  Inmueble I  left join Categoria C on C.Id = I.Id_categoria where I.Activa=0");
+                inmunegocio.ejecutarlectura();
+
+                while (inmunegocio.lector.Read())
+                {
+                    Inmueble inmueble = new Inmueble();
+                    Ubicacion auxi = new Ubicacion();
+                    Imagen aux = new Imagen();
+
+                    inmueble.NombreUsuario = (string)inmunegocio.lector["Nombreusuario"];
+                    inmueble.Imagenes = new List<Imagen>();
+                    inmueble.Id_I = (int)inmunegocio.lector["Id"];
+                    inmueble.Pausa = (bool)inmunegocio.lector["Pausa"];
+                    inmueble.nombre_I = (string)inmunegocio.lector["Nombre"];
+                    inmueble.descripcion_I = (string)inmunegocio.lector["Descripcion"];
+                    if (inmunegocio.lector.IsDBNull(inmunegocio.lector.GetOrdinal("Categoria")))
+                    {
+                        inmueble.categoria_I.nombre_categoria = " ";
+                    }
+                    else
+                    {
+                        inmueble.categoria_I.nombre_categoria = (string)inmunegocio.lector["Categoria"];
+                        inmueble.categoria_I.codigo_categoria = (short)inmunegocio.lector["IdCategoria"];
+                    }
+                    inmueble.ubicacion.Codigo_Postal = (int)inmunegocio.lector["Codigo_Postal"];
+                    inmueble.ubicacion.Direccion = (string)inmunegocio.lector["Domicilio"];
+                    inmueble.precio_I = (decimal)inmunegocio.lector["Precio"];
+                    inmueble.precio_I = Math.Round(inmueble.precio_I, 2);
+                    inmueble.ambientes = (int)inmunegocio.lector["Ambientes"];
+                    inmueble.baños = (int)inmunegocio.lector["Baños"];
+                    inmueble.gasnatural = (bool)inmunegocio.lector["Gas_Natural"];
+                    inmueble.aguacorriente = (bool)inmunegocio.lector["Agua_Corriente"];
+                    inmueble.cloacas = (bool)inmunegocio.lector["Cloacas"];
+                    inmueble.luz = (bool)inmunegocio.lector["Luz"];
+                    inmueble.cochera = (bool)inmunegocio.lector["Cochera"];
+                    inmueble.patio = (bool)inmunegocio.lector["Patio"];
+                    inmueble.aireacondicionado = (bool)inmunegocio.lector["Aire_Acondicionado"];
+                    inmueble.calefaccion = (bool)inmunegocio.lector["Calefacción"];
+                    inmueble.pavimento = (bool)inmunegocio.lector["Pavimento"];
+
+                    inmueble.Imagenes = inegocio.ListarItems(inmueble.Id_I);
+                    if (inmueble.Imagenes.Count() == 0)
+                    {
+                        aux.Nombre_imagen = "sinimagen";
+                        inmueble.Imagenes.Add(aux);
+                    }
+                    inm.Add(inmueble);
+                }
+                return inm;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -108,7 +108,7 @@ namespace Negocio
                 if (datos.lector.Read())
                 {
                     usuario.id_u = (int)datos.lector["Id"];
-                    
+
 
 
                     return true;

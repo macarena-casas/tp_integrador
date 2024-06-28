@@ -12,6 +12,7 @@ namespace tp_integrador
     public partial class Mensajeria : System.Web.UI.Page
     {
         public List<Email> listaemail { get; set; }
+        public Usuario usuario { get; set; }
         public Email email { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -19,7 +20,7 @@ namespace tp_integrador
             Session["ReturnUrl"] = Request.Url.ToString();
             if (Session["usuario"] != null)
             {
-
+                usuario = (Usuario)Session["usuario"];
                 Usuario usu = (Usuario)Session["usuario"];
                 Email email = new Email();
                 NegocioEmail negoE = new NegocioEmail();
@@ -28,28 +29,21 @@ namespace tp_integrador
                     listaemail = negoE.listartodos(usu.nombre_u);
                     Session["Emails"] = listaemail;
                 }
+
                 listaemail = (List<Email>)Session["Emails"];
+
                 if (listaemail.Count == 0)
                 {
-
                     Session["Emails"] = null;
                     Response.Redirect("BandejaVacia.aspx");
                 }
-
-
             }
             else
             {
                 Session["Emails"] = null;
                 Session.Add("error", "Debes Iniciar Sesión para Ingresar");
                 Response.Redirect("Login.aspx");
-
-
             }
-
-
-
-
         }
 
         protected void btnResponder_Click(object sender, EventArgs e)
@@ -121,6 +115,22 @@ namespace tp_integrador
             {
                 Response.Redirect("BandejaVacia.aspx");
 
+            }
+            else
+            {
+                Session["Emails"] = listaemail;
+            }
+        }
+
+        protected void btnnoleidos_Click(object sender, EventArgs e)
+        {
+            Usuario usu = (Usuario)Session["usuario"];
+            Email email = new Email();
+            NegocioEmail negoE = new NegocioEmail();
+            listaemail = negoE.listarnoLeidos(usu.nombre_u);
+            if (listaemail.Count == 0)
+            {
+                Response.Redirect("BandejaVacia.aspx");
             }
             else
             {

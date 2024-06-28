@@ -7,6 +7,7 @@ using System.ComponentModel;
 
 namespace Dominio
 {
+
     public class Inmueble
     {
         [DisplayName("Nombre")]
@@ -27,8 +28,13 @@ namespace Dominio
         public int ID() { return Id_I; }
         public List<Imagen> Imagenes { get; set; }
         public Ubicacion ubicacion { get; set; }
+        public string tipo_operacion { get; set; }
+
+
         public bool Pausa { get; set; }
         public bool Estado { get; set; }
+        public bool Activa { get; set; }
+
 
 
         public int ambientes { get; set; }
@@ -52,6 +58,7 @@ namespace Dominio
             categoria_I = new Categoria();
             Imagenes = new List<Imagen>();
             ubicacion = new Ubicacion();
+            tipo_operacion = "nada";
             ambientes = 0;
             baños = 0;
             gasnatural = false;
@@ -64,14 +71,16 @@ namespace Dominio
             pavimento = false;
             Pausa = false;
             Estado = false;
+            Activa = false;
             NombreUsuario = "nada";
         }
-        public Inmueble(string nom, string desc, string nomusu, Ubicacion ubi, Categoria cat, decimal pre, int am, int ba, bool g, bool ag, bool cl, bool l, bool pa, bool ai, bool cale, bool pavi, bool est, bool pau)
+        public Inmueble(string nom, string desc, string nomusu, string tipo, Ubicacion ubi, Categoria cat, decimal pre, int am, int ba, bool g, bool ag, bool cl, bool l, bool pa, bool ai, bool cale, bool pavi, bool est, bool pau)
         {
             ubicacion = new Ubicacion();
             categoria_I = new Categoria();
             nombre_I = nom;
             NombreUsuario = nomusu;
+            tipo_operacion = tipo;
             descripcion_I = desc;
             categoria_I = cat;
             ubicacion = ubi;
@@ -87,8 +96,9 @@ namespace Dominio
             aireacondicionado = ai;
             calefaccion = cale;
             pavimento = pavi;
-            Pausa = pau;
-            Estado = est;
+            Pausa = false;
+            Estado = true;
+            Activa = false;
         }
 
     }

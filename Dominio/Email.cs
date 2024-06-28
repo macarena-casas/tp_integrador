@@ -21,6 +21,8 @@ namespace Dominio
         public string mensaje { get; set; }
         [DisplayName("Estado")]
         public bool Estado { get; set; }
+        [DisplayName("Visto")]
+        public bool Visto { get; set; }
         public DateTime Fecha { get; set; }
 
 
@@ -30,7 +32,7 @@ namespace Dominio
 
         }
 
-        public Email(int id, string des, string rem, string asu, string mens, bool es)
+        public Email(int id, string des, string rem, string asu, string mens, bool es, bool vis)
         {
             Id = id;
             destino = des;
@@ -38,6 +40,7 @@ namespace Dominio
             asunto = asu;
             mensaje = mens;
             Estado = es;
+            Visto = vis;
         }
 
     }

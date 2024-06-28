@@ -17,13 +17,13 @@ namespace tp_integrador
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
-            NegocioUsuario usario=new NegocioUsuario();
+            NegocioUsuario usario = new NegocioUsuario();
             if (Session["usuario"] == null)
             {
                 Session.Add("error", "Debes Iniciar Sesión para Ingresar");
                 Response.Redirect("Login.aspx");
             }
-           
+
             favoritoactual = (Favorito)Session["inmueble"];
             if (favoritoactual.TotalProductos == 0)
             {
@@ -63,7 +63,7 @@ namespace tp_integrador
                 throw ex;
             }
         }
-        
+
         private void EliminardeFavorito(int id, bool todo)
         {
             for (int i = 0; i < favoritoactual.listainmueble.Count(); i++)
@@ -72,7 +72,7 @@ namespace tp_integrador
                 {
                     if (todo == true)
                     {
-                        favoritoactual.TotalProductos = favoritoactual.TotalProductos -1;
+                        favoritoactual.TotalProductos = favoritoactual.TotalProductos - 1;
 
                         favoritoactual.listainmueble.RemoveAt(i);
                         Session["inmueble"] = favoritoactual;
@@ -119,9 +119,5 @@ namespace tp_integrador
             repetirinmuebles.DataBind();
         }
 
-        protected void FinalizarCompra_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

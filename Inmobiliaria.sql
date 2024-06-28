@@ -33,9 +33,10 @@ Id int identity (1,1) not null,
 Nombreusuario varchar (50) not null foreign key references Usuario (Nombre),
 Nombre varchar (50) not null,
 Descripcion varchar (500) null,
+Domicilio varchar (50)not null,
 Id_categoria smallint not null foreign key references Categoria,
 Codigo_Postal int not null foreign key references Localidad (CP),
-Precio money null,
+Precio money not null,
 Ambientes int not null,
 Baños int not null,
 Gas_Natural bit,
@@ -49,6 +50,9 @@ Calefacción bit,
 Pavimento bit,
 Pausa bit,
 Estado bit,
+Activa bit,
+TipoOperacion varchar(20) not null,
+
 primary key (Id)
 )
 go
@@ -96,10 +100,10 @@ insert into Usuario values ('admin', 'admin',1),
 go
 
 
-insert into Inmueble values ('admin','casa azul','amplia y luminosa',1,1617,50000,3,2,1,1,0,1,0,1,1,1,0,1,1),
- ('normal','casa madera','rustica y acogedora',3,1618,20000,2,1,1,1,1,1,0,0,0,1,0,1,1),
- ('normal','casa moderna','amplia y hogareña',4,1611,80000,3,3,1,0,1,0,1,0,0,1,1,1,1),
- ('normal','duplex a estrenar','excelente oportunidad negocio',5,1645,200000,2,1,1,1,1,0,0,0,1,1,1,1,1)
+insert into Inmueble values ('admin','casa azul','amplia y luminosa','las palmas 123',1,1617,50000,3,2,1,1,0,1,0,1,1,1,0,1,1,0,'venta'),
+ ('normal','casa madera','rustica y acogedora','calle falsa 321',3,1618,20000,2,1,1,1,1,1,0,0,0,1,0,1,1,0,'alquiler'),
+ ('normal','casa moderna','amplia y hogareña','hudson 457',4,1611,80000,3,3,1,0,1,0,1,0,0,1,1,1,1,0,'venta'),
+ ('normal','duplex a estrenar','excelente oportunidad negocio','medio del bosque 1',5,1645,200000,2,1,1,1,1,0,0,0,1,1,1,1,1,0,'venta')
 
 
 
@@ -121,7 +125,7 @@ primary key (Id)
 )
 go
 
-use Inmobiliaria
+
 CREATE TABLE PagosInmobiliaria (
     Id int identity(1,1) not null primary key,
     Id_Inmueble int not null,
@@ -130,31 +134,29 @@ CREATE TABLE PagosInmobiliaria (
     Fecha datetime not null,
     foreign key (Id_Inmueble) references Inmueble(Id),
     foreign key (Id_Usuario) references Usuario(Id)
-);
+)
 
 drop table PagosInmobiliaria
 
 CREATE TABLE FormaDePago (
     IDFormaDePago INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(100) NOT NULL
-);
+)
 */
 
 
-select * from FormaDePago
-
-
+/*
 
   CREATE or alter PROCEDURE DescontarSaldoPorFormaPago
     @Id_Usuario int,
     @Id_Inmueble int,
-    @FormaPago varchar(100);
+    @FormaPago varchar(100)
 AS
 BEGIN
     SET NOCOUNT ON;
 
     DECLARE @MontoDescuento money;
-    DECLARE @Fecha datetime = GETDATE();
+    DECLARE @Fecha datetime = GETDATE()
 
     -- Determinar el monto a descontar según la forma de pago
     IF @FormaPago = 'Hierro'
@@ -198,7 +200,7 @@ BEGIN
         IF @Saldo_Usuario < @MontoDescuento
         BEGIN
             -- Si no tiene suficiente saldo, lanzar un error y hacer rollback
-            THROW 50002, 'Error: Saldo insuficiente para realizar el descuento.', 1;
+            THROW 50002, 'Error: Saldo insuficiente para realizar el descuento.', 1
         END
 
         -- Actualizar el saldo del usuario (restar el monto correspondiente)
@@ -213,7 +215,7 @@ BEGIN
         -- Confirmar la transacción
         COMMIT TRANSACTION;
 
-        PRINT 'Descuento realizado exitosamente y pago registrado en PagosInmobiliaria.';
+        PRINT 'Descuento realizado exitosamente y pago registrado en PagosInmobiliaria.'
     END TRY
     BEGIN CATCH
         -- Revertir la transacción en caso de error
@@ -230,7 +232,7 @@ BEGIN
         RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH;
 END;
-
+*/
 
 exec DescontarSaldoPorFormaPago 1,3,5
 

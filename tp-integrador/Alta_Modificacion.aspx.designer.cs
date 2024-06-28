@@ -78,22 +78,31 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.TextBox txtdireccion;
 
         /// <summary>
-        /// Control txtCp.
+        /// Control Updatepanel2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCp;
+        protected global::System.Web.UI.UpdatePanel Updatepanel2;
 
         /// <summary>
-        /// Control txtlocalidad.
+        /// Control codigo_postal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtlocalidad;
+        protected global::System.Web.UI.WebControls.DropDownList codigo_postal;
+
+        /// <summary>
+        /// Control localidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList localidad;
 
         /// <summary>
         /// Control Updatepanel1.

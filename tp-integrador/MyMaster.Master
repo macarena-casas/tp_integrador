@@ -1,4 +1,4 @@
-﻿ <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyMaster.Master.cs" Inherits="tp_integrador.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyMaster.Master.cs" Inherits="tp_integrador.Site1" %>
 
 
 <!DOCTYPE html>
@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body style="overflow-x: hidden; overflow-y: unset;">
-<% if (HttpContext.Current.Request.Url.AbsolutePath.EndsWith("Default.aspx"))
-{%>
+    <% if (HttpContext.Current.Request.Url.AbsolutePath.EndsWith("Default.aspx"))
+        {%>
 
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -38,7 +38,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-  <%} %>
+    <%} %>
     <form id="form1" runat="server">
         <div>
             <nav class="navbar " style="background-color: navy" data-bs-theme="info">
@@ -51,6 +51,12 @@
                     <asp:Label Text="" ID="altaymodificar" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Alta_Modificacion</span>
                 </a>
+                <%if (Session["usuario"] != null && usuario.nombre_u == "admin")
+                    { %>
+                <a href="ConfirmarPublicaciones.aspx" class="nav-link" style="align-items: flex-end;">
+                    <i class="bi bi-person-plus"></i>
+                </a>
+                <%} %>
                 <%if (Session["usuario"] == null)
                     { %>
                 <a href="Login.aspx" class="nav-link" style="align-items: flex-end;">
@@ -70,7 +76,7 @@
                     <asp:Label Text="" ID="favoritos" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute  translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Inmuebles en Favoritos</span>
                 </a>
-                  <a href="Mensajeria.aspx" class="nav-link" style="align-items: flex-end;">
+                <a href="Mensajeria.aspx" class="nav-link" style="align-items: flex-end;">
                     <p style="text-align: right; font-size: 160%; color: white; margin-left: 5px; margin-right: 20px;"><i class="bi bi-envelope  "></i></p>
                     <asp:Label Text="" ID="mensajeria" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute  translate-middle" Style="top: 15px; margin-left: -20px;" />
                     <span class="visually-hidden">Mis mensajes</span>

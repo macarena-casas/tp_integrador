@@ -13,6 +13,7 @@ namespace tp_integrador
     {
         public List<Inmueble> listafiltrada { get; set; }
         public Favorito lista { get; set; }
+        public Usuario usuario { get; set; }
         public string TotalProductosCarro { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,6 +29,7 @@ namespace tp_integrador
 
             }
             favoritos.Text = lista.TotalProductos.ToString();
+            usuario = (Usuario)Session["usuario"];
         }
 
         protected void Buscar(string text)
