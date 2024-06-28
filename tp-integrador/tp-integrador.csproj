@@ -106,6 +106,7 @@
     <Content Include="ConfirmarPublicaciones.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Detalles.aspx" />
+    <Content Include="DetalleyConfirmar.aspx" />
     <Content Include="EliminarPausar.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Favoritos.aspx" />
@@ -155,6 +156,13 @@
     </Compile>
     <Compile Include="Detalles.aspx.designer.cs">
       <DependentUpon>Detalles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleyConfirmar.aspx.cs">
+      <DependentUpon>DetalleyConfirmar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleyConfirmar.aspx.designer.cs">
+      <DependentUpon>DetalleyConfirmar.aspx</DependentUpon>
     </Compile>
     <Compile Include="EliminarPausar.aspx.cs">
       <DependentUpon>EliminarPausar.aspx</DependentUpon>

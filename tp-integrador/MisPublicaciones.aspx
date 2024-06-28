@@ -4,13 +4,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1 style="font-weight: bold; color: darkblue; text-align: center; margin-top: 30px; font-size: 60px;"><u>Mis</u> <u>Publicaciones:</u></h1>
+   <h1 style="font-weight: bold; color: darkblue; text-align: center; margin-top: 30px; font-size: 60px;"><u>Mis</u> <u>Publicaciones:</u></h1>
 
     <div class="row" style="margin-top: 100px; margin-left: 25px; margin-right: 25px; margin-bottom: 40px;">
         <% foreach (Dominio.Inmueble inmueble in listaPropia)
             { %>
+
         <div class="col-12 col-md-6 col-lg-4 mb-2">
-            <div class="card border-primary" style="border-color: blue; height: 550px; width: 350px">
+            <div class="card border-primary"
+                <%if (inmueble.Pausa == false)
+                {%>style="border-color: blue; height: 550px; width: 350px; "
+                <%} %>
+                <%if (inmueble.Pausa == true)
+                {%>style="border-color: blue; height: 550px; width: 350px; opacity: 0.5;"
+                <%} %>>
                 <div id="carouselExampleDark_<%: inmueble.Id_I %>" class="carousel carousel-dark slide">
                     <div class="carousel-indicators">
                         <% for (int i = 0; i < inmueble.Imagenes.Count(); i++)
@@ -28,7 +35,7 @@
                             for (int i = 0; i < inmueble.Imagenes.Count(); i++)
                             {
                                 if (first)
-                                {
+                                {               
                                     first = false; %>
                         <div class="carousel-item active">
 
@@ -66,14 +73,14 @@
                             } %>
                     </div>
 
-                     <button class="carousel-control-prev" id="ant" type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-                            <span class="visually-hidden">Prev</span>
-                     </button> 
-                     <button class="carousel-control-next" id="sig" type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                     </button> 
+                    <button class="carousel-control-prev" id="ant" type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                        <span class="visually-hidden">Prev</span>
+                    </button>
+                    <button class="carousel-control-next" id="sig" type="button" data-bs-target="#carouselExampleDark_<%: inmueble.Id_I %>" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
 
                 </div>
 
@@ -97,8 +104,5 @@
         <%
             } %>
     </div>
-
-
-
 
 </asp:Content>

@@ -121,12 +121,14 @@ remitente varchar (50) not null foreign key references Usuario (Nombre),
 Asunto varchar (100) not null,
 Mensaje varchar (500) not null,
 Estado bit, 
+Visto bit,
+FechaHora datetime not null,
 primary key (Id)
 )
 go
 
 
-CREATE TABLE PagosInmobiliaria (
+create TABLE PagosInmobiliaria (
     Id int identity(1,1) not null primary key,
     Id_Inmueble int not null,
     Id_Usuario int not null,

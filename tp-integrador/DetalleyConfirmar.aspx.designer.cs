@@ -11,35 +11,8 @@ namespace tp_integrador
 {
 
 
-    public partial class Detalles
+    public partial class DetalleyConfirmar
     {
-
-        /// <summary>
-        /// Control lblDireccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDireccion;
-
-        /// <summary>
-        /// Control btnagregarfavorito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnagregarfavorito;
-
-        /// <summary>
-        /// Control btnContacto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnContacto;
 
         /// <summary>
         /// Control lblnombre.
@@ -51,22 +24,13 @@ namespace tp_integrador
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblnombre;
 
         /// <summary>
-        /// Control lblprecio.
+        /// Control lblDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblprecio;
-
-        /// <summary>
-        /// Control lblcategoriaytipo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblcategoriaytipo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDescripcion;
 
         /// <summary>
         /// Control lblambientes.
@@ -87,31 +51,40 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.Label lblbaños;
 
         /// <summary>
-        /// Control lblDescripcion.
+        /// Control lblcategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDescripcion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblcategoria;
 
         /// <summary>
-        /// Control Checkaire.
+        /// Control lblprecio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Checkaire;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblprecio;
 
         /// <summary>
-        /// Control Checkpatio.
+        /// Control checkagua.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Checkpatio;
+        protected global::System.Web.UI.WebControls.CheckBox checkagua;
+
+        /// <summary>
+        /// Control checkgas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox checkgas;
 
         /// <summary>
         /// Control Checkluz.
@@ -132,13 +105,13 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.CheckBox Checkcochera;
 
         /// <summary>
-        /// Control Checkcloaca.
+        /// Control Checkpatio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Checkcloaca;
+        protected global::System.Web.UI.WebControls.CheckBox Checkpatio;
 
         /// <summary>
         /// Control Checkpavimento.
@@ -150,13 +123,13 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.CheckBox Checkpavimento;
 
         /// <summary>
-        /// Control checkgas.
+        /// Control Checkcloaca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkgas;
+        protected global::System.Web.UI.WebControls.CheckBox Checkcloaca;
 
         /// <summary>
         /// Control Checkcalefaccion.
@@ -168,12 +141,30 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.CheckBox Checkcalefaccion;
 
         /// <summary>
-        /// Control checkagua.
+        /// Control Checkaire.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkagua;
+        protected global::System.Web.UI.WebControls.CheckBox Checkaire;
+
+        /// <summary>
+        /// Control btnagregarfavorito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnagregarfavorito;
+
+        /// <summary>
+        /// Control cerrarbtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cerrarbtn;
     }
 }

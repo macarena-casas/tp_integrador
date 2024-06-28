@@ -15,11 +15,8 @@ namespace tp_integrador
         public List<Inmueble> listaPropia { get; set; }
         public List<Usuario> usuario { get; set; }
 
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (Session["usuario"] == null)
             {
                 Usuario usuario = new Usuario();
@@ -43,7 +40,6 @@ namespace tp_integrador
                 }
                 else
                 {
-
                     listaPropia = (List<Inmueble>)Session["listaPropia"];
                 }
             }
@@ -54,8 +50,6 @@ namespace tp_integrador
             {
                 foreach (Imagen image in art.Imagenes)
                 {
-
-
                     try
                     {
                         if (image.Nombre_imagen != "sinimagen")
@@ -64,26 +58,18 @@ namespace tp_integrador
                             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                             if (response.StatusCode != HttpStatusCode.OK)
                             {
-
                                 image.Nombre_imagen = "fallacarga";
                             }
                         }
                     }
                     catch (WebException)
                     {
-
                         image.Nombre_imagen = "fallacarga";
-
                     }
-
                 }
-
             }
-
             return aux;
         }
-
-
 
     }
 }

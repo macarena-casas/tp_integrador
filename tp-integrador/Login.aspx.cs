@@ -23,7 +23,7 @@ namespace tp_integrador
 
         protected void cerrarbtn_Click(object sender, EventArgs e)
         {
-           
+
 
             Response.Redirect("~/Default.aspx");
         }
@@ -44,8 +44,9 @@ namespace tp_integrador
                     string previousUrl = Session["ReturnUrl"] as string;
                     if (previousUrl != null)
                     {
-                        Response.Redirect(previousUrl);
 
+
+                        Response.Redirect(previousUrl);
 
                     }
 

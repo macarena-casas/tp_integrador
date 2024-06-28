@@ -9,9 +9,9 @@ using Negocio;
 
 namespace tp_integrador
 {
-    public partial class Detalles : System.Web.UI.Page
+    public partial class DetalleyConfirmar : System.Web.UI.Page
     {
-        public List<Inmueble> listainmueble { get; set; }
+        public List<Inmueble> listaautorizar { get; set; }
         public Inmueble inmueble { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -21,9 +21,9 @@ namespace tp_integrador
 
             Session["ReturnUrl"] = Request.Url.ToString();
 
-            listainmueble = (List<Inmueble>)Session["listainmueble"];
+            listaautorizar = (List<Inmueble>)Session["listaautorizar"];
             int Id_I = Request.QueryString["Id"] != null && int.TryParse(Request.QueryString["Id"], out int id) ? id : -1;
-            inmueble = listainmueble.FirstOrDefault(i => i.Id_I == Id_I);
+            inmueble = listaautorizar.FirstOrDefault(i => i.Id_I == Id_I);
             try
             {
 
@@ -31,11 +31,10 @@ namespace tp_integrador
                 {
                     lblnombre.InnerText = inmueble.nombre_I;
                     lblDescripcion.InnerText = inmueble.descripcion_I;
-                    lblDireccion.InnerText = "Ubicación: " + inmueble.ubicacion.Direccion + "," + inmueble.ubicacion.Localidad + "(" + inmueble.ubicacion.Codigo_Postal.ToString() + "), " + inmueble.ubicacion.Partido;
                     lblprecio.InnerText = "$" + inmueble.precio_I.ToString();
-                    lblcategoriaytipo.InnerText = inmueble.categoria_I.nombre_categoria + " en: " + inmueble.tipo_operacion;
-                    lblambientes.Text = "Ambientes: " + inmueble.ambientes.ToString();
-                    lblbaños.Text = "Baños: " + inmueble.baños.ToString();
+                    lblcategoria.InnerText = inmueble.categoria_I.nombre_categoria;
+                    lblambientes.Text = inmueble.ambientes.ToString();
+                    lblbaños.Text = inmueble.baños.ToString();
 
                     checkagua.Enabled = false;
                     Checkluz.Enabled = false;
@@ -74,61 +73,30 @@ namespace tp_integrador
                 throw ex;
             }
         }
-        protected void btnagregarfavorito_Click(object sender, EventArgs e)
+     
+
+
+        protected void btnagregarfavorito_Click1(object sender, EventArgs e)
         {
+
             if (Session["usuario"] != null)
             {
+                NegocioInmueble iManager = new NegocioInmueble();
+                iManager.AdminElimina_Activa(inmueble.Id_I, true);
+                Response.Redirect("~/ConfirmarPublicaciones.aspx");
 
-                Favorito favoritoactual;
-                favoritoactual = (Favorito)Session["inmueble"];
-                NegocioFavorito fNegocio = new NegocioFavorito();
-
-                try
-                {
-
-                    favoritoactual = fNegocio.AguegarAFavorito(inmueble, favoritoactual, 1);
-                    Session["inmueble"] = favoritoactual;
-                    Response.Redirect("~/Detalles.aspx?id=" + inmueble.Id_I);
-
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
             }
-            else
-            {
-                Session.Add("error", "Debes Iniciar Sesión.");
-                Response.Redirect("Login.aspx");
-            }
+
         }
 
-        protected void btnContacto_Click(object sender, EventArgs e)
+        protected void btnContacto_Click1(object sender, EventArgs e)
         {
-            if (Session["usuario"] != null)
-            {
 
+        }
 
+        protected void cerrarbtn_Click(object sender, EventArgs e)
+        {
 
-                try
-                {
-
-
-                    Response.Redirect("~/Contacto.aspx?id=" + inmueble.Id_I);
-
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
-            }
-            else
-            {
-                Session.Add("error", "Debes Iniciar Sesión.");
-                Response.Redirect("Login.aspx");
-            }
         }
     }
 }
