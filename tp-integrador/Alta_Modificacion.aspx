@@ -159,6 +159,7 @@
 
 
         <div class="row g-3">
+
             <div class="col-md-10" style="margin-left: 25px; font-weight: bold;">
                 <label for="inputCity" class="form-label">Descripción:</label>
                 <asp:TextBox runat="server" type="text" class="form-control" ID="txtdescripcion" Style="border-color: aqua;" />
@@ -170,7 +171,44 @@
     </div>
     <div>
         <br />
-        <div class="col-12" style="margin-left: 25px; color: black;">
+
+
+
+
+        <div class="col-12" style="margin-left: 25px;">
+    <div class="card border-info" style="width: 90%;">
+        <div class="form-check" style="text-align: center;">
+            <label for="inputState" class="form-label"><strong>Opcion de pago:</strong></label>
+            <div>
+      <div class="form-check form-check-inline">
+    <asp:RadioButton Text="Hierro" runat="server" GroupName="Pago" ID="checkHierro" Style="font-weight: bold; color: black;" AutoPostBack="true"  />
+</div>
+<div class="form-check form-check-inline">
+    <asp:RadioButton Text="Plata" runat="server" GroupName="Pago" ID="checkPlata" Style="font-weight: bold; color: black;" AutoPostBack="true" />
+</div>
+<div class="form-check form-check-inline">
+    <asp:RadioButton Text="Oro" runat="server" GroupName="Pago" ID="checkOro" Style="font-weight: bold; color: black;" AutoPostBack="true" />
+</div>
+<div class="form-check form-check-inline">
+    <asp:RadioButton Text="Diamante" runat="server" GroupName="Pago" ID="ceckDiamante" Style="font-weight: bold; color: black;" AutoPostBack="true" />
+</div>
+<div class="form-check form-check-inline">
+    <asp:RadioButton Text="Platino" runat="server" GroupName="Pago" ID="checkPlatino" Style="font-weight: bold; color: black;" AutoPostBack="true"  />
+</div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        <div  style="margin-left: 25px; color: black; padding-top:30px">
+            <center>
+        <asp:Button Text="Nuesrtos planes de publicacion" runat="server" type="submit" class="btn btn-info" ID="btnInfo" onclick="btnInfo_Click"/>
+
+            </center>
+        </div>
+
+
+        <div class="col-12" style="margin-left: 25px; color: black; padding-top:30px">
             <asp:Button Text="Agregar" runat="server" type="submit" class="btn btn-info" ID="btnAgregar" OnClick="btnAgregar_Click" />
             <asp:Button Text="Modificar" runat="server" type="submit" class="btn btn-info" ID="btnModificar" OnClick="btnModificar_Click" />
 

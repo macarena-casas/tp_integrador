@@ -44,7 +44,11 @@
                                 <div style="margin-top: 6%; font-size: 20px; margin-left: 7%;">
                                 </div>
                                 <asp:LinkButton ID="btnEliminarFavorito" runat="server" OnClick="btnEliminarFavorito_Click" CommandArgument='<%# Eval("inmueble.Id_I") %>' UseSubmitBehavior="false" OnClientClick="return confirm('Esta seguro que desea eliminar el inmueble de la lista?');">
-                            <i class="bi bi-trash-fill text-danger"></i>
+                                <i class="bi bi-trash-fill text-danger"></i>
+                                </asp:LinkButton>
+                                <div> <p>---------</p> </div>
+                                <asp:LinkButton ID="FinalizarCompra"  runat="server" OnClick="FinalizarCompra_Click" CommandArgument='<%# Eval("inmueble.Id_I") %>' UseSubmitBehavior="false" >
+                                <i class=" text-dark text-decoration-none  "> </i> <strong>Comprar</strong></i>
                                 </asp:LinkButton>
                             </td>
                         </tr>
@@ -54,8 +58,6 @@
         </table>
     </div>
     <center>
-        <asp:LinkButton ID="FinalizarCompra" runat="server" CommandArgument='<%# Eval("inmueble.codigo_I") %>' UseSubmitBehavior="false">
-         <a class="btn btn-outline-info text-dark text-decoration-none" href="FinalizarCompra.aspx"><strong><strong>Comprar</strong></strong></a>
-        </asp:LinkButton>
+      
     </center>
 </asp:Content>

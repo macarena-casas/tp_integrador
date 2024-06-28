@@ -118,6 +118,10 @@ namespace tp_integrador
             repetirinmuebles.DataSource = favoritoactual.listainmueble;
             repetirinmuebles.DataBind();
         }
-        
+
+        protected void FinalizarCompra_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

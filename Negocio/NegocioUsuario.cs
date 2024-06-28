@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -107,7 +108,7 @@ namespace Negocio
                 if (datos.lector.Read())
                 {
                     usuario.id_u = (int)datos.lector["Id"];
-
+                    
 
 
                     return true;
@@ -123,6 +124,34 @@ namespace Negocio
                 throw ex;
 
 
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+        }
+
+        public void Pagar(int id_comprador, int id_inmueble, string formaPago)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+            try
+            {
+                datos.abrir();
+                datos.setearconsulta("DescontarSaldoPorFormaPago");
+                datos.comando.CommandType = CommandType.StoredProcedure;
+
+                datos.setearparametro("@Id_Usuario", id_comprador);
+                datos.setearparametro("@Id_Inmueble", id_inmueble);
+                datos.setearparametro("@FormaPago", formaPago);
+
+                datos.ejecutaraccion2();
+
+                Console.WriteLine("Pago exitoso y registrado en PagosInmobiliaria");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al ejecutar el pago: " + ex.Message);
+                throw ex;
             }
             finally
             {

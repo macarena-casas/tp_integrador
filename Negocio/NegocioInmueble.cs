@@ -219,52 +219,7 @@ namespace Negocio
             }
         }
 
-        /*
-        public void agregar(Inmueble nuevo)
-        {
-            Acceso_Datos datos = new Acceso_Datos();
-            try
-            {
-                datos.setearconsulta("insert into Inmueble values (@Nombre,@Descripcion, @categoria , @Precio)");
-
-                datos.setearparametro("@Nombre", nuevo.nombre_I);
-                datos.setearparametro("@Descripcion", nuevo.descripcion_I);
-                datos.setearparametro("@Precio", nuevo.precio_I);
-                datos.setearparametro("@categoria", nuevo.categoria_I.codigo_categoria);
-                datos.setearparametro("@Ambientes", nuevo.ambientes);
-                datos.setearparametro("@Baños", nuevo.baños);
-                datos.setearparametro("@GasNatural", nuevo.gasnatural);
-                datos.setearparametro("@AguaCorriente", nuevo.aguacorriente);
-                datos.setearparametro("@Cloacas", nuevo.cloacas);
-                datos.setearparametro("@Luz", nuevo.luz);
-                datos.setearparametro("@Cochera", nuevo.cochera);
-                datos.setearparametro("@Patio", nuevo.patio);
-                datos.setearparametro("@AireAcondicionado", nuevo.aireacondicionado);
-                datos.setearparametro("@Calefaccion", nuevo.calefaccion);
-                datos.setearparametro("@Pavimento", nuevo.pavimento);
-
-                datos.ejecutaraccion();
-
-                datos.setearconsulta("select top 1 * from Inmueble order by Id desc");
-                int id = Convert.ToInt32(datos.ejecutarScalar());
-
-                datos.setearconsulta("insert into Imagen(IdInmueble, ImagenUrl) values(@Id,@url)");
-                datos.setearparametro("@Id", id);
-                datos.setearparametro("@url", nuevo.urlimagen);
-                datos.ejecutaraccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-
-            }
-            finally
-            {
-                datos.cerrarconexion();
-            }
-
-        }
-        */
+        
         public void agregar(Inmueble nuevo, List<string> imagenUrls)
         {
             Acceso_Datos datos = new Acceso_Datos();
@@ -312,6 +267,34 @@ namespace Negocio
 
             }
         }
+
+        public int ObtenerUltimoId()
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+            try
+            {
+                datos.setearconsulta("SELECT TOP 1 Id FROM Inmueble ORDER BY Id DESC");
+                datos.ejecutarlectura();
+
+                if (datos.lector.Read())
+                {
+                    return (int)datos.lector["Id"];
+                }
+                else
+                {
+                    throw new Exception("No se pudo obtener el ID del último inmueble.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+        }
+
 
 
         public List<Inmueble> listarid(int id)

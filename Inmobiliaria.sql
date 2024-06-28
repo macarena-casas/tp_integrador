@@ -1,4 +1,4 @@
-use master
+use Inmobiliaria
 go
 create database Inmobiliaria
 go
@@ -25,6 +25,8 @@ Contraseña varchar (15) not null,
 IDTipo bit not null,
 primary key (Id)
 )
+ALTER TABLE Usuario
+ADD Saldo money NULL;
 go
 create table Inmueble(
 Id int identity (1,1) not null,
@@ -119,5 +121,119 @@ primary key (Id)
 )
 go
 
+use Inmobiliaria
+CREATE TABLE PagosInmobiliaria (
+    Id int identity(1,1) not null primary key,
+    Id_Inmueble int not null,
+    Id_Usuario int not null,
+    pago varchar(100) not null,
+    Fecha datetime not null,
+    foreign key (Id_Inmueble) references Inmueble(Id),
+    foreign key (Id_Usuario) references Usuario(Id)
+);
+
+drop table PagosInmobiliaria
+
+CREATE TABLE FormaDePago (
+    IDFormaDePago INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL
+);
 */
-select * from Inmueble
+
+
+select * from FormaDePago
+
+
+
+  CREATE or alter PROCEDURE DescontarSaldoPorFormaPago
+    @Id_Usuario int,
+    @Id_Inmueble int,
+    @FormaPago varchar(100);
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MontoDescuento money;
+    DECLARE @Fecha datetime = GETDATE();
+
+    -- Determinar el monto a descontar según la forma de pago
+    IF @FormaPago = 'Hierro'
+    BEGIN
+        SET @MontoDescuento = 500;
+    END
+    ELSE IF @FormaPago = 'Plata'
+    BEGIN
+        SET @MontoDescuento = 750;
+    END
+    ELSE IF @FormaPago = 'Oro'
+    BEGIN
+        SET @MontoDescuento = 1000;
+    END
+	 ELSE IF @FormaPago = 'Diamante'
+    BEGIN
+        SET @MontoDescuento = 1500;
+    END
+	 ELSE IF @FormaPago = 'Platino'
+    BEGIN
+        SET @MontoDescuento = 2500;
+    END
+    ELSE
+    BEGIN
+        -- Si la forma de pago no es válida, lanzar un error
+        THROW 50001, 'Error: Forma de pago no válida.', 1;
+    END
+
+    BEGIN TRY
+        -- Iniciar la transacción
+        BEGIN TRANSACTION;
+
+        -- Verificar que el usuario tiene suficiente saldo
+        DECLARE @Saldo_Usuario money;
+
+        SELECT @Saldo_Usuario = Saldo
+        FROM Usuario
+        WHERE Id = @Id_Usuario;
+
+        -- Verificar si el usuario tiene suficiente saldo para descontar
+        IF @Saldo_Usuario < @MontoDescuento
+        BEGIN
+            -- Si no tiene suficiente saldo, lanzar un error y hacer rollback
+            THROW 50002, 'Error: Saldo insuficiente para realizar el descuento.', 1;
+        END
+
+        -- Actualizar el saldo del usuario (restar el monto correspondiente)
+        UPDATE Usuario
+        SET Saldo = Saldo - @MontoDescuento
+        WHERE Id = @Id_Usuario;
+
+        -- Insertar el registro de pago en PagosInmobiliaria
+        INSERT INTO PagosInmobiliaria (Id_Inmueble, Id_Usuario, pagoID, Fecha)
+        VALUES (@Id_Inmueble, @Id_Usuario, @FormaPago, @Fecha);
+
+        -- Confirmar la transacción
+        COMMIT TRANSACTION;
+
+        PRINT 'Descuento realizado exitosamente y pago registrado en PagosInmobiliaria.';
+    END TRY
+    BEGIN CATCH
+        -- Revertir la transacción en caso de error
+        IF @@TRANCOUNT > 0
+        BEGIN
+            ROLLBACK TRANSACTION;
+        END
+
+        -- Capturar y mostrar el mensaje de error
+        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+        DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+        DECLARE @ErrorState INT = ERROR_STATE();
+
+        RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    END CATCH;
+END;
+
+
+exec DescontarSaldoPorFormaPago 1,3,5
+
+select * from Usuario
+select * from PagosInmobiliaria
+

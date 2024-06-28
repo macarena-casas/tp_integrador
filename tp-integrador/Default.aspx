@@ -95,7 +95,7 @@
                         <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="Detalles">+</a>
                         <%if (Session["usuario"] != null && verificarusuario(inmueble.Id_I) == true)
                             { %>
-                        <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="modif">Modificar</a>
+                        <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="modif">Modificar</a>
                         <%} %>
                         <a href="<%: ResolveUrl("~/Contacto.aspx?id=" + inmueble.NombreUsuario) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise; font-weight: bold;"><i class="bi bi-phone-vibrate "></i></a>
 

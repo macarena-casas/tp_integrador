@@ -116,6 +116,37 @@ namespace tp_integrador
             listainmueble = iManager.Listacompleta();
             listainmueble = validarurl(listainmueble);
             Session["listainmueble"] = listainmueble;
+             
+            Acceso_Datos datos = new Acceso_Datos();
+
+            
+
+            string metodoPago = "";
+    if (checkHierro.Checked)
+    {
+        metodoPago = "Hierro";
+    }
+    else if (checkPlata.Checked)
+    {
+        metodoPago = "Plata";
+    }
+    else if (checkOro.Checked)
+    {
+        metodoPago = "Oro";
+    }
+    else if (ceckDiamante.Checked)
+    {
+        metodoPago = "Diamante";
+    }
+    else if (checkPlatino.Checked)
+    {
+        metodoPago = "Platino";
+    }
+
+    NegocioUsuario usuario  = new NegocioUsuario();
+            usuario.Pagar(1, 2, metodoPago);
+
+
             Response.Redirect("~/Default.aspx");
 
 
@@ -126,7 +157,9 @@ namespace tp_integrador
 
         }
 
-        protected void txtImagenurl_TextChanged(object sender, EventArgs e)
+
+    
+            protected void txtImagenurl_TextChanged(object sender, EventArgs e)
         {
 
 
@@ -227,6 +260,11 @@ namespace tp_integrador
             }
 
             return aux;
+        }
+
+        protected void btnInfo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pagos.aspx");
         }
     }
 }

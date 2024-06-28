@@ -11,7 +11,7 @@ namespace Negocio
     public class Acceso_Datos
     {
         private SqlConnection conexion;
-        private SqlCommand comando;
+        public SqlCommand comando;
         private SqlDataReader Lector;
 
         public SqlDataReader lector
@@ -88,7 +88,7 @@ namespace Negocio
             comando.Connection = conexion;
             try
             {
-                conexion.Open();
+               // conexion.Open();
                 comando.ExecuteNonQuery();
                 conexion.Close();
             }
