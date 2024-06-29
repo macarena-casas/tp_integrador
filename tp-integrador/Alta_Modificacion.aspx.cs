@@ -104,13 +104,14 @@ namespace tp_integrador
 
             Inmueble inmueble = new Inmueble();
             NegocioInmueble INegocio = new NegocioInmueble();
+            Usuario usu = (Usuario)Session["usuario"];
 
             inmueble.nombre_I = txtnombre.Text;
             inmueble.ubicacion.Direccion = txtdireccion.Text;
             inmueble.precio_I = decimal.Parse(txtprecio.Text);
             inmueble.baños = int.Parse(baños.SelectedValue);
             inmueble.ambientes = int.Parse(ambientes.SelectedValue);
-            inmueble.ubicacion.Codigo_Postal = int.Parse(codigo_postal.SelectedValue);
+            inmueble.ubicacion.Codigo_Postal = 1617;
 
             if (checkagua.Checked == true) { inmueble.aguacorriente = true; }
             if (Checkluz.Checked == true) { inmueble.luz = true; }
@@ -121,10 +122,10 @@ namespace tp_integrador
             if (Checkpavimento.Checked == true) { inmueble.pavimento = true; }
             if (Checkcloaca.Checked == true) { inmueble.cloacas = true; }
             if (Checkcalefaccion.Checked == true) { inmueble.calefaccion = true; }
-           //  inmueble.tipooperacion = tipoope.SelectedValue ;
+            inmueble.tipo_operacion = tipoope.SelectedValue ;
             inmueble.categoria_I.codigo_categoria = int.Parse(selpropiedad.SelectedValue);
             inmueble.descripcion_I = txtdescripcion.Text;
-
+            inmueble.NombreUsuario = usu.nombre_u;
 
 
             // nuevo agregar acumulado
@@ -139,17 +140,10 @@ namespace tp_integrador
             Acceso_Datos datos = new Acceso_Datos();
             int id_inmueble = INegocio.ObtenerUltimoId();
 
-            int idUsuario = 0;
-            if (Session["IdUsuario"] is int userId)
-            {
-                idUsuario = userId;
-            }
-            else
-            {
-                
-                Response.Redirect("~/Login.aspx"); 
-                return; 
-            }
+
+           int idUsuario = usu.id_u;
+              
+           
 
             string metodoPago = "";
             if (checkHierro.Checked)

@@ -13,6 +13,8 @@ namespace tp_integrador
     public partial class CofirmarPublicaciones : System.Web.UI.Page
     {
         public List<Inmueble> listaautorizar { get; set; }
+        public List<Inmueble> listainmueble { get; set; }
+
         public List<Usuario> usuario { get; set; }
 
 
@@ -37,6 +39,9 @@ namespace tp_integrador
                         listaautorizar = iManager.Listaautorizar();
                         listaautorizar = validarurl(listaautorizar);
                         Session["listaautorizar"] = listaautorizar;
+                        listainmueble = iManager.Listacompleta();
+                        listainmueble = validarurl(listainmueble);
+                        Session["listainmueble"] = listainmueble;
                         if (listaautorizar.Count() == 0)
                         {
                             Response.Redirect("SinPublicaciones.aspx");

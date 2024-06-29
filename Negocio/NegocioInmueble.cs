@@ -238,9 +238,9 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("INSERT INTO Inmueble (NombreUsuario.Nombre, Descripcion,Domicilio, Id_categoria, Codigo_Postal, Precio, Ambientes, Baños, Gas_Natural, Agua_Corriente, Cloacas, Luz, Cochera, Patio, Aire_Acondicionado, Calefacción, Pavimento,TipoOperacion)VALUES ('admin', @Nombre, @Descripcion, @Id_categoria,@CodigoPostal, @Precio, @Ambientes, @Baños, @GasNatural, @AguaCorriente, @Cloacas, @Luz, @Cochera, @Patio, @AireAcondicionado, @Calefaccion, @Pavimento, @TipoOperacion)");
+                datos.setearconsulta("INSERT INTO Inmueble (Nombreusuario,Nombre, Descripcion,Domicilio, Id_categoria, Codigo_Postal, Precio, Ambientes, Baños, Gas_Natural, Agua_Corriente, Cloacas, Luz, Cochera, Patio, Aire_Acondicionado, Calefacción, Pavimento,TipoOperacion,Pausa,Estado,Activa)VALUES (@Nombreusuario, @Nombre, @Descripcion,@Domicilio, @Id_categoria,@CodigoPostal, @Precio, @Ambientes, @Baños, @GasNatural, @AguaCorriente, @Cloacas, @Luz, @Cochera, @Patio, @AireAcondicionado, @Calefaccion, @Pavimento, @TipoOperacion,@Pausa,@Estado,@Activa)");
 
-               //datos.setearparametro("@Nombreusuario","admin");
+                datos.setearparametro("@Nombreusuario",nuevo.NombreUsuario);
                 datos.setearparametro("@Nombre", nuevo.nombre_I);
                 datos.setearparametro("@Descripcion", nuevo.descripcion_I);
                 datos.setearparametro("@Domicilio", nuevo.ubicacion.Direccion);
@@ -249,7 +249,7 @@ namespace Negocio
                 datos.setearparametro("@Precio", nuevo.precio_I);
                 datos.setearparametro("@Ambientes", nuevo.ambientes);
                 datos.setearparametro("@Baños", nuevo.baños);
-                datos.setearparametro("@TipoOperacion","Venta");
+                datos.setearparametro("@TipoOperacion",nuevo.tipo_operacion);
                 datos.setearparametro("@GasNatural", nuevo.gasnatural);
                 datos.setearparametro("@AguaCorriente", nuevo.aguacorriente);
                 datos.setearparametro("@Cloacas", nuevo.cloacas);
@@ -259,6 +259,9 @@ namespace Negocio
                 datos.setearparametro("@AireAcondicionado", nuevo.aireacondicionado);
                 datos.setearparametro("@Calefaccion", nuevo.calefaccion);
                 datos.setearparametro("@Pavimento", nuevo.pavimento);
+                datos.setearparametro("@Estado", 1);
+                datos.setearparametro("@Pausa", 0);
+                datos.setearparametro("@Activa", 0);
 
                 datos.ejecutaraccion();
                 datos.setearconsulta("select top 1 Id from Inmueble order by Id desc");
