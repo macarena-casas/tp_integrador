@@ -88,7 +88,22 @@ namespace Negocio
             comando.Connection = conexion;
             try
             {
-               // conexion.Open();
+                conexion.Open();
+                comando.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void ejecutaraccion3()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                //conexion.Open();
                 comando.ExecuteNonQuery();
                 conexion.Close();
             }

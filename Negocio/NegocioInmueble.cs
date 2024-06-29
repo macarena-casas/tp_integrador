@@ -75,6 +75,32 @@ namespace Negocio
             }
         }
 
+
+        public int ObtenerUltimoIdInmueble()
+        {
+            Acceso_Datos datosAcceso = new Acceso_Datos();
+            int ultimoId = 0;
+            try
+            {
+                datosAcceso.setearconsulta("SELECT MAX(Id) AS UltimoId FROM Inmueble");
+                datosAcceso.ejecutarlectura();
+
+                if (datosAcceso.lector.Read())
+                {
+                    ultimoId = Convert.ToInt32(datosAcceso.lector["UltimoId"]);
+                }
+
+                return ultimoId;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datosAcceso.cerrarconexion();
+            }
+        }
         public List<Inmueble> Listacompleta()
         {
             return uploadInmuebleList("select I.Id As Id,I.Nombreusuario,I.Domicilio,I.TipoOperacion, I.Nombre As Nombre ,I.Pausa, I.Estado,l.Nombre As Localidad,l.Partido, I.Descripcion As Descripcion, C.Nombre As Categoria, C.Id As IdCategoria, I.Precio  As Precio,I.Ambientes,  I.Baños, I.Gas_Natural,I.Agua_Corriente,I.Cloacas,I.Luz,I.Cochera,I.Patio, I.Aire_Acondicionado,I.Calefacción, I.Pavimento, I.Codigo_Postal FROM  Inmueble I left join Categoria C on C.Id= I.Id_categoria left join Localidad l on l.CP=I.Codigo_Postal where I.Activa=1");
@@ -212,9 +238,9 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("INSERT INTO Inmueble (NombreUsuario.Nombre, Descripcion,Domicilio, Id_categoria, Codigo_Postal, Precio, Ambientes, Baños, Gas_Natural, Agua_Corriente, Cloacas, Luz, Cochera, Patio, Aire_Acondicionado, Calefacción, Pavimento,Tipo_Operacion)VALUES (@Nombreusuario, @Nombre, @Descripcion, @Id_categoria,@CodigoPostal, @Precio, @Ambientes, @Baños, @GasNatural, @AguaCorriente, @Cloacas, @Luz, @Cochera, @Patio, @AireAcondicionado, @Calefaccion, @Pavimento, @TipoOperacion)");
+                datos.setearconsulta("INSERT INTO Inmueble (NombreUsuario.Nombre, Descripcion,Domicilio, Id_categoria, Codigo_Postal, Precio, Ambientes, Baños, Gas_Natural, Agua_Corriente, Cloacas, Luz, Cochera, Patio, Aire_Acondicionado, Calefacción, Pavimento,TipoOperacion)VALUES ('admin', @Nombre, @Descripcion, @Id_categoria,@CodigoPostal, @Precio, @Ambientes, @Baños, @GasNatural, @AguaCorriente, @Cloacas, @Luz, @Cochera, @Patio, @AireAcondicionado, @Calefaccion, @Pavimento, @TipoOperacion)");
 
-                datos.setearparametro("@Nombreusuario", nuevo.NombreUsuario);
+               //datos.setearparametro("@Nombreusuario","admin");
                 datos.setearparametro("@Nombre", nuevo.nombre_I);
                 datos.setearparametro("@Descripcion", nuevo.descripcion_I);
                 datos.setearparametro("@Domicilio", nuevo.ubicacion.Direccion);
@@ -223,7 +249,7 @@ namespace Negocio
                 datos.setearparametro("@Precio", nuevo.precio_I);
                 datos.setearparametro("@Ambientes", nuevo.ambientes);
                 datos.setearparametro("@Baños", nuevo.baños);
-                datos.setearparametro("@TipoOperacion", nuevo.tipo_operacion);
+                datos.setearparametro("@TipoOperacion","Venta");
                 datos.setearparametro("@GasNatural", nuevo.gasnatural);
                 datos.setearparametro("@AguaCorriente", nuevo.aguacorriente);
                 datos.setearparametro("@Cloacas", nuevo.cloacas);
@@ -495,7 +521,10 @@ namespace Negocio
             }
         }
 
-        public List<Inmueble> Listaautorizar()
+
+       
+
+            public List<Inmueble> Listaautorizar()
         {
 
             List<Inmueble> inm = new List<Inmueble>();

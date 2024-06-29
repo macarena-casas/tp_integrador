@@ -104,6 +104,7 @@ namespace tp_integrador
 
             Inmueble inmueble = new Inmueble();
             NegocioInmueble INegocio = new NegocioInmueble();
+
             inmueble.nombre_I = txtnombre.Text;
             inmueble.ubicacion.Direccion = txtdireccion.Text;
             inmueble.precio_I = decimal.Parse(txtprecio.Text);
@@ -120,7 +121,7 @@ namespace tp_integrador
             if (Checkpavimento.Checked == true) { inmueble.pavimento = true; }
             if (Checkcloaca.Checked == true) { inmueble.cloacas = true; }
             if (Checkcalefaccion.Checked == true) { inmueble.calefaccion = true; }
-            //  inmueble.tipooperacion = tipoope.SelectedValue ;
+           //  inmueble.tipooperacion = tipoope.SelectedValue ;
             inmueble.categoria_I.codigo_categoria = int.Parse(selpropiedad.SelectedValue);
             inmueble.descripcion_I = txtdescripcion.Text;
 
@@ -136,8 +137,19 @@ namespace tp_integrador
             Session["listainmueble"] = listainmueble;
 
             Acceso_Datos datos = new Acceso_Datos();
+            int id_inmueble = INegocio.ObtenerUltimoId();
 
-
+            int idUsuario = 0;
+            if (Session["IdUsuario"] is int userId)
+            {
+                idUsuario = userId;
+            }
+            else
+            {
+                
+                Response.Redirect("~/Login.aspx"); 
+                return; 
+            }
 
             string metodoPago = "";
             if (checkHierro.Checked)
@@ -161,8 +173,12 @@ namespace tp_integrador
                 metodoPago = "Platino";
             }
 
+
+            
+            
+
             NegocioUsuario usuario = new NegocioUsuario();
-            usuario.Pagar(1, 2, metodoPago);
+            usuario.Pagar(idUsuario, id_inmueble, metodoPago);
 
 
             Response.Redirect("~/Default.aspx");
