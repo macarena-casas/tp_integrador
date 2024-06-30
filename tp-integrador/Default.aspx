@@ -88,10 +88,10 @@
 
 
                 <center>
-                    <div class="card-header text-center" style="font-size: 30px; color: darkblue; border-block-color: blue;"><strong><%: inmueble.nombre_I  %></strong></div>
+                    <div class="card-header text-center" style="font-size: 30px; color: darkblue; border-block-color: blue;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><strong><%: inmueble.nombre_I  %></strong></div>
                     <div class="card-body text-center" style="margin-bottom: 20px;">
-                        <h5 class="card-title" style="font-size: 20px; color: black;">$<%: inmueble.precio_I  %></h5>
-                        <p class="card-text" style="font-size: 20px; color: black;"><%:inmueble.categoria_I.nombre_categoria%></p>
+                        <h5 class="card-title" style="font-size: 20px; color: black;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">$<%: inmueble.precio_I  %></h5>
+                        <p class="card-text" style="font-size: 20px; color: black;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%:inmueble.categoria_I.nombre_categoria%></p>
                         <a href="<%: ResolveUrl("~/Detalles.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="Detalles">+</a>
                         <%if (Session["usuario"] != null && verificarusuario(inmueble.Id_I) == true)
                             { %>

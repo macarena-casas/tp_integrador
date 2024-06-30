@@ -438,7 +438,7 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("update Inmueble set Nombre= @Nombre,Domicilio=@Domicilio,TipoOperacion=@TipoOperacion, Descripcion = @Descripcion, Id_categoria = @IdCategoria, Precio= @Precio, Cloacas=@Cloaca, Ambientes=@Ambientes, Baños=@Baños, Calefacción = @Calefaccion, Pavimento=@Pavimento, Aire_Acondicionado=@AireAcondicionado, Agua_Corriente=@AguaCorriente, Gas_Natural=@GasNatural, Luz=@Luz, Cochera=@Cochera, Patio=@Patio where Id=@Id ");
+                datos.setearconsulta("update Inmueble set Nombre= @Nombre,Codigo_Postal=@CodigoPostal,Domicilio=@Domicilio,TipoOperacion=@TipoOperacion, Descripcion = @Descripcion, Id_categoria = @IdCategoria, Precio= @Precio, Cloacas=@Cloaca, Ambientes=@Ambientes, Baños=@Baños, Calefacción = @Calefaccion, Pavimento=@Pavimento, Aire_Acondicionado=@AireAcondicionado, Agua_Corriente=@AguaCorriente, Gas_Natural=@GasNatural, Luz=@Luz, Cochera=@Cochera, Patio=@Patio where Id=@Id ");
                 datos.setearparametro("@Nombre", articulo.nombre_I);
                 datos.setearparametro("@Descripcion", articulo.descripcion_I);
                 datos.setearparametro("@IdCategoria", articulo.categoria_I.codigo_categoria);
@@ -457,6 +457,7 @@ namespace Negocio
                 datos.setearparametro("@Pavimento", articulo.pavimento);
                 datos.setearparametro("@Domicilio", articulo.ubicacion.Direccion);
                 datos.setearparametro("@TipoOperacion", articulo.tipo_operacion);
+                datos.setearparametro("@Codigo_Postal", articulo.ubicacion.Codigo_Postal);
 
                 datos.ejecutaraccion();
             }

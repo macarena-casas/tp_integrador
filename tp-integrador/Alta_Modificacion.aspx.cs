@@ -14,6 +14,7 @@ namespace tp_integrador
     {
         public List<Inmueble> listainmueble { get; set; }
         public List<Categoria> listacategoria { get; set; }
+        public List<Inmueble> listaPropia { get; set; }
         public List<Ubicacion> listalocalidades { get; set; }
         public Inmueble inmueble { get; set; }
         public Categoria categoria { get; set; }
@@ -33,20 +34,24 @@ namespace tp_integrador
             listalocalidades = UNegocio.listar();
             if (!IsPostBack)
             {
+                listacategoria = CNegocio.listar();
+                listalocalidades = UNegocio.listar();
+
                 selpropiedad.DataSource = listacategoria;
                 selpropiedad.DataTextField = "nombre_categoria"; // Propiedad que representa el texto visible
                 selpropiedad.DataValueField = "codigo_categoria";   // Propiedad que representa el valor
                 selpropiedad.DataBind();
 
                 codigo_postal.DataSource = listalocalidades;
-                codigo_postal.DataTextField = "codigo_postal"; // Propiedad que representa el texto visible
-                codigo_postal.DataValueField = "Id";   // Propiedad que representa el valor
-                codigo_postal.DataBind();
+                codigo_postal.DataTextField = "codigo_postal";
 
-                /*localidad.DataSource = listalocalidades;
-                   localidad.DataTextField = "Localidad"; // Propiedad que representa el texto visible
-                   localidad.DataValueField = "Id";   // Propiedad que representa el valor
-                   localidad.DataBind();*/
+                codigo_postal.DataBind();
+                localidad.DataSource = listalocalidades;
+                localidad.DataTextField = "Localidad";
+
+                localidad.DataBind();
+                string local = UNegocio.listarcodigopostal(int.Parse(codigo_postal.SelectedValue));
+                localidad.SelectedValue = local.ToString();
             }
             try
             {
@@ -56,12 +61,15 @@ namespace tp_integrador
 
                     txtnombre.Text = inmueble.nombre_I;
                     txtdireccion.Text = inmueble.ubicacion.Direccion;
-                    txtprecio.Text = "$" + inmueble.precio_I.ToString();
+                    txtprecio.Text = inmueble.precio_I.ToString();
                     baños.SelectedValue = inmueble.baños.ToString();
                     ambientes.SelectedValue = inmueble.ambientes.ToString();
-                    selpropiedad.SelectedValue = inmueble.categoria_I.nombre_categoria.ToString();
+                    selpropiedad.SelectedValue = inmueble.categoria_I.codigo_categoria.ToString();
                     codigo_postal.SelectedValue = inmueble.ubicacion.Codigo_Postal.ToString();
-                    //localidad.SelectedIndex=int.Parse(codigo_postal.DataValueField);
+                    localidad.DataBind();
+                    string local = UNegocio.listarcodigopostal(int.Parse(codigo_postal.SelectedValue));
+                    localidad.SelectedValue = local.ToString();
+
 
                     if (inmueble.aguacorriente == true) { checkagua.Checked = true; }
                     if (inmueble.luz == true) { Checkluz.Checked = true; }
@@ -72,7 +80,7 @@ namespace tp_integrador
                     if (inmueble.pavimento == true) { Checkpavimento.Checked = true; }
                     if (inmueble.cloacas == true) { Checkcloaca.Checked = true; }
                     if (inmueble.calefaccion == true) { Checkcalefaccion.Checked = true; }
-                    //tipoope.SelectedValue = inmueble.tipooperacion.ToString();
+                    tipoope.SelectedValue = inmueble.tipo_operacion.ToString();
                     txtdescripcion.Text = inmueble.descripcion_I;
                     txtImagenurl.Text = inmueble.Imagenes[0].Nombre_imagen;
                     imginmueble.ImageUrl = txtImagenurl.Text;
@@ -198,6 +206,7 @@ namespace tp_integrador
             inmueble.ubicacion.Codigo_Postal = int.Parse(codigo_postal.SelectedValue);
             inmueble.baños = int.Parse(baños.SelectedValue);
             inmueble.ambientes = int.Parse(ambientes.SelectedValue);
+            inmueble.precio_I = decimal.Parse(txtprecio.Text);
             if (checkagua.Checked == true) { inmueble.aguacorriente = true; }
             else { inmueble.aguacorriente = false; }
             if (Checkluz.Checked == true) { inmueble.luz = true; }
@@ -216,8 +225,9 @@ namespace tp_integrador
             else { inmueble.cloacas = false; }
             if (Checkcalefaccion.Checked == true) { inmueble.calefaccion = true; }
             else { inmueble.calefaccion = false; }
-            inmueble.categoria_I.codigo_categoria = selpropiedad.SelectedIndex;
+            inmueble.categoria_I.codigo_categoria = int.Parse(selpropiedad.SelectedValue);
             inmueble.descripcion_I = txtdescripcion.Text;
+            inmueble.tipo_operacion = tipoope.SelectedValue;
 
 
             // nuevo agregar acumulado
@@ -225,16 +235,23 @@ namespace tp_integrador
 
             Session["ImagenUrls"] = null;
 
-
-            //  inmueble.tipooperacion = tipoope.SelectedValue ;
-            /* inmueble.direccion = txtdireccion.Text;
-             inmueble.cp = int.Parse(Cp.selectedvalue);
-             inmueble.localidad = txtlocalidad.Text;*/
             INegocio.modificar(inmueble);
-            Session["listainmueble"] = (List<Inmueble>)Session["listainmueble"];
+            NegocioInmueble iManager = new NegocioInmueble();
+            listainmueble = iManager.Listacompleta();
+            listainmueble = validarurl(listainmueble);
+            Session["listainmueble"] = listainmueble;
+            if (Session["listapropia"] != null)
+            {
+                Usuario usuario = (Usuario)Session["usuario"];
+                listaPropia = iManager.Listapropia(usuario.nombre_u);
+                listaPropia = validarurl(listaPropia);
+                Session["listaPropia"] = listaPropia;
+                Response.Redirect("~/MisPublicaciones.aspx");
+            }
             Response.Redirect("~/Default.aspx");
 
         }
+
 
         protected void Btn_addimg_Click(object sender, EventArgs e)
         {
@@ -288,18 +305,10 @@ namespace tp_integrador
         }
         protected void codigo_postal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*string local = UNegocio.listarcodigopostal(int.Parse(codigo_postal.SelectedValue));
-            localidad.DataSource = local.ToString();
-            localidad.DataBind();
-            */
-
-
+            string local = UNegocio.listarcodigopostal(int.Parse(codigo_postal.SelectedValue));
+            localidad.SelectedValue = local.ToString();
         }
 
-        protected void localidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         protected void btnInfo_Click(object sender, EventArgs e)
         {

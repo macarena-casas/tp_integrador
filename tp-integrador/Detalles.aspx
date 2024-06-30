@@ -96,12 +96,12 @@
                     <center>
                         <div id="Datosdelinmueble">
                             <div class="card-header text-center" style="font-size: 25px; text-align: center; color: midnightblue; border-block-color: blue;">
-                                <h2><strong id="lblnombre" runat="server" style="font-size: 25px; color: midnightblue; border-block-color: blue;"></strong></h2>
+                                <h2><strong id="lblnombre" runat="server" style="font-size: 25px; color: midnightblue; border-block-color: blue; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; "></strong></h2>
                                 <p><strong id="lblprecio" runat="server"></strong></p>
                             </div>
                             <div class="card-body text-center" style="margin-bottom: 20px; height: 220px;">
                                 <div class="card-title">
-                                    <p><strong id="lblcategoriaytipo" runat="server" style="font-size: 20px; color: darkblue;"></strong></p>
+                                    <p><strong id="lblcategoriaytipo" runat="server" style="font-size: 20px; color: darkblue;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></strong></p>
                                 </div>
                                 
                                     <div class="row g-12">

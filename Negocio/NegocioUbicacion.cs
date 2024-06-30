@@ -50,6 +50,7 @@ namespace Negocio
                 datos.setearconsulta("select Nombre from Localidad where CP=@CP");
                 datos.setearparametro("@CP", codigo);
                 datos.ejecutarlectura();
+                datos.lector.Read();
 
                 seleccionado = (string)datos.lector["Nombre"];
 
