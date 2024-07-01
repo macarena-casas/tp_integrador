@@ -27,6 +27,12 @@ namespace tp_integrador
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "Debes Iniciar Sesión para Ingresar");
+                Response.Redirect("Login.aspx");
+            }
+
             listainmueble = (List<Inmueble>)Session["listainmueble"];
             int Id_I = Request.QueryString["Id"] != null && int.TryParse(Request.QueryString["Id"], out int id) ? id : -1;
             inmueble = listainmueble.FirstOrDefault(i => i.Id_I == Id_I);
@@ -109,6 +115,10 @@ namespace tp_integrador
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
 
             Inmueble inmueble = new Inmueble();
             NegocioInmueble INegocio = new NegocioInmueble();

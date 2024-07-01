@@ -3,6 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+  <style>
+        .Validacion {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+
 
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
@@ -14,8 +21,10 @@
         <div class="col-md-6">
             <div class="row g-3" style="margin-left: 15px; font-weight: bold; height: 100px;">
                 <label for="inputnombre" class="form-label"><strong>Nombre </strong></label>
-                <asp:TextBox runat="server" type="text" class="form-control" Style="border-color: aqua" ID="txtnombre" placeholder="Ingrese nombre del inmueble" />
+                <asp:TextBox runat="server" type="text" class="form-control" Style="border-color: aqua" ID="txtnombre" placeholder="Ingrese nombre del inmueble" required="true"/>
+                <asp:RequiredFieldValidator CssClass="Validacion" ErrorMessage="Campo obligatorio" ControlToValidate="txtnombre" runat="server" />
             </div>
+            <br />
             <br />
             <div class="row g-3">
                 <div class="input-group mb-3" style="height: 50px; width: 200px; margin-left: 25px; margin-top: 15px;">
@@ -35,7 +44,7 @@
             <div class="row g-3">
                 <div class="input-group mb-3" style="height: 45px; width: 280px; border-color: aqua; margin-left: 25px; font-weight: bold;">
                     <label class="input-group-text" style="border-color: aqua; font-weight: bold;" for="inputGroupSelect01">Ambientes:</label>
-                    <asp:DropDownList runat="server" ID="ambientes" class="form-select" Style="width: 15px; border-color: aqua; font-weight: bold;">
+                    <asp:DropDownList runat="server" ID="ambientes" class="form-select" Style="width: 15px; border-color: aqua; font-weight: bold;" required="true">
                         <asp:ListItem Text="1" />
                         <asp:ListItem Text="2" />
                         <asp:ListItem Text="3" />
@@ -45,7 +54,7 @@
                 </div>
                 <div class="input-group mb-3" style="height: 45px; width: 280px; border-color: aqua; margin-left: 25px; font-weight: bold;">
                     <label class="input-group-text" style="border-color: aqua; font-weight: bold;" for="inputGroupSelect01">Baños:</label>
-                    <asp:DropDownList runat="server" ID="baños" class="form-select" Style="width: 15px; border-color: aqua; font-weight: bold;">
+                    <asp:DropDownList runat="server" ID="baños" class="form-select" Style="width: 15px; border-color: aqua; font-weight: bold;" required="true">
                         <asp:ListItem Text="1" />
                         <asp:ListItem Text="2" />
                         <asp:ListItem Text="3" />
@@ -65,12 +74,14 @@
                     <div class="row g-3">
                         <div class="col-md-3" style="margin-left: 25px; font-weight: bold;">
                             <label for="inputGroupSelect01" class="form-label">Codigo Postal</label>
-                            <asp:DropDownList runat="server" ID="codigo_postal" OnSelectedIndexChanged="codigo_postal_SelectedIndexChanged" AutoPostBack="true" class="form-select" Style="border-color: aqua">
+                            <asp:DropDownList runat="server" ID="codigo_postal" OnSelectedIndexChanged="codigo_postal_SelectedIndexChanged" AutoPostBack="true" class="form-select" Style="border-color: aqua" required="true">
                             </asp:DropDownList>
                         </div>
                         <div class="col-md-8" style="margin-left: 25px; font-weight: bold;">
                             <label for="inputGroupSelect01" class="form-label">Localidad</label>
-                            <asp:DropDownList runat="server" ID="localidad" class="form-select" Style="border-color: aqua">
+                            <asp:DropDownList runat="server" ID="localidad" class="form-select" Style="border-color: aqua" required="true">
+                             
+
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -113,7 +124,7 @@
 
     <div class="row g-3">
         <div class="input-group mb-3" style="height: 50px; width: 300px; border-color: aqua; margin-left: 25px; font-weight: bold;">
-            <label class="input-group-text" style="border-color: aqua; font-weight: bold;" for="inputGroupSelect01">Tipo de Operación: </label>
+            <label class="input-group-text" style="border-color: aqua; font-weight: bold;" for="inputGroupSelect01">Tipo de Operación:</label>
             <asp:DropDownList runat="server" ID="tipoope" class="form-select" Style="width: 20px; border-color: aqua; font-weight: bold;">
                 <asp:ListItem Text="Alquiler" />
                 <asp:ListItem Text="Venta" />

@@ -136,7 +136,7 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.abrir();
+               
                 datos.setearconsulta("DescontarSaldoPorFormaPago");
                 datos.comando.CommandType = CommandType.StoredProcedure;
 
@@ -144,7 +144,7 @@ namespace Negocio
                 datos.setearparametro("@Id_Inmueble", id_inmueble);
                 datos.setearparametro("@FormaPago", formaPago);
 
-                datos.ejecutaraccion2();
+                datos.ejecutaraccion();
 
                 Console.WriteLine("Pago exitoso y registrado en PagosInmobiliaria");
             }
