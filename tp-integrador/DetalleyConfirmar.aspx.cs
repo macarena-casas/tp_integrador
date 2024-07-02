@@ -32,9 +32,9 @@ namespace tp_integrador
                     lblnombre.InnerText = inmueble.nombre_I;
                     lblDescripcion.InnerText = inmueble.descripcion_I;
                     lblprecio.InnerText = "$" + inmueble.precio_I.ToString();
-                    lblcategoria.InnerText = inmueble.categoria_I.nombre_categoria;
                     lblambientes.Text = inmueble.ambientes.ToString();
                     lblbaños.Text = inmueble.baños.ToString();
+                    lblcategoriaytipo.Text = inmueble.categoria_I.nombre_categoria + " en: " + inmueble.tipo_operacion;
 
                     checkagua.Enabled = false;
                     Checkluz.Enabled = false;
@@ -73,7 +73,7 @@ namespace tp_integrador
                 throw ex;
             }
         }
-     
+
 
 
         protected void btnagregarfavorito_Click1(object sender, EventArgs e)
@@ -96,7 +96,7 @@ namespace tp_integrador
 
         protected void cerrarbtn_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/ConfirmarPublicaciones.aspx");
         }
     }
 }

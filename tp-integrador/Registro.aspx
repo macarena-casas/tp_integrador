@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
+     <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
         <div class="reg ">
 
             <%if (Session["usuario"] == null)
@@ -21,11 +21,11 @@
 
                         <div class="contraseña" style="margin-top: 5%; left: 5px; color: black; font-size: 20px;">
 
-                            <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" CssClass="form-control1" ID="txtpass" />
+                            <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server"  type="password" CssClass="form-control1" ID="txtpass" />
                             <label>Contraseña</label>
                         </div>
                         <div class="rep-contraseña" style="margin-top: 5%; left: 5px; color: black; font-size: 20px;">
-                            <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" CssClass="form-control1" ID="txtpass2" />
+                            <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" type="password" CssClass="form-control1" ID="txtpass2" />
                             <label>Repite La Contraseña</label>
                         </div>
                         <br />

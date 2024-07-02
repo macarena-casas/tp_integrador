@@ -51,13 +51,13 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.Label lblbaños;
 
         /// <summary>
-        /// Control lblcategoria.
+        /// Control lblcategoriaytipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblcategoria;
+        protected global::System.Web.UI.WebControls.Label lblcategoriaytipo;
 
         /// <summary>
         /// Control lblprecio.
