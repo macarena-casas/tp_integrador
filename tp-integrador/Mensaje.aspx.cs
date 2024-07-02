@@ -16,17 +16,40 @@ namespace tp_integrador
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usu = (Usuario)Session["usuario"];
-            listaemail = (List<Email>)Session["Emails"];
-            Email email = new Email();
-            NegocioEmail negoE = new NegocioEmail();
-            int Id = Request.QueryString["Id"] != null && int.TryParse(Request.QueryString["Id"], out int id) ? id : -1;
-            email = listaemail.FirstOrDefault(i => i.Id == Id);
-            emailseleccionado = email;
+            if (!IsPostBack)
+            {
+                Usuario usu = (Usuario)Session["usuario"];
+                listaemail = (List<Email>)Session["Emails"];
+                int Id = Request.QueryString["Id"] != null && int.TryParse(Request.QueryString["Id"], out int id) ? id : -1;
 
-            txtasunto.Text = email.asunto;
-            txtremitente.Text = email.remitente;
-            txtmensaje.Text = email.mensaje;
+                if (Id != -1 && listaemail != null)
+                {
+                    emailseleccionado = listaemail.FirstOrDefault(i => i.Id == Id);
+
+                    if (emailseleccionado != null)
+                    {
+
+                        if (emailseleccionado.Visto == true)
+                        {
+                            emailseleccionado.Visto = false;
+                            NegocioEmail negocioEmail = new NegocioEmail();
+                            negocioEmail.Leidos(emailseleccionado.Id);
+                        }
+                        txtasunto.Text = emailseleccionado.asunto;
+                        txtremitente.Text = emailseleccionado.remitente;
+                        txtmensaje.Text = emailseleccionado.mensaje;
+                    }
+
+                }
+
+            }
+            Usuario usu1 = (Usuario)Session["usuario"];
+            listaemail = (List<Email>)Session["Emails"];
+            Email email1 = new Email();
+            NegocioEmail negoE = new NegocioEmail();
+            int Id1 = Request.QueryString["Id"] != null && int.TryParse(Request.QueryString["Id"], out int id1) ? id1 : -1;
+            email1 = listaemail.FirstOrDefault(i => i.Id == Id1);
+            emailseleccionado = email1;
 
         }
 
@@ -36,14 +59,19 @@ namespace tp_integrador
         }
 
         protected void btnEliminarmensaje_Click(object sender, EventArgs e)
-        {
+        {      
+            
             NegocioEmail nego = new NegocioEmail();
 
-            int id = emailseleccionado.Id;
+            if (emailseleccionado != null)
+            {
+                
+                nego.BajaLogica(emailseleccionado.Id, false);
 
-            nego.BajaLogica(id, false);
+                listaemail = listaemail.Where(em => em.Id != emailseleccionado.Id).ToList();
+                Session["Emails"] = listaemail;
+            }
             Response.Redirect("~/Mensajeria.aspx");
-
         }
 
 
