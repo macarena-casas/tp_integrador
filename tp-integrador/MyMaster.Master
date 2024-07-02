@@ -39,7 +39,7 @@
         </button>
     </div>
     <%} %>
-    <form id="form1" runat="server">
+     <form id="form1" runat="server" style="min-height:800px;">
         <div>
             <nav class="navbar " style="background-color: navy" data-bs-theme="info">
                 <a href="Default.aspx" class="nav-link">
@@ -54,7 +54,16 @@
                 <%if (Session["usuario"] != null && usuario.nombre_u == "admin")
                     { %>
                 <a href="ConfirmarPublicaciones.aspx" class="nav-link" style="align-items: flex-end;">
-                    <i class="bi bi-person-plus"></i>
+                    <p style="text-align: left; font-size: 160%; color: white; margin-left: 20px;"><i class="bi bi-house-gear-fill"></i></p>
+                    <asp:Label Text="" ID="Confirmar" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <span class="visually-hidden">Confirmar Publicaciones</span>
+                    
+                </a>
+                <a href="ConfirmarUsuario.aspx" class="nav-link" style="align-items: flex-end;">
+                    <p style="text-align: left; font-size: 160%; color: white; margin-left: 20px;"><i class="bi bi-person-vcard-fill"></i></p>
+                    <asp:Label Text="" ID="Confirmarusuario" runat="server" CssClass="badge rounded-pill bg-secondary position-absolute start-100 translate-middle" Style="top: 15px; margin-left: -20px;" />
+                    <span class="visually-hidden">Confirmar Publicaciones</span>
+                    
                 </a>
                 <%} %>
                 <%if (Session["usuario"] == null)

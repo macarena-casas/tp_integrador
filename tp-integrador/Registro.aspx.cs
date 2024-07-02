@@ -10,21 +10,33 @@ namespace tp_integrador
 {
     public partial class Registro : System.Web.UI.Page
     {
+        Usuario usuario = new Usuario();
+        DatosPersonales datospersonales = new DatosPersonales();
+        NegocioUsuario Unegocio = new NegocioUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] != null)
+            {
+                usuario = (Usuario)Session["usuario"];
+                txtmail.Text = "Bienvenido: " + usuario.nombre_u;
+                txtmensaje.Text = "Para continuar es necesario registrar algunos datos extra!";
+            }
         }
 
         protected void btnregistrarse_Click(object sender, EventArgs e)
         {
             try
             {
-                NegocioUsuario negocio = new NegocioUsuario();
-                Usuario usuario = new Usuario();
+
                 usuario.nombre_u = txtemail.Text;
                 usuario.contra_u = txtpass.Text;
-                negocio.agregar(usuario);
+                Unegocio.agregar(usuario);
                 Session["usuario"] = usuario;
+                if (Session["usuario"] != null)
+                {
+                    Response.Redirect("~/Registro.aspx");
+
+                }
                 Response.Redirect("~/Default.aspx");
             }
             catch (Exception ex)
@@ -37,6 +49,19 @@ namespace tp_integrador
 
         protected void cerrarbtn_Click(object sender, EventArgs e)
         {
+            Response.Redirect("~/Default.aspx");
+        }
+
+        protected void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            datospersonales.Nombre = TxtNombre.Text;
+            datospersonales.Apellido = TxtApellido.Text;
+            datospersonales.DNI = TxtDni.Text;
+            datospersonales.Domicilio = TxtDomicilio.Text;
+            datospersonales.Telefono = TxtTel.Text;
+            datospersonales.Email = usuario.nombre_u;
+            datospersonales.FechaNacimiento = DateTime.Parse(TxtFecha.Text);
+            Unegocio.agregarDatos(datospersonales);
             Response.Redirect("~/Default.aspx");
         }
     }

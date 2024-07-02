@@ -104,6 +104,7 @@
     <Content Include="Alta_Modificacion.aspx" />
     <Content Include="BandejaVacia.aspx" />
     <Content Include="ConfirmarPublicaciones.aspx" />
+    <Content Include="ConfirmarUsuario.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Detalles.aspx" />
     <Content Include="DetalleyConfirmar.aspx" />
@@ -142,6 +143,13 @@
     </Compile>
     <Compile Include="ConfirmarPublicaciones.aspx.designer.cs">
       <DependentUpon>ConfirmarPublicaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmarUsuario.aspx.cs">
+      <DependentUpon>ConfirmarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmarUsuario.aspx.designer.cs">
+      <DependentUpon>ConfirmarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>

@@ -23,10 +23,11 @@ Id int identity (1,1) not null,
 Nombre varchar (50) not null unique,
 Contraseña varchar (15) not null,
 IDTipo bit not null,
+Saldo money NULL;
 primary key (Id)
 )
 ALTER TABLE Usuario
-ADD Saldo money NULL;
+add Activo bit;
 go
 create table Inmueble(
 Id int identity (1,1) not null,
@@ -63,12 +64,14 @@ Id_Inmueble int not null
 )
 go
 create table DatosUsuario(
-Id_suario int not null foreign key references Usuario,
+Email varchar (50) not null foreign key references Usuario (Nombre),
 Nombres varchar (50) not null,
 Apellidos varchar (15) not null,
 Dni varchar(10) not null,
 Celular varchar(15) not null,
 Domicilio varchar (50) not null,
+FechaNacimiento date not null,
+Activo bit not null
 )
 go
 insert into Localidad values (1618,'El Talar','Tigre'),
@@ -95,8 +98,8 @@ insert into Categoria values ('Casa'),
 ('Local'),
 ('Chalet')
 go
-insert into Usuario values ('admin', 'admin',1),
-('normal','normal',0)
+insert into Usuario values ('admin', 'admin',1,0,1),
+('normal','normal',0,0,1)
 go
 
 
