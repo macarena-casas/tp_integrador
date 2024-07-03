@@ -3,7 +3,7 @@ go
 create database Inmobiliaria
 go
 use Inmobiliaria
-/*
+
 go
 create table Localidad(
 CP int not null,
@@ -23,11 +23,11 @@ Id int identity (1,1) not null,
 Nombre varchar (50) not null unique,
 Contraseña varchar (15) not null,
 IDTipo bit not null,
-Saldo money NULL;
+Saldo money NULL,
 primary key (Id)
 )
 ALTER TABLE Usuario
-add Activo bit;
+add Activo bit
 go
 create table Inmueble(
 Id int identity (1,1) not null,
@@ -242,5 +242,4 @@ END;
 exec DescontarSaldoPorFormaPago 1,3,5
 
 select * from Usuario
-select * from PagosInmobiliaria
-
+select * from DatosUsuario

@@ -244,5 +244,36 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        public string RecuperarContraseña(string nombreUsuario, string dni)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+            try
+            {
+                datos.setearconsulta("RecuperarContraseña");
+                datos.comando.CommandType = CommandType.StoredProcedure;
+                datos.setearparametro("@NombreUsuario", nombreUsuario);
+                datos.setearparametro("@DNI", dni);
+
+                SqlParameter contraseñaParam = new SqlParameter("@Contraseña", SqlDbType.VarChar, 15)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                datos.comando.Parameters.Add(contraseñaParam);
+
+                datos.ejecutaraccion();
+
+                return contraseñaParam.Value as string;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+        }
     }
 }

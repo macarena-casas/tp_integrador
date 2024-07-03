@@ -117,6 +117,7 @@
     <Content Include="Mensajeria.aspx" />
     <Content Include="MisPublicaciones.aspx" />
     <Content Include="Pagos.aspx" />
+    <Content Include="RecuperarPass.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="SinPublicaciones.aspx" />
     <Content Include="Web.config" />
@@ -249,6 +250,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecuperarPass.aspx.cs">
+      <DependentUpon>RecuperarPass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarPass.aspx.designer.cs">
+      <DependentUpon>RecuperarPass.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registro.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>

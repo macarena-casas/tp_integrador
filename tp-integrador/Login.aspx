@@ -32,7 +32,9 @@
                         </div>
 
                         <asp:Button Text="Iniciar" ID="btnIniciar" runat="server" OnClick="btnIniciar_Click" Style="width: 100%; height: 50px; margin-top: 10px; border: 2px solid; background-color: midnightblue; border-radius: 25px; font-size: 18px; color: white; cursor: pointer; outline: none;" />
-
+                        <div class="registrarse" style="margin: 30px 0; text-align: center; font-size: 16px; color: black;">
+                        ¿Olvidaste tu contraseña? <a href="RecuperarPass.aspx">recuperala</a>
+</div>
                         <div class="registrarse" style="margin: 30px 0; text-align: center; font-size: 16px; color: black;">
                             ¿No tienes una cuenta? <a href="Registro.aspx">Registrarse</a>
                         </div>
