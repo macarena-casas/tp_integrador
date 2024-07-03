@@ -231,9 +231,9 @@ namespace Negocio
             {
                 datos.setearconsulta("update DatosUsuario set Activo = 1 where Email=@email and Activo=0");
                 datos.setearparametro("@email", email);
-                datos.ejecutaraccion();
-                datos.setearconsulta("update Usuario set Activo = 1 where Nombre=@email and Activo=0");
-                datos.setearparametro("@email", email);
+                datos.ejecutaraccion2();
+                datos.setearconsulta("update Usuario set Activo = 1 where Nombre=@email1 and Activo=0");
+                datos.setearparametro("@email1", email);
                 datos.ejecutaraccion();
 
 
