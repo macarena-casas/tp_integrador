@@ -26,7 +26,7 @@ namespace tp_integrador
 
                 if (!string.IsNullOrEmpty(contraseña))
                 {
-                    // Mostrar la contraseña al usuario o enviar por correo electrónico
+                   
                     lblMensaje.Text = "Su contraseña es: " + contraseña;
                 }
                 else
