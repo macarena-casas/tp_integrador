@@ -20,6 +20,8 @@ namespace tp_integrador
                 usuario = (Usuario)Session["usuario"];
                 txtmail.Text = "Bienvenido: " + usuario.nombre_u;
                 txtmensaje.Text = "Para continuar es necesario registrar algunos datos extra!";
+
+
             }
         }
 
@@ -30,11 +32,11 @@ namespace tp_integrador
 
                 usuario.nombre_u = txtEmail.Text;
                 usuario.contra_u = txtpass.Text;
-                
 
-                 bool isLengthValid = usuario.contra_u.Length >= 6;
-                 bool hasUpperCase = usuario.contra_u.Any(char.IsUpper);
-                 bool hasNumber = usuario.contra_u.Any(char.IsDigit);
+
+                bool isLengthValid = usuario.contra_u.Length >= 6;
+                bool hasUpperCase = usuario.contra_u.Any(char.IsUpper);
+                bool hasNumber = usuario.contra_u.Any(char.IsDigit);
 
 
 
@@ -65,34 +67,36 @@ namespace tp_integrador
                     lblNumber.Style["color"] = "red";
                 }
 
-                if (!isLengthValid || !hasUpperCase || !hasNumber || !Page.IsValid)
+                if (!isLengthValid || !hasUpperCase || !hasNumber)
                 {
 
-                    
+
                     txtpass.Text = "";
                     txtpass2.Text = "";
 
 
                     return;
                 }
+
                 Unegocio.agregar(usuario);
-                if (isLengthValid && hasUpperCase && hasNumber && Page.IsValid)
+
+                if (isLengthValid && hasUpperCase && hasNumber)
                 {
 
-                    
+
                     Session["usuario"] = usuario;
-                if (Session["usuario"] != null)
-                {
-                    Response.Redirect("~/Registro.aspx");
+                    if (Session["usuario"] != null)
+                    {
+                        Response.Redirect("~/Registro.aspx");
+
+                    }
 
                 }
-                   
-                }
-                
 
 
 
-                 Response.Redirect("~/Default.aspx");
+
+                Response.Redirect("~/Default.aspx");
             }
             catch (Exception ex)
             {

@@ -23,13 +23,15 @@
                 <label for="inputnombre" class="form-label"><strong>Nombre </strong></label>
                 <asp:TextBox runat="server" type="text" class="form-control" Style="border-color: aqua" ID="txtnombre" placeholder="Ingrese nombre del inmueble" required="true" />
                 <asp:RequiredFieldValidator CssClass="Validacion" ErrorMessage="Campo obligatorio" ControlToValidate="txtnombre" runat="server" />
+               
             </div>
             <br />
-            <br />
+               <br />
             <div class="row g-3">
                 <div class="input-group mb-3" style="height: 50px; width: 200px; margin-left: 25px; margin-top: 15px;">
                     <span class="input-group-text" style="border-color: aqua"><strong>$</strong>
                         <asp:TextBox runat="server" ID="txtprecio" Style="border: none;" placeholder=" Ingrese un valor" />
+                        <asp:RegularExpressionValidator ErrorMessage="El precio solo admite numeros" ValidationGroup="GroupRegistro" ControlToValidate="txtprecio" runat="server" ValidationExpression="^[0-9]+$" CssClass="text-danger" Display="Dynamic" />
                     </span>
                 </div>
             </div>
