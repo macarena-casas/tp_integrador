@@ -34,7 +34,7 @@ namespace tp_integrador
                     if (datosusuarios.Count() == 0)
                     {
 
-                        Response.Redirect("SinPublicaciones.aspx");
+                        Response.Redirect("SinUsuarios.aspx");
                     }
                 }
             }

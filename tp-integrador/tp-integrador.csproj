@@ -120,6 +120,8 @@
     <Content Include="RecuperarPass.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="SinPublicaciones.aspx" />
+    <Content Include="SinPublicacionesAlta.aspx" />
+    <Content Include="SinUsuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -271,6 +273,20 @@
     </Compile>
     <Compile Include="SinPublicaciones.aspx.designer.cs">
       <DependentUpon>SinPublicaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SinPublicacionesAlta.aspx.cs">
+      <DependentUpon>SinPublicacionesAlta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SinPublicacionesAlta.aspx.designer.cs">
+      <DependentUpon>SinPublicacionesAlta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SinUsuarios.aspx.cs">
+      <DependentUpon>SinUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SinUsuarios.aspx.designer.cs">
+      <DependentUpon>SinUsuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

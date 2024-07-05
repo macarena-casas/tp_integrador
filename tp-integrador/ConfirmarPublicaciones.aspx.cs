@@ -44,7 +44,7 @@ namespace tp_integrador
                         Session["listainmueble"] = listainmueble;
                         if (listaautorizar.Count() == 0)
                         {
-                            Response.Redirect("SinPublicaciones.aspx");
+                            Response.Redirect("SinPublicacionesAlta.aspx");
                         }
                     }
                 }
