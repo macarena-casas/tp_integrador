@@ -103,7 +103,7 @@
                     <br />
                     <br />
                     <center>
-                        <div id="carouselExample" class="carousel slide" style="height: 300px; width: 300px;">
+                        <div id="carouselExample" class="carousel carousel-dark slide" style="height: 300px; width: 300px;">
                             <div class="carousel-inner">
                                 <asp:Repeater ID="rptImages" runat="server">
                                     <ItemTemplate>

@@ -5,6 +5,7 @@ go
 use Inmobiliaria
 
 go
+/*
 create table Localidad(
 CP int not null,
 Nombre varchar (50) not null unique,
@@ -24,10 +25,10 @@ Nombre varchar (50) not null unique,
 Contraseña varchar (15) not null,
 IDTipo bit not null,
 Saldo money NULL,
+Activo bit,
 primary key (Id)
 )
-ALTER TABLE Usuario
-add Activo bit
+
 go
 create table Inmueble(
 Id int identity (1,1) not null,
@@ -53,7 +54,6 @@ Pausa bit,
 Estado bit,
 Activa bit,
 TipoOperacion varchar(20) not null,
-
 primary key (Id)
 )
 go
@@ -72,6 +72,33 @@ Celular varchar(15) not null,
 Domicilio varchar (50) not null,
 FechaNacimiento date not null,
 Activo bit not null
+)
+go
+create table  Email(
+Id int identity (1,1) not null,
+destinatario varchar (50) not null foreign key references Usuario (Nombre),
+remitente varchar (50) not null foreign key references Usuario (Nombre),
+Asunto varchar (100) not null,
+Mensaje varchar (500) not null,
+Estado bit, 
+Visto bit,
+FechaHora datetime not null,
+primary key (Id)
+)
+go
+create table PagosInmobiliaria (
+    Id int identity(1,1) not null primary key,
+    Id_Inmueble int not null,
+    Id_Usuario int not null,
+    pago varchar(100) not null,
+    Fecha datetime not null,
+    foreign key (Id_Inmueble) references Inmueble(Id),
+    foreign key (Id_Usuario) references Usuario(Id)
+)
+go
+create table FormaDePago (
+    IDFormaDePago INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL
 )
 go
 insert into Localidad values (1618,'El Talar','Tigre'),
@@ -99,58 +126,25 @@ insert into Categoria values ('Casa'),
 ('Chalet')
 go
 insert into Usuario values ('admin', 'admin',1,0,1),
-('normal','normal',0,0,1)
+('macarena@gmail.com','Macarena1',0,0,1),
+('alejandro@gmail.com','Alejandro1',0,0,1),
+('martin@gmail.com','Martin1',0,0,1)
 go
-
-
+insert into DatosUsuario values('macarena@gmail.com','macarena','casas','12345678','chaco 470','1994-27-10',0 ),
+('martin@gmail.com','martin','casas','87654321','gutemberg 850','2002-13-02',0 ),
+('alejandro@gmail.com','Alejandro','Beron','11223344','general Pacheco 123','1992-09-05',0 )
+go
 insert into Inmueble values ('admin','casa azul','amplia y luminosa','las palmas 123',1,1617,50000,3,2,1,1,0,1,0,1,1,1,0,1,1,0,'venta'),
- ('normal','casa madera','rustica y acogedora','calle falsa 321',3,1618,20000,2,1,1,1,1,1,0,0,0,1,0,1,1,0,'alquiler'),
- ('normal','casa moderna','amplia y hogareña','hudson 457',4,1611,80000,3,3,1,0,1,0,1,0,0,1,1,1,1,0,'venta'),
- ('normal','duplex a estrenar','excelente oportunidad negocio','medio del bosque 1',5,1645,200000,2,1,1,1,1,0,0,0,1,1,1,1,1,0,'venta')
-
-
-
-
+ ('macarena@gmail.com','casa madera','rustica y acogedora','calle falsa 321',3,1618,20000,2,1,1,1,1,1,0,0,0,1,0,1,1,0,'alquiler'),
+ ('martin@gmail.com','casa moderna','amplia y hogareña','hudson 457',4,1611,80000,3,3,1,0,1,0,1,0,0,1,1,1,1,0,'venta'),
+ ('alejandro@gmail.com','duplex a estrenar','excelente oportunidad negocio','medio del bosque 1',5,1645,200000,2,1,1,1,1,0,0,0,1,1,1,1,1,0,'venta')
+go
 insert into Imagen values ('https://definicion.de/wp-content/uploads/2011/01/casa-2.jpg',1),
 ('https://i.blogs.es/c68014/casa-3d/450_1000.jpeg',2),
 ('https://hips.hearstapps.com/hmg-prod/images/casa-de-madera-de-diseno-moderno21-645b7b443ba61.jpg?resize=980:*',3),
 ('https://definicion.de/wp-content/uploads/2011/01/ambiente.jpg',1)
-
-
-create table  Email(
-Id int identity (1,1) not null,
-destinatario varchar (50) not null foreign key references Usuario (Nombre),
-remitente varchar (50) not null foreign key references Usuario (Nombre),
-Asunto varchar (100) not null,
-Mensaje varchar (500) not null,
-Estado bit, 
-Visto bit,
-FechaHora datetime not null,
-primary key (Id)
-)
 go
 
-
-create TABLE PagosInmobiliaria (
-    Id int identity(1,1) not null primary key,
-    Id_Inmueble int not null,
-    Id_Usuario int not null,
-    pago varchar(100) not null,
-    Fecha datetime not null,
-    foreign key (Id_Inmueble) references Inmueble(Id),
-    foreign key (Id_Usuario) references Usuario(Id)
-)
-
-drop table PagosInmobiliaria
-
-CREATE TABLE FormaDePago (
-    IDFormaDePago INT PRIMARY KEY IDENTITY(1,1),
-    Nombre NVARCHAR(100) NOT NULL
-)
-*/
-
-
-/*
 
   CREATE or alter PROCEDURE DescontarSaldoPorFormaPago
     @Id_Usuario int,
@@ -243,3 +237,7 @@ exec DescontarSaldoPorFormaPago 1,3,5
 
 select * from Usuario
 select * from DatosUsuario
+select * from Inmueble
+select * from Imagen
+select * from Email
+
