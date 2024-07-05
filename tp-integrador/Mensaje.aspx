@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="card-body text-center" style="padding: 0 45px; box-sizing: border-box; left: 20px;">
-                    <asp:Label Text=""  ID="txtmensaje"  runat="server" Style="font-size: 15px; font-weight: bold; margin-top: 15px;" />
+                    <asp:Label Text="" TextMode="MultiLine"  ID="txtmensaje"  runat="server" Style="font-size: 15px; font-weight: bold; margin-top: 15px;" />
                 </div>
                 <div class="card-footer" style="padding: 0 45px; box-sizing: border-box; left: 20px;">
 

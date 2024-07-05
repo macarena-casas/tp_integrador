@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-     <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
+    <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
         <div class="reg ">
 
             <div class="registro" style="background: lightblue; border-radius: 3%; max-width: 800px; max-height: 700px;">
@@ -160,12 +160,13 @@
                     <div class="row" style="margin-top: 5px;">
                         <center>
                             <asp:Button ID="btnagregarfavorito" runat="server" Text="Confirmar" OnClick="btnagregarfavorito_Click1" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
+                            <asp:Button ID="btnRechazar" runat="server" Text="Rechazar" OnClick="btnRechazar_Click" CssClass="btn btn-outline-danger" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
 
-        <div class="btn " style="width: 100%; margin-top: 15px; display: flex; justify-content: center; align-items: center;">
-     
-                <asp:Button ID="cerrarbtn" Text="Cerrar" runat="server" OnClick="cerrarbtn_Click" Style="padding: 7px 10px; background-color: #5488a3; color: #fff; border-radius: 25px; cursor: pointer; transition: all 300ms ease;" />
-          
-        </div>
+                            <div class="btn " style="width: 100%; margin-top: 15px; display: flex; justify-content: center; align-items: center;">
+
+                                <asp:Button ID="cerrarbtn" Text="Cerrar" runat="server" OnClick="cerrarbtn_Click" Style="padding: 7px 10px; background-color: #5488a3; color: #fff; border-radius: 25px; cursor: pointer; transition: all 300ms ease;" />
+
+                            </div>
                         </center>
                     </div>
                 </div>

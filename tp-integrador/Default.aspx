@@ -17,7 +17,7 @@
             { %>
 
         <div class="col-12 col-md-6 col-lg-4 mb-2">
-            <div class="card border-primary"
+           <div class="card border-primary"
                 <%if (inmueble.Pausa == false)
                 {%>style="border-color: blue; height: 550px; width: 350px; "
                 <%} %>

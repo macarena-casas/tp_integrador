@@ -112,7 +112,7 @@
                                         </div>
                                     </ItemTemplate>
                                     <FooterTemplate>
-                                        <asp:LinkButton ID="btneliminarfoto" CssClass="btn btn-outline-danger" runat="server" OnClick="btneliminarfoto_Click" CommandArgument='<%# Container.DataItem %>' UseSubmitBehavior="false">
+                                        <asp:LinkButton visible="false"; ID="btneliminarfoto" CssClass="btn btn-outline-danger" runat="server" OnClick="btneliminarfoto_Click" CommandArgument='<%# Container.DataItem %>' UseSubmitBehavior="false">
                                             Rechazar 
                                         </asp:LinkButton>
                                     </FooterTemplate>

@@ -526,7 +526,24 @@ namespace Negocio
                 throw ex;
             }
         }
-
+        public void AdminElimina_Elimina(int Id)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+            try
+            {
+                datos.setearconsulta("delete from PagosInmobiliaria where Id_Inmueble=@Id");
+                datos.setearparametro("@Id", Id);
+                datos.ejecutaraccion2();
+                datos.setearconsulta("delete from Imagen where Id_Inmueble=@Id");
+                datos.ejecutaraccion2();
+                datos.setearconsulta("delete from Inmueble where Id=@Id");
+                datos.ejecutaraccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
 

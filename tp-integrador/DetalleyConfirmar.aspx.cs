@@ -13,11 +13,11 @@ namespace tp_integrador
     {
         public List<Inmueble> listaautorizar { get; set; }
         public Inmueble inmueble { get; set; }
+        Usuario usuario { get; set; }
+        NegocioUsuario usario = new NegocioUsuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario();
-            NegocioUsuario usario = new NegocioUsuario();
 
             Session["ReturnUrl"] = Request.Url.ToString();
 
@@ -75,28 +75,47 @@ namespace tp_integrador
         }
 
 
-
-        protected void btnagregarfavorito_Click1(object sender, EventArgs e)
-        {
-
-            if (Session["usuario"] != null)
-            {
-                NegocioInmueble iManager = new NegocioInmueble();
-                iManager.AdminElimina_Activa(inmueble.Id_I, true);
-                Response.Redirect("~/ConfirmarPublicaciones.aspx");
-
-            }
-
-        }
-
-        protected void btnContacto_Click1(object sender, EventArgs e)
-        {
-
-        }
-
         protected void cerrarbtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ConfirmarPublicaciones.aspx");
+        }
+
+        protected void btnconfirmar_Click(object sender, EventArgs e)
+        {
+            if (Session["usuario"] != null)
+            {
+                usuario = (Usuario)Session["usuario"];
+                Email email = new Email();
+                NegocioEmail eNego = new NegocioEmail();
+                NegocioInmueble iManager = new NegocioInmueble();
+                iManager.AdminElimina_Activa(inmueble.Id_I, true);
+                email.destino = inmueble.NombreUsuario;
+                email.remitente = usuario.nombre_u;
+                email.asunto = "Publicacion Confirmada.";
+                email.mensaje = "La publicación: " + inmueble.nombre_I + " fue aprobada con éxito. Felicitaciones!";
+                eNego.agregar(email);
+                Response.Redirect("~/ConfirmarPublicaciones.aspx");
+
+            }
+        }
+
+        protected void btnRechazar_Click(object sender, EventArgs e)
+        {
+            if (Session["usuario"] != null)
+            {
+                usuario = (Usuario)Session["usuario"];
+                Email email = new Email();
+                NegocioEmail eNego = new NegocioEmail();
+                NegocioInmueble iManager = new NegocioInmueble();
+                iManager.AdminElimina_Elimina(inmueble.Id_I);
+                email.destino = inmueble.NombreUsuario;
+                email.remitente = usuario.nombre_u;
+                email.asunto = "Publicacion Rechazada.";
+                email.mensaje = "Lo sentimos, la publicación: " + inmueble.nombre_I + " no ah sido aprobada, asegurese de completar todos los datos de manera correspondiente. Muchas Gracias!";
+                eNego.agregar(email);
+                Response.Redirect("~/ConfirmarPublicaciones.aspx");
+
+            }
         }
     }
 }
