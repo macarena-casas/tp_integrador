@@ -49,7 +49,7 @@ namespace tp_integrador
                     if (datosusuarios[i].Email == em)
                     {
 
-                        
+
                     }
                 }
 
@@ -79,7 +79,16 @@ namespace tp_integrador
 
         protected void btnRechazarUsuario_Click(object sender, EventArgs e)
         {
+            LinkButton btn = (LinkButton)sender;
+            string em = btn.CommandArgument;
 
+            Unegocio.Rechazar(em);
+
+            confirmarUsuarios.DataSource = Unegocio.listard();
+            confirmarUsuarios.DataBind();
+
+
+            Response.Redirect("ConfirmarUsuario.aspx");
         }
 
     }

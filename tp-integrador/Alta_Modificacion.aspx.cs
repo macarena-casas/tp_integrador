@@ -18,11 +18,11 @@ namespace tp_integrador
         public List<Ubicacion> listalocalidades { get; set; }
         public Inmueble inmueble { get; set; }
         public Categoria categoria { get; set; }
-
         NegocioInmueble INegocio = new NegocioInmueble();
         NegocioCategoria CNegocio = new NegocioCategoria();
         NegocioUbicacion UNegocio = new NegocioUbicacion();
 
+        List<string> imagenUrls = new List<string>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -88,10 +88,24 @@ namespace tp_integrador
                     if (inmueble.calefaccion == true) { Checkcalefaccion.Checked = true; }
                     tipoope.SelectedValue = inmueble.tipo_operacion.ToString();
                     txtdescripcion.Text = inmueble.descripcion_I;
-                    txtImagenurl.Text = inmueble.Imagenes[0].Nombre_imagen;
-                    imginmueble.ImageUrl = txtImagenurl.Text;
 
+                    btnModificar.Visible = true;
+                    btnAgregar.Visible = false;
+                    if (inmueble.Imagenes != null)
+                    {
+                        rptImages.DataSource = inmueble.Imagenes;
+                        rptImages.DataBind();
+                    }
+                    else { rptImages.DataSource = "https://img.freepik.com/vector-premium/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg"; }
+                    for (int x = 0; x < inmueble.Imagenes.Count(); x++)
+                    {
+
+                        string text = inmueble.Imagenes[x].Nombre_imagen;
+                        imagenUrls.Add(text);
+                    }
+                    Session["ImagenUrls"] = imagenUrls;
                 }
+
 
 
                 /*
@@ -110,8 +124,6 @@ namespace tp_integrador
 
 
         }
-
-
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -209,6 +221,7 @@ namespace tp_integrador
 
 
 
+
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             inmueble.nombre_I = txtnombre.Text;
@@ -239,13 +252,12 @@ namespace tp_integrador
             inmueble.descripcion_I = txtdescripcion.Text;
             inmueble.tipo_operacion = tipoope.SelectedValue;
 
-
             // nuevo agregar acumulado
             List<string> imagenUrls = Session["ImagenUrls"] as List<string> ?? new List<string>();
 
-            Session["ImagenUrls"] = null;
 
             INegocio.modificar(inmueble);
+            Session["ImagenUrls"] = null;
             NegocioInmueble iManager = new NegocioInmueble();
             listainmueble = iManager.Listacompleta();
             listainmueble = validarurl(listainmueble);
@@ -265,6 +277,7 @@ namespace tp_integrador
 
         protected void Btn_addimg_Click(object sender, EventArgs e)
         {
+
             List<string> imagenUrls = Session["ImagenUrls"] as List<string> ?? new List<string>();
 
 
@@ -272,13 +285,14 @@ namespace tp_integrador
             {
                 imagenUrls.Add(txtImagenurl.Text);
             }
-
-
             Session["ImagenUrls"] = imagenUrls;
 
-
             txtImagenurl.Text = string.Empty;
+            rptImages.DataSource = imagenUrls;
+            rptImages.DataBind();
+
         }
+
         public List<Inmueble> validarurl(List<Inmueble> aux)
         {
             foreach (Inmueble art in aux)
@@ -323,6 +337,18 @@ namespace tp_integrador
         protected void btnInfo_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pagos.aspx");
+        }
+
+        protected void btneliminarfoto_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            LinkButton btn = (LinkButton)sender;
+
+            string urlImagen = btn.CommandArgument;
+
         }
     }
 }

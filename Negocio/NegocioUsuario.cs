@@ -93,13 +93,14 @@ namespace Negocio
 
         }
 
-        public bool Loguear(Usuario usuario)
+        public Usuario Loguear(Usuario usuario)
         {
             Acceso_Datos datos = new Acceso_Datos();
+            Usuario aux = new Usuario();
 
             try
             {
-                datos.setearconsulta("select Id, Nombre, Contraseña, IDTipo from Usuario where Nombre = @Nombre and Contraseña= @Contraseña");
+                datos.setearconsulta("select Id, Nombre, Contraseña, IDTipo, Activo from Usuario where Nombre = @Nombre and Contraseña= @Contraseña ");
                 datos.setearparametro("@Nombre", usuario.nombre_u);
                 datos.setearparametro("@Contraseña", usuario.contra_u);
 
@@ -107,15 +108,16 @@ namespace Negocio
 
                 if (datos.lector.Read())
                 {
-                    usuario.id_u = (int)datos.lector["Id"];
+                    aux.Activo = (bool)datos.lector["Activo"];
+                    aux.nombre_u = (string)datos.lector["Nombre"];
+                    aux.contra_u = (string)datos.lector["Contraseña"];
+                    aux.idtipo_u = (bool)datos.lector["IDTipo"];
+                    return (aux);
 
-
-
-                    return true;
                 }
                 else
                 {
-                    return false;
+                    return aux;
                 }
 
             }
@@ -233,6 +235,27 @@ namespace Negocio
                 datos.setearparametro("@email", email);
                 datos.ejecutaraccion2();
                 datos.setearconsulta("update Usuario set Activo = 1 where Nombre=@email1 and Activo=0");
+                datos.setearparametro("@email1", email);
+                datos.ejecutaraccion();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void Rechazar(string email)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+
+            try
+            {
+                datos.setearconsulta("delete from DatosUsuario where Email=@email and Activo=0");
+                datos.setearparametro("@email", email);
+                datos.ejecutaraccion2();
+                datos.setearconsulta("delete from Usuario where Nombre=@email1 and Activo=0");
                 datos.setearparametro("@email1", email);
                 datos.ejecutaraccion();
 

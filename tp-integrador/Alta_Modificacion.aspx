@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <style>
+    <style>
         .Validacion {
             color: red;
             font-size: 14px;
@@ -21,7 +21,7 @@
         <div class="col-md-6">
             <div class="row g-3" style="margin-left: 15px; font-weight: bold; height: 100px;">
                 <label for="inputnombre" class="form-label"><strong>Nombre </strong></label>
-                <asp:TextBox runat="server" type="text" class="form-control" Style="border-color: aqua" ID="txtnombre" placeholder="Ingrese nombre del inmueble" required="true"/>
+                <asp:TextBox runat="server" type="text" class="form-control" Style="border-color: aqua" ID="txtnombre" placeholder="Ingrese nombre del inmueble" required="true" />
                 <asp:RequiredFieldValidator CssClass="Validacion" ErrorMessage="Campo obligatorio" ControlToValidate="txtnombre" runat="server" />
             </div>
             <br />
@@ -80,8 +80,6 @@
                         <div class="col-md-8" style="margin-left: 25px; font-weight: bold;">
                             <label for="inputGroupSelect01" class="form-label">Localidad</label>
                             <asp:DropDownList runat="server" ID="localidad" class="form-select" Style="border-color: aqua" required="true">
-                             
-
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -92,7 +90,6 @@
 
         <div class="col-10 col-md-6">
 
-
             <asp:UpdatePanel ID="Updatepanel1" runat="server" style="margin-left: 50px;">
                 <ContentTemplate>
                     <div class="row g-3" style="margin-left: 15px; font-weight: bold; height: 100px; border-radius: 20px;">
@@ -100,19 +97,36 @@
                         <asp:TextBox runat="server" type="text" ID="txtImagenurl" CssClass="from-control" Style="width: 80%; border-color: aqua;"
                             AutoPostBack="true" OnTextChanged="txtImagenurl_TextChanged" />
                         <asp:Button Text="Agregar imagenes" runat="server" type="submit" Style="width: 80%" class="btn btn-info" ID="Btn_addimg" OnClick="Btn_addimg_Click" />
-
-
                     </div>
+                    <br />
+                    <br />
                     <center>
+                        <div id="carouselExample" class="carousel slide" style="height: 300px; width: 300px;">
+                            <div class="carousel-inner">
+                                <asp:Repeater ID="rptImages" runat="server">
+                                    <ItemTemplate>
+                                        <div class="carousel-item active" style="margin-top: 40px;">
+                                            <img src='<%# Container.DataItem %>' alt="Imagen" id="imgselec" style="height: 300px; width: 300px;" />
+                                        </div>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:LinkButton ID="btneliminarfoto" CssClass="btn btn-outline-danger" runat="server" OnClick="btneliminarfoto_Click" CommandArgument='<%# Container.DataItem %>' UseSubmitBehavior="false">
+                                            Rechazar 
+                                        </asp:LinkButton>
+                                    </FooterTemplate>
 
-                        <div style="font-weight: bold; margin-top: 20px; padding-top: 100px">
-                            <asp:Image ImageUrl="https://img.freepik.com/vector-premium/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg"
-                                runat="server" ID="imginmueble" Width="60%" />
+                                </asp:Repeater>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-
                     </center>
-                    </div>
-                  
                 </ContentTemplate>
             </asp:UpdatePanel>
 
@@ -224,9 +238,8 @@
 
 
         <div class="col-12" style="margin-left: 25px; color: black; padding-top: 30px">
-            <asp:Button Text="Agregar" runat="server" type="submit" class="btn btn-info" ID="btnAgregar" OnClick="btnAgregar_Click" />
-            <asp:Button Text="Modificar" runat="server" type="submit" class="btn btn-info" ID="btnModificar" OnClick="btnModificar_Click" />
-
+            <asp:Button Text="Agregar" runat="server" type="submit" class="btn btn-info" ID="btnAgregar" OnClick="btnAgregar_Click" Visible="true" />
+            <asp:Button Text="Modificar" runat="server" type="submit" class="btn btn-info" ID="btnModificar" OnClick="btnModificar_Click" Visible="false" />
         </div>
     </div>
     <br />

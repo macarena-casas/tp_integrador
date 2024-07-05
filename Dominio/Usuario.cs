@@ -24,15 +24,13 @@ namespace Dominio
         [DisplayName("Id")]
         public int id_u { get; set; }
         [DisplayName("IdTipo")]
-        public int idtipo_u { get; set; }
+        public bool idtipo_u { get; set; }
         [DisplayName("TipoUsuario")]
         public Tipousuario Tipousuario { get; set; }
+        public bool Activo { get; set; }
 
 
-        /*  public string Nombre { get; set; }
-          public string Apellido { get; set; }
-          public string Telefono { get; set; }
-          public string DNI { get; set; }*/
+       
 
 
         public Usuario()
@@ -45,6 +43,7 @@ namespace Dominio
             nombre_u = user;
             contra_u = pass;
             Tipousuario = admin ? Tipousuario.ADMIN : Tipousuario.NORMAL;
+            Activo = false;
         }
 
     }
