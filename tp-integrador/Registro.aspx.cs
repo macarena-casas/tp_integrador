@@ -28,16 +28,71 @@ namespace tp_integrador
             try
             {
 
-                usuario.nombre_u = txtemail.Text;
+                usuario.nombre_u = txtEmail.Text;
                 usuario.contra_u = txtpass.Text;
+                
+
+                 bool isLengthValid = usuario.contra_u.Length >= 6;
+                 bool hasUpperCase = usuario.contra_u.Any(char.IsUpper);
+                 bool hasNumber = usuario.contra_u.Any(char.IsDigit);
+
+
+
+                if (isLengthValid)
+                {
+                    lblLength.Style["color"] = "green";
+                }
+                else
+                {
+                    lblLength.Style["color"] = "red";
+                }
+
+                if (hasUpperCase)
+                {
+                    lblUpperCase.Style["color"] = "green";
+                }
+                else
+                {
+                    lblUpperCase.Style["color"] = "red";
+                }
+
+                if (hasNumber)
+                {
+                    lblNumber.Style["color"] = "green";
+                }
+                else
+                {
+                    lblNumber.Style["color"] = "red";
+                }
+
+                if (!isLengthValid || !hasUpperCase || !hasNumber || !Page.IsValid)
+                {
+
+                    
+                    txtpass.Text = "";
+                    txtpass2.Text = "";
+
+
+                    return;
+                }
                 Unegocio.agregar(usuario);
-                Session["usuario"] = usuario;
+                if (isLengthValid && hasUpperCase && hasNumber && Page.IsValid)
+                {
+
+                    
+                    Session["usuario"] = usuario;
                 if (Session["usuario"] != null)
                 {
                     Response.Redirect("~/Registro.aspx");
 
                 }
-                Response.Redirect("~/Default.aspx");
+                   
+                }
+                
+
+
+
+                 Response.Redirect("~/Default.aspx");
             }
             catch (Exception ex)
             {

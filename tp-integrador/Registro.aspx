@@ -14,28 +14,44 @@
                 <h1 style="text-align: center; padding: 10px 0 10px 0; border-bottom: 2px double grey;">Registrate:</h1>
                 <center>
                     <div method="post" style="padding: 0 45px; box-sizing: border-box; left: 20px;">
-                        <div class="username" style="top: 50%; color: black; left: 5px; color: black; font-size: 20px;">
-                            <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" CssClass="form-control1" ID="txtemail" />
+                        <div class="form-group"  style="margin-top: 5%; left: 5px; color: black; font-size: 20px;">
                             <label>Email</label>
-                        </div>
+    <asp:TextBox  Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0; text-align:left" ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" />
 
+    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail"
+        ValidationGroup="GroupRegistro" ErrorMessage="El email es obligatorio." CssClass="text-danger"
+        Display="Dynamic" />
+    <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail"
+        ValidationGroup="GroupRegistro" ErrorMessage="El email no es válido."
+        ValidationExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" CssClass="text-danger"
+        Display="Dynamic" />
+                     </div>
+                        <label style="font-size:20px;">Contrseña</label>
                         <div class="contraseña" style="margin-top: 5%; left: 5px; color: black; font-size: 20px;">
+                            
 
-                            <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server"  type="password" CssClass="form-control1" ID="txtpass" />
-                            <label>Contraseña</label>
+                            <asp:TextBox  Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server"  type="password" CssClass="form-control1" ID="txtpass" TextMode="password" />
+                            
                         </div>
+                        <label style="font-size:20px;"> Repetir contraseña</label>
+
                         <div class="rep-contraseña" style="margin-top: 5%; left: 5px; color: black; font-size: 20px;">
-                            <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" type="password" CssClass="form-control1" ID="txtpass2" />
-                            <label>Repite La Contraseña</label>
+                            
+
+
+                            <asp:TextBox  Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" type="password" CssClass="form-control1" ID="txtpass2" TextMode="password" />
+                            
                         </div>
                         <br />
                         <div class="mx-auto d-flex">
-                            <label style="font-size: 15px; margin-left: 10px;">*Mas de 6 caracteres</label>
-                            <label style="font-size: 15px; margin-left: 20px;">*Minimo 1 Mayúscula</label>
-                            <label style="font-size: 15px; margin-left: 20px;">*Minimo 1 Número</label>
+                            <asp:Label ID="lblLength" runat="server" Text="* Más de 6 caracteres"></asp:Label><br /> </div>
+                        <div class="mx-auto d-flex">
+                            <asp:Label ID="lblUpperCase" runat="server" Text="* Mínimo 1 mayúscula"></asp:Label><br /></div>
+                        <div class="mx-auto d-flex">
+                            <asp:Label ID="lblNumber" runat="server" Text="* Mínimo 1 número"></asp:Label><br /></div>
 
 
-                        </div>
+                       
 
 
                     </div>
