@@ -81,16 +81,22 @@
                         <p><strong id="lblDireccion" runat="server" style="font-size: 15px; color: darkblue;"></strong></p>
 
 
-                        <% if (Session["usuario"] != null)
+                  
+                        <% if (Session["usuario"] != null && verificarusuario(inmueble.Id_I) == false)
                             {%>
-                        <asp:Button ID="btnagregarfavorito" runat="server" Text="Agregar a Favorito" OnClick="btnagregarfavorito_Click" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
+                        <asp:Button ID="btnagregarfavorito" class="btn btn-outline-info" runat="server" Text="Agregar a Favorito" OnClick="btnagregarfavorito_Click" Style="font-weight: bold; width: 30%" />
 
-                        <asp:Button ID="btnContacto" runat="server" Text="Contactame" OnClick="btnContacto_Click" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
+                        <asp:Button ID="btnContacto" class="btn btn-outline-warning" runat="server" Text="Contactame" OnClick="btnContacto_Click" Style="font-weight: bold; width: 30%" />
                         <% }%>
-                        <a class="btn btn-primary text-light text-decoration-none" href="Default.aspx" style="margin-bottom: 2px; width: 30%"><strong>Atrás</strong></a>
+                        <% if (Session["usuario"] == null )
+                            {%>
+                        <asp:Label Text="Para acceder a mas opciones debe iniciar sesión." Style="color: darkred; font-size: 15px; font-weight: bold;" runat="server" />
+                        <% }%>
+                        <br />
+                        <br />
+                        <a class="btn btn-outline-primary text-black text-decoration-none" href="Default.aspx" style="margin-bottom: 2px; width: 30%"><strong>Atrás</strong></a>
                     </center>
                 </div>
-
 
                 <div class="card border-primary" style="border-color: blue; margin-left: 10px; height: 600px; width: 500px">
                     <center>

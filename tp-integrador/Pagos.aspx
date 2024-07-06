@@ -39,32 +39,32 @@
                 </tr>
                 <tr>
                     <td style="border-left: double; border-right: double; font-weight: bold; color: black;">
-                        <label>Caracteristicas: permite publicar 1 imagen y la </label>
-                        <label>duracion de la publicacion es de 5 dias</label>
+                        <label>Caracteristicas: la duracion de la publicacion</label>
+                        <label> es de 5 dias</label>
 
 
                     </td>
                     <td style="border-left: double; border-right: double; font-weight: bold; color: black;">
-                        <label>Caracteristicas: permite publicar 2 imagen y la </label>
-                        <label>duracion de la publicacion es de 10 dias</label>
+                        <label>Caracteristicas: la duracion de la publicacion</label>
+                        <label> es de 10 dias</label>
 
 
                     </td>
                     <td style="border-left: double; border-right: double; font-weight: bold; color: black;">
-                        <label>Caracteristicas: permite publicar 4 imagen y la </label>
-                        <label>duracion de la publicacion es de 15 dias</label>
+                        <label>Caracteristicas: la duracion de la publicacion</label>
+                        <label> es de 15 dias</label>
 
 
                     </td>
                     <td style="border-left: double; border-right: double; font-weight: bold; color: black;">
-                        <label>Caracteristicas: permite publicar 5 imagen y la </label>
-                        <label>duracion de la publicacion es de 30 dias</label>
+                        <label>Caracteristicas: la duracion de la publicacion</label>
+                        <label> es de 30 dias</label>
 
 
                     </td>
                     <td style="border-left: double; border-right: double; font-weight: bold; color: black; border-spacing: initial">
-                        <label>Caracteristicas: permite publicar imagenes ilimitadas y la </label>
-                        <label>duracion de la publicacion es permanente</label>
+                        <label>Caracteristicas: la duracion de la publicacion</label>
+                        <label> es permanente</label>
 
 
                     </td>
@@ -76,3 +76,4 @@
         </div>
     </div>
 </asp:Content>
+

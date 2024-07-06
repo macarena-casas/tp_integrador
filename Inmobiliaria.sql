@@ -130,9 +130,9 @@ insert into Usuario values ('admin', 'admin',1,0,1),
 ('alejandro@gmail.com','Alejandro1',0,0,1),
 ('martin@gmail.com','Martin1',0,0,1)
 go
-insert into DatosUsuario values('macarena@gmail.com','macarena','casas','12345678','chaco 470','1994-27-10',0 ),
-('martin@gmail.com','martin','casas','87654321','gutemberg 850','2002-13-02',0 ),
-('alejandro@gmail.com','Alejandro','Beron','11223344','general Pacheco 123','1992-09-05',0 )
+insert into DatosUsuario values('macarena@gmail.com','macarena','casas','38393020','12345678','chaco 470','1994-11-10',0 ),
+('martin@gmail.com','martin','casas','43252525','87654321','gutemberg 850','2002-10-02',0 ),
+('alejandro@gmail.com','Alejandro','Beron','37059354','1133333344','general Pacheco 123','1992-09-05',0 )
 go
 insert into Inmueble values ('admin','casa azul','amplia y luminosa','las palmas 123',1,1617,50000,3,2,1,1,0,1,0,1,1,1,0,1,1,0,'venta'),
  ('macarena@gmail.com','casa madera','rustica y acogedora','calle falsa 321',3,1618,20000,2,1,1,1,1,1,0,0,0,1,0,1,1,0,'alquiler'),

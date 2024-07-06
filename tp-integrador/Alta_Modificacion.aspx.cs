@@ -152,7 +152,7 @@ namespace tp_integrador
             if (Checkpavimento.Checked == true) { inmueble.pavimento = true; }
             if (Checkcloaca.Checked == true) { inmueble.cloacas = true; }
             if (Checkcalefaccion.Checked == true) { inmueble.calefaccion = true; }
-            inmueble.tipo_operacion = tipoope.SelectedValue ;
+            inmueble.tipo_operacion = tipoope.SelectedValue;
             inmueble.categoria_I.codigo_categoria = int.Parse(selpropiedad.SelectedValue);
             inmueble.descripcion_I = txtdescripcion.Text;
             inmueble.NombreUsuario = usu.nombre_u;
@@ -167,13 +167,10 @@ namespace tp_integrador
             listainmueble = validarurl(listainmueble);
             Session["listainmueble"] = listainmueble;
 
+
             Acceso_Datos datos = new Acceso_Datos();
             int id_inmueble = INegocio.ObtenerUltimoId();
 
-
-           int idUsuario = usu.id_u;
-              
-           
 
             string metodoPago = "";
             if (checkHierro.Checked)
@@ -198,16 +195,10 @@ namespace tp_integrador
             }
 
 
-            
-            
-
             NegocioUsuario usuario = new NegocioUsuario();
+            int idUsuario = usuario.buscarId(usu.nombre_u);
             usuario.Pagar(idUsuario, id_inmueble, metodoPago);
-
-
             Response.Redirect("~/Default.aspx");
-
-
 
         }
 
@@ -337,18 +328,6 @@ namespace tp_integrador
         protected void btnInfo_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pagos.aspx");
-        }
-
-        protected void btneliminarfoto_Click(object sender, EventArgs e)
-        {
-
-
-
-
-            LinkButton btn = (LinkButton)sender;
-
-            string urlImagen = btn.CommandArgument;
-
         }
     }
 }

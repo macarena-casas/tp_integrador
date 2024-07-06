@@ -19,10 +19,10 @@
         <div class="col-12 col-md-6 col-lg-4 mb-2">
            <div class="card border-primary"
                 <%if (inmueble.Pausa == false)
-                {%>style="border-color: blue; height: 550px; width: 350px; "
+                {%>style="border-color: blue; height: 500px; width: 350px; "
                 <%} %>
                 <%if (inmueble.Pausa == true)
-                {%>style="border-color: blue; height: 550px; width: 350px; opacity: 0.5;"
+                {%>style="border-color: blue; height: 500px; width: 350px; opacity: 0.5;"
                 <%} %>>
                 <div id="carouselExampleDark_<%: inmueble.Id_I %>" class="carousel carousel-dark slide">
                     <div class="carousel-indicators">
@@ -93,7 +93,7 @@
                 </div>
 
 
-                <center>
+               <center>
                     <div class="card-header text-center" style="font-size: 30px; color: darkblue; border-block-color: blue; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><strong><%: inmueble.nombre_I  %></strong></div>
                     <div class="card-body text-center" style="margin-bottom: 20px;">
                         <h5 class="card-title" style="font-size: 20px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">$<%: inmueble.precio_I  %></h5>
@@ -103,14 +103,12 @@
                             { %>
                         <a href="<%: ResolveUrl("~/Alta_Modificacion.aspx?id=" + inmueble.Id_I) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise;" title="modif">Modificar</a>
                         <%} %>
-                        <a href="<%: ResolveUrl("~/Contacto.aspx?id=" + inmueble.NombreUsuario) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise; font-weight: bold;"><i class="bi bi-phone-vibrate "></i></a>
 
-                        <br />
-                        <br />
-                        <%if (Session["usuario"] != null)
+                        <%if (Session["usuario"] != null && verificarusuario(inmueble.Id_I) == false)
                             { %>
                         <a href="Default.aspx?id=<%:inmueble.Id_I %>" class="btn btn-outline-info" usesubmitbehavior="false" commandargument='<%=inmueble.Id_I%>'
                             style="font-weight: bold; border-color: darkturquoise;">Agregar a Favoritos <i class="bi bi-star-fill "></i></a>
+                        <a href="<%: ResolveUrl("~/Contacto.aspx?id=" + inmueble.NombreUsuario) %>" class="btn btn-outline-info" style="font-weight: bold; border-color: darkturquoise; font-weight: bold;"><i class="bi bi-phone-vibrate "></i></a>
                         <%} %>
                     </div>
                 </center>

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="Mensajeria.aspx.cs" Inherits="tp_integrador.Mensajeria" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -65,7 +66,7 @@
             </div>
             <div class="col-1 d-flex justify-content-end align-items-center" <%if (email.Visto == true && usuario.nombre_u == email.destino)
                 { %>
-                style="background-color: paleturquoise ;"
+                style="background-color: paleturquoise;"
                 <%} %>>
 
                 <a href="<%:ResolveUrl("~/Mensaje.aspx?id=" + email.Id) %>" class="btn btn-outline-info" style="border-radius: 20px; color: black; align-items: center; height: 40px; font-size: 20px; font-weight: bold; border-color: darkturquoise;" title="Abrir"><i class="bi bi-arrow-right-circle"></i></a>
@@ -75,5 +76,4 @@
         </div>
     </div>
     <%} %>
-
 </asp:Content>

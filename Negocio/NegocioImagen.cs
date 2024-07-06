@@ -132,7 +132,7 @@ namespace Negocio
                     //datos.setearparametro("@Id_inmueble", productId);
                     //datos.setearparametro("@Url",imagen);
                     datos.ejecutaraccion2();
-                    datos.cerrarconexion();
+                    
 
 
 

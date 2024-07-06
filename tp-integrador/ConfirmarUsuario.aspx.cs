@@ -73,10 +73,17 @@ namespace tp_integrador
             confirmarUsuarios.DataSource = Unegocio.listard();
             confirmarUsuarios.DataBind();
 
+            Email email = new Email();
+            NegocioEmail eNego = new NegocioEmail();
+            Usuario usuario = (Usuario)Session["usuario"];
+            email.destino = em;
+            email.remitente = usuario.nombre_u;
+            email.asunto = "Usuario Confirmado.";
+            email.mensaje = "Bienvenido: " + em + " tu usuario fue confirmado con exito!";
+            eNego.agregar(email);
 
             Response.Redirect("ConfirmarUsuario.aspx");
         }
-
         protected void btnRechazarUsuario_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;

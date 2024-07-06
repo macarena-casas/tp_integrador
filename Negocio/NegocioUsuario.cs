@@ -42,7 +42,7 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-                datos.setearconsulta("insert into Usuario (Nombre, Contraseña,IDTipo,Activo) values(@Nombre, @Contraseña, 0,0)");
+                datos.setearconsulta("insert into Usuario (Nombre, Contraseña,IDTipo,Saldo,Activo) values(@Nombre, @Contraseña, 0,10000,0)");
                 datos.setearparametro("@Nombre", nuevo.nombre_u);
                 datos.setearparametro("@Contraseña", nuevo.contra_u);
                 datos.ejecutaraccion();
@@ -92,7 +92,44 @@ namespace Negocio
             }
 
         }
+        public int buscarId(string usuario)
+        {
+            Acceso_Datos datos = new Acceso_Datos();
+            int aux = 0;
 
+
+            try
+            {
+                datos.setearconsulta("select Id from Usuario where Nombre = @Nombre and Activo=1 ");
+                datos.setearparametro("@Nombre", usuario);
+
+
+                datos.ejecutarlectura();
+
+                if (datos.lector.Read())
+                {
+
+                    aux = (int)datos.lector["Id"];
+                    return (aux);
+
+                }
+                else
+                {
+                    return aux;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+        }
         public Usuario Loguear(Usuario usuario)
         {
             Acceso_Datos datos = new Acceso_Datos();
@@ -138,7 +175,7 @@ namespace Negocio
             Acceso_Datos datos = new Acceso_Datos();
             try
             {
-               
+
                 datos.setearconsulta("DescontarSaldoPorFormaPago");
                 datos.comando.CommandType = CommandType.StoredProcedure;
 

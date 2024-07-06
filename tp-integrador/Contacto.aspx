@@ -61,7 +61,7 @@
                 </div>
                 <div class="card-footer" style="padding: 0 45px; box-sizing: border-box; left: 20px;">
                     <div class="row mb-3">
-                        <asp:Button Style="width: 100%; margin-top: 10px; padding: 10px; outline: none; background: blue; color: #fff; border: none; transition: .1s; cursor: pointer; font-size: 1rem;" Text="Enviar" runat="server" ID="btnaceptar" OnClick="btnaceptar_Click" />
+                        <asp:Button Style="width: 100%; margin-top: 10px; padding: 10px; outline: none; background: blue; color: #fff; border: none; transition: .1s; cursor: pointer; font-size: 1rem;" Text="Enviar" runat="server" ID="btnaceptar" OnClick="btnaceptar_Click"  OnClientClick="return confirm('Recuerde reunirse en una escribania para realizar cualquier tipo de transacción!');"/>
                     </div>
                 </div>
             </div>

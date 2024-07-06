@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
         <div class="reg ">
-            <div class="card border-primary" style="text-align: center; background: lightblue; border-radius: 3%; min-height: 500px; min-width: 400px;">
+            <div class="card border-primary" style="text-align: center; background: lightblue; border-radius: 3%; height: 500px; width: 400px;">
                 <div class="card-header text-center" style="padding: 0 45px; box-sizing: border-box; left: 20px; margin-top: 15px; text-align: center;">
                     <div class="row g-3">
                         <div class="col-auto">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="card-body text-center" style="padding: 0 45px; box-sizing: border-box; left: 20px;">
-                    <asp:Label Text="" TextMode="MultiLine"  ID="txtmensaje"  runat="server" Style="font-size: 15px; font-weight: bold; margin-top: 15px;" />
+                    <asp:Label Text="" TextMode="MultiLine"  ID="txtmensaje"  runat="server" Style="font-size: 15px; width:80%; max-width:90%; font-weight: bold; margin-top: 15px;" />
                 </div>
                 <div class="card-footer" style="padding: 0 45px; box-sizing: border-box; left: 20px;">
 
@@ -38,3 +38,4 @@
 
 
 </asp:Content>
+

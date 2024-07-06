@@ -74,6 +74,40 @@ namespace tp_integrador
                 throw ex;
             }
         }
+        public bool verificarusuario(int id)
+        {
+            if (Session["usuario"] != null)
+            {
+                try
+                {
+
+                    Usuario usuario = (Usuario)Session["usuario"];
+                    NegocioInmueble fnegocio = new NegocioInmueble();
+
+                    if (fnegocio.verificarusuario(usuario.nombre_u, id) == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Response.Redirect("~/Error.aspx");
+                    throw ex;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+
         protected void btnagregarfavorito_Click(object sender, EventArgs e)
         {
             if (Session["usuario"] != null)
@@ -108,9 +142,6 @@ namespace tp_integrador
         {
             if (Session["usuario"] != null)
             {
-
-
-
                 try
                 {
 

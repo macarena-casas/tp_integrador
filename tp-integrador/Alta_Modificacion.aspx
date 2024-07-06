@@ -111,11 +111,6 @@
                                             <img src='<%# Container.DataItem %>' alt="Imagen" id="imgselec" style="height: 300px; width: 300px;" />
                                         </div>
                                     </ItemTemplate>
-                                    <FooterTemplate>
-                                        <asp:LinkButton visible="false"; ID="btneliminarfoto" CssClass="btn btn-outline-danger" runat="server" OnClick="btneliminarfoto_Click" CommandArgument='<%# Container.DataItem %>' UseSubmitBehavior="false">
-                                            Rechazar 
-                                        </asp:LinkButton>
-                                    </FooterTemplate>
 
                                 </asp:Repeater>
                             </div>
@@ -233,7 +228,7 @@
         </div>
         <div style="margin-left: 25px; color: black; padding-top: 30px">
             <center>
-                <asp:Button Text="Nuesrtos planes de publicacion" runat="server" type="submit" class="btn btn-info" ID="btnInfo" OnClick="btnInfo_Click" />
+                <asp:Button Text="Nuestros planes de publicacion" runat="server" type="submit" class="btn btn-info" ID="btnInfo" OnClick="btnInfo_Click" />
 
             </center>
         </div>
