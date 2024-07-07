@@ -233,7 +233,38 @@ BEGIN
 END;
 */
 
-exec DescontarSaldoPorFormaPago 1,3,5
+CREATE OR ALTER PROCEDURE RecuperarContraseña3
+    @Email VARCHAR(50),
+    @Dni VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Contraseña VARCHAR(15);
+
+    -- Verificar que el email y el DNI coincidan
+    SELECT @Contraseña = U.Contraseña
+    FROM Usuario U
+    JOIN DatosUsuario DU ON U.Nombre = DU.Email
+    WHERE DU.Email = @Email AND DU.Dni = @Dni;
+
+    -- Si no se encuentra una coincidencia, lanzar un error
+    IF @Contraseña IS NULL
+    BEGIN
+        THROW 50001, 'Error: No se encontró un usuario con el email y DNI proporcionados.', 1;
+    END
+
+    -- Devolver la contraseña
+    SELECT @Contraseña AS Contraseña;
+END
+GO
+  
+
+
+  exec RecuperarContraseña3 'admin','001'
+
+
+EXEC RecuperarContraseña3 @email, @Dni;
 
 select * from Usuario
 select * from DatosUsuario

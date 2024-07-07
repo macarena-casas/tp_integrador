@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
 using System.Net;
+using System.Data.SqlClient;
 
 namespace tp_integrador
 {
@@ -127,6 +128,7 @@ namespace tp_integrador
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            
 
             Page.Validate();
             if (!Page.IsValid)
@@ -143,20 +145,20 @@ namespace tp_integrador
             inmueble.ambientes = int.Parse(ambientes.SelectedValue);
             inmueble.ubicacion.Codigo_Postal = 1617;
 
-            if (checkagua.Checked == true) { inmueble.aguacorriente = true; }
-            if (Checkluz.Checked == true) { inmueble.luz = true; }
-            if (checkgas.Checked == true) { inmueble.gasnatural = true; }
-            if (Checkcochera.Checked == true) { inmueble.cochera = true; }
-            if (Checkaire.Checked == true) { inmueble.aireacondicionado = true; }
-            if (Checkpatio.Checked == true) { inmueble.patio = true; }
-            if (Checkpavimento.Checked == true) { inmueble.pavimento = true; }
-            if (Checkcloaca.Checked == true) { inmueble.cloacas = true; }
-            if (Checkcalefaccion.Checked == true) { inmueble.calefaccion = true; }
+            inmueble.aguacorriente = checkagua.Checked;
+            inmueble.luz = Checkluz.Checked;
+            inmueble.gasnatural = checkgas.Checked;
+            inmueble.cochera = Checkcochera.Checked;
+            inmueble.aireacondicionado = Checkaire.Checked;
+            inmueble.patio = Checkpatio.Checked;
+            inmueble.pavimento = Checkpavimento.Checked;
+            inmueble.cloacas = Checkcloaca.Checked;
+            inmueble.calefaccion = Checkcalefaccion.Checked;
+
             inmueble.tipo_operacion = tipoope.SelectedValue;
             inmueble.categoria_I.codigo_categoria = int.Parse(selpropiedad.SelectedValue);
             inmueble.descripcion_I = txtdescripcion.Text;
             inmueble.NombreUsuario = usu.nombre_u;
-
 
             // nuevo agregar acumulado
             List<string> imagenUrls = Session["ImagenUrls"] as List<string> ?? new List<string>();
@@ -167,10 +169,8 @@ namespace tp_integrador
             listainmueble = validarurl(listainmueble);
             Session["listainmueble"] = listainmueble;
 
-
             Acceso_Datos datos = new Acceso_Datos();
             int id_inmueble = INegocio.ObtenerUltimoId();
-
 
             string metodoPago = "";
             if (checkHierro.Checked)
@@ -195,13 +195,16 @@ namespace tp_integrador
             }
 
 
+            if (string.IsNullOrEmpty(txtnombre.Text))
+            {
+
+                return;
+            }
             NegocioUsuario usuario = new NegocioUsuario();
             int idUsuario = usuario.buscarId(usu.nombre_u);
             usuario.Pagar(idUsuario, id_inmueble, metodoPago);
             Response.Redirect("~/Default.aspx");
-
         }
-
 
 
         protected void txtImagenurl_TextChanged(object sender, EventArgs e)

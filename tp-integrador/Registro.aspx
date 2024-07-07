@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="tp_integrador.Registro" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
     <div class="content" style="background-color: rgba(144, 148, 150, 0.8); left: 0; bottom: 0; right: 0; top: 0; display: flex; position: fixed; justify-content: center; align-items: center; z-index: 100;">
@@ -26,7 +24,7 @@
                                 ValidationExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" CssClass="text-danger"
                                 Display="Dynamic" />
                         </div>
-                        <label style="font-size: 20px;">Contrseña</label>
+                        <label style="font-size: 20px;">Contraseña</label>
                         <div class="contraseña" style="margin-top: 5%; left: 5px; color: black; font-size: 20px;">
 
                             <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" type="password" CssClass="form-control1" ID="txtpass" TextMode="password" />
@@ -50,9 +48,8 @@
                             <asp:Label ID="lblNumber" runat="server" Text="* Mínimo 1 número"></asp:Label><br />
                         </div>
 
-
-
-
+                        <!-- Agregar el Label para mostrar mensajes de error -->
+                        <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="text-danger" Visible="false"></asp:Label>
 
                     </div>
 
@@ -106,6 +103,10 @@
                     <label>Fecha de Nacimiento: </label>
                     <asp:TextBox Style="border: hidden; background-color: transparent; position: relative; border-bottom: 2px solid silver; margin-inline: 0px 0;" runat="server" CssClass="date" ID="TxtFecha" TextMode="Date" />
                 </div>
+
+                <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="" CssClass="text-danger" Visible="false"></asp:Label>
+
             </div>
             <div class="btn " style="width: 100%; margin-top: 15px; display: flex; justify-content: center; align-items: center;">
                 <asp:Button Text="Finalizar" CssClass="btn btn-reg" ID="btnFinalizar" OnClick="btnFinalizar_Click" runat="server" Style="padding: 7px 10px; background-color: #5488a3; color: #fff; border-radius: 25px; cursor: pointer; transition: all 300ms ease;" />

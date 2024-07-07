@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -113,15 +114,43 @@ namespace tp_integrador
 
         protected void btnFinalizar_Click(object sender, EventArgs e)
         {
-            datospersonales.Nombre = TxtNombre.Text;
-            datospersonales.Apellido = TxtApellido.Text;
-            datospersonales.DNI = TxtDni.Text;
-            datospersonales.Domicilio = TxtDomicilio.Text;
-            datospersonales.Telefono = TxtTel.Text;
-            datospersonales.Email = usuario.nombre_u;
-            datospersonales.FechaNacimiento = DateTime.Parse(TxtFecha.Text);
-            Unegocio.agregarDatos(datospersonales);
-            Response.Redirect("~/Default.aspx");
+            try
+            {
+                DateTime fechaNacimiento = DateTime.Parse(TxtFecha.Text);
+
+                int edad = CalcularEdad(fechaNacimiento);
+
+                if (edad >= 18)
+                {
+                    datospersonales.Nombre = TxtNombre.Text;
+                    datospersonales.Apellido = TxtApellido.Text;
+                    datospersonales.DNI = TxtDni.Text;
+                    datospersonales.Domicilio = TxtDomicilio.Text;
+                    datospersonales.Telefono = TxtTel.Text;
+                    datospersonales.Email = usuario.nombre_u;
+                    datospersonales.FechaNacimiento = fechaNacimiento;
+
+                    Unegocio.agregarDatos(datospersonales);
+                    Response.Redirect("~/Default.aspx");
+                }
+                else
+                {
+                    lblError.Text = "Debes ser mayor de 18 años para registrarte.";
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = "fecha de nacimiento no valida ";
+            }
+        }
+        private int CalcularEdad(DateTime fechaNacimiento)
+        {
+            DateTime now = DateTime.Today;
+            int age = now.Year - fechaNacimiento.Year;
+            if (fechaNacimiento > now.AddYears(-age))
+                age--;
+
+            return age;
         }
     }
 }
