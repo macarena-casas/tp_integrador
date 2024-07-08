@@ -19,14 +19,14 @@
 
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" style="height: 410px">
+            <div class="carousel-item active" style="height: 420px ">
                 <img src="https://cloudfront-us-east-1.images.arcpublishing.com/semana/OXOMJE3J6BGPTEON4XMKPZD7NM.jpg" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item  " style="height: 410px">
-                <img src="https://img.freepik.com/foto-gratis/concepto-inmobiliario-joven-pelo-rojo-camiseta-que-muestra-recorte-casa-papel-sonriendo-ha_1258-161646.jpg?t=st=1717176811~exp=1717180411~hmac=2e10b462a62fea38067b005c0368421c56dcd18bccaa1a95e68c3ac361211ff7&w=740" class="d-block w-100" alt="...">
+            <div class="carousel-item  " style="height: 420px ">
+                <img src="https://optimainmobiliaria.com/wp-content/uploads/2022/09/Optima-Inmobiliaria-%C2%BFSe-quedo-chica-la-casa-%C2%A1Consigue-un-Departamento-Familiar.jpg" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item " style="height: 410px">
-                <img src="https://img.freepik.com/fotos-premium/familia-europea-sonadora-sentada-casa-tirada_116547-111412.jpg?w=900" class="d-block w-100" alt="...">
+            <div class="carousel-item " style="height: 420px ">
+                <img src="https://blog.iadespana.es/uploads/2023/01/viviendas-2023-sector-inmobiliario.jpeg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
