@@ -111,7 +111,45 @@ namespace tp_integrador
                 email.destino = inmueble.NombreUsuario;
                 email.remitente = usuario.nombre_u;
                 email.asunto = "Publicacion Rechazada.";
-                email.mensaje = "Lo sentimos, la publicación: " + inmueble.nombre_I + " no ah sido aprobada, asegurese de completar todos los datos de manera correspondiente. Muchas Gracias!";
+                email.mensaje = "Lo sentimos, la publicación: " + inmueble.nombre_I + " no ah sido aprobada."+ btnpago.Text;
+                eNego.agregar(email);
+                Response.Redirect("~/ConfirmarPublicaciones.aspx");
+
+            }
+        }
+
+        protected void btndire_Click(object sender, EventArgs e)
+        {
+            if (Session["usuario"] != null)
+            {
+                usuario = (Usuario)Session["usuario"];
+                Email email = new Email();
+                NegocioEmail eNego = new NegocioEmail();
+                NegocioInmueble iManager = new NegocioInmueble();
+                iManager.AdminElimina_Elimina(inmueble.Id_I);
+                email.destino = inmueble.NombreUsuario;
+                email.remitente = usuario.nombre_u;
+                email.asunto = "Publicacion Rechazada.";
+                email.mensaje = "Lo sentimos, la publicación: " + inmueble.nombre_I + " no ah sido aprobada." + btnprecio.Text;
+                eNego.agregar(email);
+                Response.Redirect("~/ConfirmarPublicaciones.aspx");
+
+            }
+        }
+
+        protected void btnprecio_Click(object sender, EventArgs e)
+        {
+            if (Session["usuario"] != null)
+            {
+                usuario = (Usuario)Session["usuario"];
+                Email email = new Email();
+                NegocioEmail eNego = new NegocioEmail();
+                NegocioInmueble iManager = new NegocioInmueble();
+                iManager.AdminElimina_Elimina(inmueble.Id_I);
+                email.destino = inmueble.NombreUsuario;
+                email.remitente = usuario.nombre_u;
+                email.asunto = "Publicacion Rechazada.";
+                email.mensaje = "Lo sentimos, la publicación: " + inmueble.nombre_I + " no ah sido aprobada." + btndire.Text;
                 eNego.agregar(email);
                 Response.Redirect("~/ConfirmarPublicaciones.aspx");
 

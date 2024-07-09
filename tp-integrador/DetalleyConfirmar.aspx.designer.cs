@@ -150,22 +150,40 @@ namespace tp_integrador
         protected global::System.Web.UI.WebControls.CheckBox Checkaire;
 
         /// <summary>
-        /// Control btnagregarfavorito.
+        /// Control btnConfirmar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnagregarfavorito;
+        protected global::System.Web.UI.WebControls.Button btnConfirmar;
 
         /// <summary>
-        /// Control btnRechazar.
+        /// Control btnpago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRechazar;
+        protected global::System.Web.UI.WebControls.Button btnpago;
+
+        /// <summary>
+        /// Control btnprecio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnprecio;
+
+        /// <summary>
+        /// Control btndire.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btndire;
 
         /// <summary>
         /// Control cerrarbtn.

@@ -157,24 +157,28 @@
                         </div>
                     </center>
 
-                    <div class="row" style="margin-top: 5px;">
+                    <iv class="row" style="margin-top: 5px;">
                         <center>
-                            <asp:Button ID="btnagregarfavorito" runat="server" Text="Confirmar" OnClick="btnagregarfavorito_Click1" CssClass="btn btn-primary" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
-                            <asp:Button ID="btnRechazar" runat="server" Text="Rechazar" OnClick="btnRechazar_Click" CssClass="btn btn-outline-danger" Style="background-color: aqua; color: black; font-weight: bold; border-color: dimgrey; width: 30%" />
-
-                            <div class="btn " style="width: 100%; margin-top: 15px; display: flex; justify-content: center; align-items: center;">
-
-                                <asp:Button ID="cerrarbtn" Text="Cerrar" runat="server" OnClick="cerrarbtn_Click" Style="padding: 7px 10px; background-color: #5488a3; color: #fff; border-radius: 25px; cursor: pointer; transition: all 300ms ease;" />
-
+                            <asp:Button ID="btnConfirmar" runat="server" Text="Confirmar" OnClick="btnconfirmar_Click" CssClass="btn btn-outline-success" Style="color: black; font-weight: bold; width: 30%" />
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: black;"><strong>Rechazar</strong></a>
+                                <ul class="dropdown-menu  ">
+                                    <asp:Button class="dropdown-item btn-outline-info" Text="El pago no se realizo de forma debida." runat="server" ID="btnpago" OnClick="btnRechazar_Click" Style="padding: 7px 10px; color: black; background-color: aquamarine; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer; transition: all 300ms ease;" />
+                                    <asp:Button class="dropdown-item btn-outline-info" Text="El precio indicado no es correcto, recuerde que solo está permitido poner precios válidos. La devolición del pago ya fue realizada" runat="server" ID="btnprecio" OnClick="btnprecio_Click" Style="padding: 7px 10px; color: black; background-color: aquamarine; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer;" />
+                                    <asp:Button class="dropdown-item btn-outline-info" Text=" La dirección del inmueble no existe. La devolución del pago ya fue realizada. " runat="server" ID="btndire" OnClick="btndire_Click" Style="padding: 7px 10px; color: black; background-color: aquamarine; font-weight: bold; text-align: center; border: 2px solid darkcyan; cursor: pointer;" />
+                                </ul>
                             </div>
                         </center>
-                    </div>
                 </div>
-
+                <div class="btn " style="width: 100%; margin-top: 15px; display: flex; justify-content: center; align-items: center;">
+                    <asp:Button ID="cerrarbtn" Text="Cerrar" runat="server" OnClick="cerrarbtn_Click" Style="padding: 7px 10px; background-color: #5488a3; color: #fff; border-radius: 25px; cursor: pointer; transition: all 300ms ease;" />
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
+
+
 
 </asp:Content>
 
